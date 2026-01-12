@@ -7,8 +7,8 @@ from datetime import datetime
 from tqdm import tqdm
 
 # 1. APIキーの設定
-# load_dotenv()
-# openai.api_key = os.environ["OPENAI_API_KEY"]
+load_dotenv()
+openai.api_key = os.environ["OPENAI_API_KEY"]
 
 # 2. ファイルパスの設定
 TEMPLATE_DIR = os.path.join(os.path.dirname(__file__), "../prompt_templates")
@@ -18,7 +18,7 @@ SCHEMA_TEMPLATE_PATH = os.path.join(TEMPLATE_DIR, "schema_template_cot.json")
 AXIS_DEFINITIONS_PATH = os.path.join(TEMPLATE_DIR, "axis_definitions_en.json")
 
 # モデル設定
-MODEL_NAME = "gemma3:27b"
+MODEL_NAME = "gpt-4o"
 
 # Few-shot用のdialogue_id
 FEW_SHOT_IDS = [0, 18, 46]
@@ -121,8 +121,8 @@ def extract_preferences_with_few_shot(dialogue_text, dialogue_id, system_prompt,
     """
     try:
         client = OpenAI(
-            base_url="http://localhost:11434/v1",
-            api_key="gemma3:27b"
+            # base_url="http://localhost:11434/v1",
+            # api_key="gemma3:27b"
         )
 
         completion = client.chat.completions.create(
@@ -213,7 +213,7 @@ def run_experiment():
     
     # 結果保存
     print("\n[5/5] 結果保存中...")
-    output_dir = os.path.join(os.path.dirname(__file__), "results")
+    output_dir = os.path.join(os.path.dirname(__file__), "results/{MODEL_NAME}")
     os.makedirs(output_dir, exist_ok=True)
     
     timestamp = datetime.now().strftime("%Y%m%d_%H%M%S")
