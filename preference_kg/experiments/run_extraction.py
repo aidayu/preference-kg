@@ -11,7 +11,7 @@ load_dotenv()
 openai.api_key = os.environ["OPENAI_API_KEY"]
 
 # 2. ファイルパスの設定
-TEMPLATE_DIR = os.path.join(os.path.dirname(__file__), "../prompt_templates")
+TEMPLATE_DIR = os.path.join(os.path.dirname(__file__), "../../prompt_templates")
 DATASET_PATH = "/home/y-aida/Programs/preference-kg/data/interim/dailydialog_annotated_20260108_fined2.json"
 FEW_SHOT_PROMPT_TEMPLATE_PATH = os.path.join(TEMPLATE_DIR, "few_shot_extract_template_cot.txt")
 SCHEMA_TEMPLATE_PATH = os.path.join(TEMPLATE_DIR, "schema_template_cot.json")
@@ -213,7 +213,7 @@ def run_experiment():
     
     # 結果保存
     print("\n[5/5] 結果保存中...")
-    output_dir = os.path.join(os.path.dirname(__file__), "results/{MODEL_NAME}")
+    output_dir = os.path.join(os.path.dirname(__file__), f"../results/{MODEL_NAME}")
     os.makedirs(output_dir, exist_ok=True)
     
     timestamp = datetime.now().strftime("%Y%m%d_%H%M%S")
