@@ -1,0 +1,16 @@
+{
+  "liking": {
+    "aesthetic/sensory": "Five Senses, Aesthetics, Physical Comfort",
+    "stimulation": "Excitement, Immersion, Killing time, Stress relief",
+    "identification": "Values, Beliefs, Identity match, Ethics",
+    "general": "Unspecified affection, Comfort, Default positive"
+  },
+  "wanting": {
+    "interest": "Curiosity, Understanding, Analysis (No direct action)",
+    "goal": "Acquisition, Achievement, Active Intent (Action)"
+  },
+  "need": {
+    "functional": "Specs, Efficiency, Cost/Budget, Utility",
+    "personal": "Constraints (Health/Money), Self-maintenance, Mental stability"
+  }
+}

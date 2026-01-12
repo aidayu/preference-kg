@@ -1,0 +1,372 @@
+[
+  {
+    "sentence_id": 2443,
+    "original_text": "Boots up fast and runs great!",
+    "report": "【スキーマ適合性】「速く起動する」と「素晴らしく動作する」はLiking(stimulation)とNeed(functional)に適合する。発話者はパフォーマンスに満足していることを示唆している。",
+    "annotations": [
+      {
+        "entity": "laptop",
+        "aspect": "boot speed",
+        "polarity": "positive",
+        "intensity": "high",
+        "classification": "liking",
+        "sub_classification": "stimulation",
+        "context": "laptopのパフォーマンスに関するレビュー",
+        "explicitness": "explicit",
+        "timestamp": "2025-11-17T14:16:34.582275"
+      },
+      {
+        "entity": "laptop",
+        "aspect": "performance",
+        "polarity": "positive",
+        "intensity": "high",
+        "classification": "liking",
+        "sub_classification": "stimulation",
+        "context": "laptopのパフォーマンスに関するレビュー",
+        "explicitness": "explicit",
+        "timestamp": "2025-11-17T14:16:34.582275"
+      }
+    ]
+  },
+  {
+    "sentence_id": 2817,
+    "original_text": "Bought it to use mostly for online classes.",
+    "report": "【スキーマ適合性】「オンラインクラス用に購入」はNeed(functional)に適合する。発話者は特定の目的のためにデバイスを使用する意図を示している。",
+    "annotations": [
+      {
+        "entity": "laptop",
+        "aspect": "usage purpose",
+        "polarity": "neutral",
+        "intensity": "mid",
+        "classification": "need",
+        "sub_classification": "functional",
+        "context": "購入目的の説明",
+        "explicitness": "explicit",
+        "timestamp": "2025-11-17T14:16:34.582275"
+      }
+    ]
+  },
+  {
+    "sentence_id": 990,
+    "original_text": "The technical service for dell is so 3rd world it might as well not even bother.",
+    "report": "【スキーマ適合性】「技術サービスが劣悪」はNeed(functional)に適合する。発話者はDellのサポートに対する不満を表明している。",
+    "annotations": [
+      {
+        "entity": "Dell",
+        "aspect": "technical service",
+        "polarity": "negative",
+        "intensity": "high",
+        "classification": "need",
+        "sub_classification": "functional",
+        "context": "技術サポートに対する不満",
+        "explicitness": "explicit",
+        "timestamp": "2025-11-17T14:16:34.582275"
+      }
+    ]
+  },
+  {
+    "sentence_id": 2863,
+    "original_text": "The price and features more than met my needs.",
+    "report": "【スキーマ適合性】「価格と機能がニーズを満たした」はNeed(functional)に適合する。発話者はコストパフォーマンスに満足していることを示している。",
+    "annotations": [
+      {
+        "entity": "laptop",
+        "aspect": "price and features",
+        "polarity": "positive",
+        "intensity": "high",
+        "classification": "need",
+        "sub_classification": "functional",
+        "context": "コストパフォーマンスに関する評価",
+        "explicitness": "explicit",
+        "timestamp": "2025-11-17T14:16:34.582275"
+      }
+    ]
+  },
+  {
+    "sentence_id": 2925,
+    "original_text": "I have had this laptop for a few months now and I would say I'm pretty satisfied.",
+    "report": "【スキーマ適合性】「満足している」はLiking(identification)に適合する。発話者は使用経験に基づく満足感を表現している。",
+    "annotations": [
+      {
+        "entity": "laptop",
+        "aspect": "satisfaction",
+        "polarity": "positive",
+        "intensity": "mid",
+        "classification": "liking",
+        "sub_classification": "identification",
+        "context": "使用経験に基づく満足感の表現",
+        "explicitness": "explicit",
+        "timestamp": "2025-11-17T14:16:34.582275"
+      }
+    ]
+  },
+  {
+    "sentence_id": 341,
+    "original_text": "Me and my boyfriend bought the Gateway NV78 in nov of 09.",
+    "report": "【スキーマ適合性】特に嗜好を示す要素はないが、購入の背景を述べている。",
+    "annotations": []
+  },
+  {
+    "sentence_id": 81,
+    "original_text": "Lightweight and the screen is beautiful!",
+    "report": "【スキーマ適合性】「美しい」はLiking(aesthetic/sensory)、「軽量」はNeed(functional)に適合する。発話者はデザインと機能性の両方に満足していることを示唆している。",
+    "annotations": [
+      {
+        "entity": "laptop",
+        "aspect": "screen",
+        "polarity": "positive",
+        "intensity": "mid",
+        "classification": "liking",
+        "sub_classification": "aesthetic/sensory",
+        "context": "PCのレビュー",
+        "explicitness": "explicit",
+        "timestamp": "2025-11-17T14:16:34.582275"
+      },
+      {
+        "entity": "laptop",
+        "aspect": "weight",
+        "polarity": "positive",
+        "intensity": "mid",
+        "classification": "need",
+        "sub_classification": "functional",
+        "context": "PCのレビュー",
+        "explicitness": "explicit",
+        "timestamp": "2025-11-17T14:16:34.582275"
+      }
+    ]
+  },
+  {
+    "sentence_id": 1479,
+    "original_text": "The service I received from Toshiba went above and beyond the call of duty.",
+    "report": "【スキーマ適合性】「サービスが素晴らしい」はNeed(functional)に適合する。発話者はToshibaのサポートに対する高い評価を示している。",
+    "annotations": [
+      {
+        "entity": "Toshiba",
+        "aspect": "service",
+        "polarity": "positive",
+        "intensity": "high",
+        "classification": "need",
+        "sub_classification": "functional",
+        "context": "サポートサービスに対する評価",
+        "explicitness": "explicit",
+        "timestamp": "2025-11-17T14:16:34.582275"
+      }
+    ]
+  },
+  {
+    "sentence_id": 2077,
+    "original_text": "The screen shows great colors.",
+    "report": "【スキーマ適合性】「素晴らしい色合い」はLiking(aesthetic/sensory)に適合する。発話者は画面の視覚的な美しさを評価している。",
+    "annotations": [
+      {
+        "entity": "laptop",
+        "aspect": "screen colors",
+        "polarity": "positive",
+        "intensity": "mid",
+        "classification": "liking",
+        "sub_classification": "aesthetic/sensory",
+        "context": "画面の色合いに関する評価",
+        "explicitness": "explicit",
+        "timestamp": "2025-11-17T14:16:34.582275"
+      }
+    ]
+  },
+  {
+    "sentence_id": 89,
+    "original_text": "Buy it, love it, and I promise you won't regret it.",
+    "report": "【スキーマ適合性】「愛する」はLiking(identification)に適合する。発話者は製品に対する強い好意を表現している。",
+    "annotations": [
+      {
+        "entity": "laptop",
+        "aspect": "overall experience",
+        "polarity": "positive",
+        "intensity": "high",
+        "classification": "liking",
+        "sub_classification": "identification",
+        "context": "製品に対する強い好意の表現",
+        "explicitness": "explicit",
+        "timestamp": "2025-11-17T14:16:34.582275"
+      }
+    ]
+  },
+  {
+    "sentence_id": 929,
+    "original_text": "The love part of my relationship with this laptop doesn't take very long.",
+    "report": "【スキーマ適合性】「愛する部分が短い」はLiking(identification)に適合する。発話者は製品に対する感情の変化を示唆している。",
+    "annotations": [
+      {
+        "entity": "laptop",
+        "aspect": "relationship duration",
+        "polarity": "negative",
+        "intensity": "mid",
+        "classification": "liking",
+        "sub_classification": "identification",
+        "context": "製品に対する感情の変化の表現",
+        "explicitness": "explicit",
+        "timestamp": "2025-11-17T14:16:34.582275"
+      }
+    ]
+  },
+  {
+    "sentence_id": 36,
+    "original_text": "This is the complete opposite to an ergonomic design.",
+    "report": "【スキーマ適合性】「人間工学的デザインとは正反対」はNeed(functional)に適合する。発話者はデザインに対する不満を表明している。",
+    "annotations": [
+      {
+        "entity": "laptop",
+        "aspect": "ergonomic design",
+        "polarity": "negative",
+        "intensity": "high",
+        "classification": "need",
+        "sub_classification": "functional",
+        "context": "デザインに対する不満の表現",
+        "explicitness": "explicit",
+        "timestamp": "2025-11-17T14:16:34.582275"
+      }
+    ]
+  },
+  {
+    "sentence_id": 347,
+    "original_text": "pretty much everything else about the computer is good it just stops working out of no were.",
+    "report": "【スキーマ適合性】「全体的には良いが突然動作しなくなる」はNeed(functional)に適合する。発話者は製品の信頼性に対する不満を表明している。",
+    "annotations": [
+      {
+        "entity": "laptop",
+        "aspect": "overall performance",
+        "polarity": "negative",
+        "intensity": "mid",
+        "classification": "need",
+        "sub_classification": "functional",
+        "context": "製品の信頼性に対する不満の表現",
+        "explicitness": "explicit",
+        "timestamp": "2025-11-17T14:16:34.582275"
+      }
+    ]
+  },
+  {
+    "sentence_id": 921,
+    "original_text": "And I'm still paying the bloody financing, for a product which didn't last me at least three years!",
+    "report": "【スキーマ適合性】「3年も持たなかった製品に対する支払い」はNeed(personal)に適合する。発話者は製品の耐久性に対する不満を表明している。",
+    "annotations": [
+      {
+        "entity": "laptop",
+        "aspect": "durability",
+        "polarity": "negative",
+        "intensity": "high",
+        "classification": "need",
+        "sub_classification": "personal",
+        "context": "製品の耐久性に対する不満の表現",
+        "explicitness": "explicit",
+        "timestamp": "2025-11-17T14:16:34.582275"
+      }
+    ]
+  },
+  {
+    "sentence_id": 1615,
+    "original_text": "I bought this laptop on Saturday and am completely in love with it!",
+    "report": "【スキーマ適合性】「完全に愛している」はLiking(identification)に適合する。発話者は製品に対する強い好意を表現している。",
+    "annotations": [
+      {
+        "entity": "laptop",
+        "aspect": "overall experience",
+        "polarity": "positive",
+        "intensity": "high",
+        "classification": "liking",
+        "sub_classification": "identification",
+        "context": "製品に対する強い好意の表現",
+        "explicitness": "explicit",
+        "timestamp": "2025-11-17T14:16:34.582275"
+      }
+    ]
+  },
+  {
+    "sentence_id": 1670,
+    "original_text": "If you don't like fingerprints, this might not be the laptop for you.",
+    "report": "【スキーマ適合性】「指紋が気になる場合は向かない」はNeed(personal)に適合する。発話者は特定のニーズに基づくアドバイスを提供している。",
+    "annotations": [
+      {
+        "entity": "laptop",
+        "aspect": "fingerprint issue",
+        "polarity": "neutral",
+        "intensity": "mid",
+        "classification": "need",
+        "sub_classification": "personal",
+        "context": "特定のニーズに基づくアドバイス",
+        "explicitness": "explicit",
+        "timestamp": "2025-11-17T14:16:34.582275"
+      }
+    ]
+  },
+  {
+    "sentence_id": 1837,
+    "original_text": "Just don't waste your time and money on this.",
+    "report": "【スキーマ適合性】「時間とお金を無駄にしない方が良い」はNeed(personal)に適合する。発話者は製品に対する強い否定的な意見を表明している。",
+    "annotations": [
+      {
+        "entity": "laptop",
+        "aspect": "overall experience",
+        "polarity": "negative",
+        "intensity": "high",
+        "classification": "need",
+        "sub_classification": "personal",
+        "context": "製品に対する強い否定的な意見の表現",
+        "explicitness": "explicit",
+        "timestamp": "2025-11-17T14:16:34.582275"
+      }
+    ]
+  },
+  {
+    "sentence_id": 2128,
+    "original_text": "I liked the aluminum body.",
+    "report": "【スキーマ適合性】「アルミニウムのボディが好き」はLiking(aesthetic/sensory)に適合する。発話者はデザインに対する好意を示している。",
+    "annotations": [
+      {
+        "entity": "laptop",
+        "aspect": "body material",
+        "polarity": "positive",
+        "intensity": "mid",
+        "classification": "liking",
+        "sub_classification": "aesthetic/sensory",
+        "context": "デザインに対する好意の表現",
+        "explicitness": "explicit",
+        "timestamp": "2025-11-17T14:16:34.582275"
+      }
+    ]
+  },
+  {
+    "sentence_id": 353,
+    "original_text": "From the build quality to the performance, everything about it has been sub-par from what I would have expected from Apple.",
+    "report": "【スキーマ適合性】「全体的に期待外れ」はNeed(functional)に適合する。発話者は製品の品質に対する不満を表明している。",
+    "annotations": [
+      {
+        "entity": "Apple",
+        "aspect": "build quality and performance",
+        "polarity": "negative",
+        "intensity": "high",
+        "classification": "need",
+        "sub_classification": "functional",
+        "context": "製品の品質に対する不満の表現",
+        "explicitness": "explicit",
+        "timestamp": "2025-11-17T14:16:34.582275"
+      }
+    ]
+  },
+  {
+    "sentence_id": 2756,
+    "original_text": "The battery life has not decreased since I bought it, so I'm thrilled with that.",
+    "report": "【スキーマ適合性】「バッテリー寿命が減少していない」はNeed(functional)に適合する。発話者はバッテリー性能に満足していることを示している。",
+    "annotations": [
+      {
+        "entity": "laptop",
+        "aspect": "battery life",
+        "polarity": "positive",
+        "intensity": "high",
+        "classification": "need",
+        "sub_classification": "functional",
+        "context": "バッテリー性能に関する評価",
+        "explicitness": "explicit",
+        "timestamp": "2025-11-17T14:16:34.582275"
+      }
+    ]
+  }
+]

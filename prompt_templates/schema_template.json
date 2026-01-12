@@ -1,0 +1,74 @@
+{
+  "name": "preference_extraction",
+  "strict": true,
+  "schema": {
+    "type": "object",
+    "properties": {
+      "dialogue_id": {"type": "integer"},
+      "user_id": {"type": "string"},
+      "preferences": {
+        "type": "array",
+        "items": {
+          "anyOf": [
+            {
+              "type": "object",
+              "properties": {
+                "reasoning": {"type": "string"},
+                "entity": {"type": "string"},
+                "original_mention": {"type": "string"},
+                "axis": {"type": "string", "const": "liking"},
+                "sub_axis": {
+                  "type": "string",
+                  "enum": ["aesthetic/sensory", "stimulation", "identification", ""],
+                  "description": "PLACEHOLDER_LIKING_DESCRIPTION"
+                },
+                "polarity": {"type": "string", "enum": ["positive", "negative", "neutral"]},
+                "intensity": {"type": "string", "enum": ["high", "medium", "low"]}
+              },
+              "required": ["reasoning", "entity", "original_mention", "axis", "sub_axis", "polarity", "intensity"],
+              "additionalProperties": false
+            },
+            {
+              "type": "object",
+              "properties": {
+                "reasoning": {"type": "string"},
+                "entity": {"type": "string"},
+                "original_mention": {"type": "string"},
+                "axis": {"type": "string", "const": "wanting"},
+                "sub_axis": {
+                  "type": "string",
+                  "enum": ["interest", "goal"],
+                  "description": "PLACEHOLDER_WANTING_DESCRIPTION"
+                },
+                "polarity": {"type": "string", "enum": ["positive", "negative", "neutral"]},
+                "intensity": {"type": "string", "enum": ["high", "medium", "low"]}
+              },
+              "required": ["reasoning", "entity", "original_mention", "axis", "sub_axis", "polarity", "intensity"],
+              "additionalProperties": false
+            },
+            {
+              "type": "object",
+              "properties": {
+                "reasoning": {"type": "string"},
+                "entity": {"type": "string"},
+                "original_mention": {"type": "string"},
+                "axis": {"type": "string", "const": "need"},
+                "sub_axis": {
+                  "type": "string",
+                  "enum": ["functional", "personal"],
+                  "description": "PLACEHOLDER_NEED_DESCRIPTION"
+                },
+                "polarity": {"type": "string", "enum": ["positive", "negative", "neutral"]},
+                "intensity": {"type": "string", "enum": ["high", "medium", "low"]}
+              },
+              "required": ["reasoning", "entity", "original_mention", "axis", "sub_axis", "polarity", "intensity"],
+              "additionalProperties": false
+            }
+          ]
+        }
+      }
+    },
+    "required": ["dialogue_id", "user_id", "preferences"],
+    "additionalProperties": false
+  }
+}

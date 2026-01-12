@@ -1,0 +1,54 @@
+[build-system]
+requires = ["flit_core >=3.2,<4"]
+build-backend = "flit_core.buildapi"
+
+[project]
+name = "preference_kg"
+version = "0.0.1"
+description = "A project to extract user preferences from text and store them as a Knowledge Graph."
+authors = [
+  { name = "Yuto Aida" },
+]
+
+readme = "README.md"
+classifiers = [
+    "Programming Language :: Python :: 3",
+    
+]
+dependencies = [
+    "datasets>=4.3.0",
+    "ipython",
+    "jupyterlab",
+    "loguru",
+    "matplotlib",
+    "mkdocs",
+    "notebook",
+    "numpy",
+    "openai>=2.6.1",
+    "pandas",
+    "parlai>=0.9.0",
+    "pip",
+    "pytest",
+    "python-dotenv",
+    "requests>=2.32.5",
+    "rich>=14.2.0",
+    "ruff",
+    "scikit-learn",
+    "tqdm",
+    "typer",
+]
+requires-python = "~=3.11.0"
+
+
+[tool.ruff]
+line-length = 99
+src = ["preference_kg"]
+include = ["pyproject.toml", "preference_kg/**/*.py"]
+
+[tool.ruff.lint]
+extend-select = ["I"]  # Add import sorting
+
+[tool.ruff.lint.isort]
+known-first-party = ["preference_kg"]
+force-sort-within-sections = true
+

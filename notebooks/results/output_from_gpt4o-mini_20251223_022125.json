@@ -1,0 +1,872 @@
+[
+  {
+    "dialogue_id": 1,
+    "original_dialogue": "A: I think modern painting means nothing .\nB: I think so too . It's just pointless .\nA: Then why are so many crazy about it\nB: I don't know.Maybe they are really crazy .\nA: Maybe .",
+    "predictions": {
+      "dialogue_id": 1,
+      "user_id": "A",
+      "preferences": [
+        {
+          "reasoning": "User expresses a negative view on modern painting, suggesting it lacks meaning and is perceived as pointless. This indicates a dislike for modern painting as an art form.",
+          "target_label": "modern painting",
+          "original_mention": "modern painting means nothing",
+          "axis": "liking",
+          "sub_axis": "",
+          "polarity": "negative",
+          "intensity": "high",
+          "turn_index": 0
+        },
+        {
+          "reasoning": "User questions why many people seem to be enthusiastic about modern painting despite their own negative view, indicating a strong desire to understand this phenomenon and the motivations of others.",
+          "target_label": "interest in why people like modern painting",
+          "original_mention": "Then why are so many crazy about it",
+          "axis": "wanting",
+          "sub_axis": "interest",
+          "polarity": "neutral",
+          "intensity": "medium",
+          "turn_index": 2
+        }
+      ]
+    }
+  },
+  {
+    "dialogue_id": 2,
+    "original_dialogue": "A: I feel like going for a drink , it's been a long day .\nB: Great idea ! Peter , I could use the drink .\nA: How about the new bar across road ?\nB: Sounds good . The food there is fantastic , too .\nA: I agree , I had lunch there last week .\nB: excellent ! That sounds like a plan .",
+    "predictions": {
+      "dialogue_id": 1,
+      "user_id": "A",
+      "preferences": [
+        {
+          "reasoning": "User expresses a desire to go to a bar, suggesting they find the idea appealing after a long day.",
+          "target_label": "bar",
+          "original_mention": "the new bar across road",
+          "axis": "liking",
+          "sub_axis": "aesthetic/sensory",
+          "polarity": "positive",
+          "intensity": "medium",
+          "turn_index": 3
+        }
+      ]
+    }
+  },
+  {
+    "dialogue_id": 3,
+    "original_dialogue": "A: What are you thinking ?\nB: I ’ m thinking about where we shall spend our vocation .\nA: It ’ s about 7 o ’ clock . let ’ s have our breakfast first .\nB: Ok , dear.We will be late .\nA: What do you want ?\nB: A ham salad sandwich .\nA: Sorry , I didn ’ t prepare this .\nB: Then , I ’ d like some eggs and bread for breakfast instead .\nA: Ok , I ’ ll have it sent to you immediately .",
+    "predictions": {
+      "dialogue_id": 1,
+      "user_id": "B",
+      "preferences": [
+        {
+          "reasoning": "User expresses a clear preference for a specific type of breakfast, indicating a liking for eggs and bread over other options when ham salad sandwich is unavailable.",
+          "target_label": "eggs and bread",
+          "original_mention": "some eggs and bread for breakfast",
+          "axis": "liking",
+          "sub_axis": "",
+          "polarity": "positive",
+          "intensity": "medium",
+          "turn_index": 5
+        }
+      ]
+    }
+  },
+  {
+    "dialogue_id": 4,
+    "original_dialogue": "A: Can I take your order please ?\nB: Can I get a burger and a large fries ?\nA: Sure . Anything to drink with that ?\nB: A large coke , please .\nA: Eating here or to go ?\nB: Eating here , please .\nA: That's 7 dollars and 25 cents . You can get free refills with your coke .",
+    "predictions": {
+      "dialogue_id": 1,
+      "user_id": "B",
+      "preferences": [
+        {
+          "reasoning": "User clearly expresses a preference for eating here rather than taking the food to go, indicating a comfort or desire to consume the meal on-site.",
+          "target_label": "eating here",
+          "original_mention": "Eating here , please .",
+          "axis": "wanting",
+          "sub_axis": "goal",
+          "polarity": "positive",
+          "intensity": "medium",
+          "turn_index": 5
+        }
+      ]
+    }
+  },
+  {
+    "dialogue_id": 5,
+    "original_dialogue": "A: Oh ! My mouth is on fire !\nB: I feel so good . That warm hot pot certainly hits the spot on winter nights .\nA: I need more water !\nB: Oooo ... gross ... you're sweating all over the place .\nA: It's your fault for mixing the two broths !\nB: You're going to have a little Montezuma's revenge tomorrow morning .",
+    "predictions": {
+      "dialogue_id": 1,
+      "user_id": "A",
+      "preferences": [
+        {
+          "reasoning": "User expresses discomfort due to the spiciness of the food, indicating a lack of enjoyment of the burning sensation in their mouth.",
+          "target_label": "mouth sensation",
+          "original_mention": "My mouth is on fire",
+          "axis": "liking",
+          "sub_axis": "aesthetic/sensory",
+          "polarity": "negative",
+          "intensity": "high",
+          "turn_index": 0
+        },
+        {
+          "reasoning": "User expresses a need for water to alleviate the discomfort caused by the spiciness, indicating a functional need for hydration.",
+          "target_label": "water",
+          "original_mention": "I need more water !",
+          "axis": "need",
+          "sub_axis": "functional",
+          "polarity": "positive",
+          "intensity": "high",
+          "turn_index": 2
+        }
+      ]
+    }
+  },
+  {
+    "dialogue_id": 6,
+    "original_dialogue": "A: Hey Joanne . What are you up to ?\nB: I'm just watching some television .\nA: I'm so bored . I don't know what I'm going to do today and it is only ten in the morning .\nB: Me too . Do you think we are boring people ?\nA: I don't think we are boring . It's just that we don't have any hobbies .\nB: That's right . What do you think we should do as a hobby ?\nA: That all depends on what you like to do . For example , I like to doodle on the notepad , so I'm thinking about doing some real drawings .\nB: I like to play the piano for fun .\nA: Yeah . That can be a good hobby .\nB: Hobbies are great . I'm going to make a list of all the things I like to do .\nA: That's a great idea . I'm going to do the same .",
+    "predictions": {
+      "dialogue_id": 1,
+      "user_id": "A",
+      "preferences": [
+        {
+          "reasoning": "The user expresses an interest in taking up drawing as a hobby, which indicates a fondness for artistic activities and a desire to engage in creative expression.",
+          "target_label": "drawing",
+          "original_mention": "real drawings",
+          "axis": "liking",
+          "sub_axis": "aesthetic/sensory",
+          "polarity": "positive",
+          "intensity": "medium",
+          "turn_index": 8
+        },
+        {
+          "reasoning": "The user indicates that they plan to make a list of hobbies, implying a desire to actively seek out and engage in enjoyable activities, showcasing a goal-oriented approach to finding hobbies.",
+          "target_label": "hobbies",
+          "original_mention": "make a list of all the things I like to do",
+          "axis": "wanting",
+          "sub_axis": "goal",
+          "polarity": "positive",
+          "intensity": "medium",
+          "turn_index": 9
+        }
+      ]
+    }
+  },
+  {
+    "dialogue_id": 7,
+    "original_dialogue": "A: How is your house hunting going ?\nB: Not very well . I haven ’ t found anything within my price range yet .\nA: How much are you looking to spend ?\nB: I can only afford about 300 pounds a month .\nA: Looks like you ’ re not going to get more than a bedroom in a shared flat with that .\nB: Really ? That ’ s a lot of money to pay for one room .\nA: Well , if you want to live in London , you have to pay the price !\nB: Do you know of anyone who needs a roommate ?\nA: I can ask around at work . Do you have a preference for makers or non-smokers ?\nB: I ’ d prefer non-smoking roommates , but I guess I ’ ll have to take what I can get !\nA: How long do you want to sign a contract for ?\nB: I can sign a contract up to a year . I don ’ t know where I ’ ll be after that .\nA: Do you need a furnished or unfurnished apartment ?\nB: I don ’ t have any furniture , so it ’ d be great if it were furnished .\nA: You know that you ’ ll have to pay utilities on top of the rent , right ?\nB: No , I thought that would be included in the rent .\nA: It ’ s not usually included , so you ’ ll have to factor in about 100 pounds more each month for utilities .\nB: I don't think I can afford that .\nA: Don ’ t worry . Sometimes people will give you a discount if you promise to do the cleaning or take care of the children .\nB: That ’ s a good idea . I ’ ll look into finding something like that .",
+    "predictions": {
+      "dialogue_id": 1,
+      "user_id": "B",
+      "preferences": [
+        {
+          "reasoning": "User indicates a preference for non-smoking roommates, suggesting a concern for air quality or lifestyle compatibility.",
+          "target_label": "roommates",
+          "original_mention": "non-smoking roommates",
+          "axis": "liking",
+          "sub_axis": "identification",
+          "polarity": "positive",
+          "intensity": "medium",
+          "turn_index": 8
+        },
+        {
+          "reasoning": "User expresses a specific need for furniture as they do not own any, highlighting a necessity for a furnished apartment.",
+          "target_label": "apartment",
+          "original_mention": "furnished",
+          "axis": "need",
+          "sub_axis": "functional",
+          "polarity": "positive",
+          "intensity": "high",
+          "turn_index": 11
+        }
+      ]
+    }
+  },
+  {
+    "dialogue_id": 8,
+    "original_dialogue": "A: Hi , Kenji .\nB: Hi , Debbie . Have a seat . How's it going ?\nA: I'm OK . How are you doing ?\nB: Pretty good . Listen ... have you heard about the new Thai restaurant over on University Avenue ?\nA: Do you mean The Bangkok ?\nB: That's the one . A bunch of us are going there for dinner tomorrow night.How about coming with us ?\nA: Sure , I'd love to .\nB: Great . I'll call and make reservations .\nA: Any time after 6 o'clock is good for me.Oh ! I'm late ! I have a class .\nB: All right . I'll call you tonight and tell you the time .\nA: Great . Talk to you then .",
+    "predictions": {
+      "dialogue_id": 1,
+      "user_id": "A",
+      "preferences": [
+        {
+          "reasoning": "User expresses desire to go to the new Thai restaurant with friends, indicating enthusiasm for socializing and trying new food.",
+          "target_label": "Thai restaurant",
+          "original_mention": "the new Thai restaurant over on University Avenue",
+          "axis": "wanting",
+          "sub_axis": "interest",
+          "polarity": "positive",
+          "intensity": "high",
+          "turn_index": 6
+        },
+        {
+          "reasoning": "User responds positively and expresses eagerness to join the group for dinner, showing a strong preference for engaging in social activities with others.",
+          "target_label": "dinner invitation",
+          "original_mention": "a bunch of us are going there for dinner tomorrow night. How about coming with us?",
+          "axis": "wanting",
+          "sub_axis": "goal",
+          "polarity": "positive",
+          "intensity": "high",
+          "turn_index": 5
+        }
+      ]
+    }
+  },
+  {
+    "dialogue_id": 9,
+    "original_dialogue": "A: What can I do for you ?\nB: I want my hair cut .\nA: How would you like your hair cut ?\nB: I'm not sure . What do you suggest ?\nA: Well , how about like this ?\nB: I don't like it . It's outdated .\nA: Okay . How about this style ?\nB: It seems a little too wild .\nA: Can you give me some idea of what you'd like ?\nB: I want a haircut just like that kind .\nA: OK , I see .",
+    "predictions": {
+      "dialogue_id": 1,
+      "user_id": "B",
+      "preferences": [
+        {
+          "reasoning": "User expresses a dislike for a particular outdated style, indicating they don't appreciate that type of haircut.",
+          "target_label": "outdated haircut",
+          "original_mention": "It's outdated.",
+          "axis": "liking",
+          "sub_axis": "aesthetic/sensory",
+          "polarity": "negative",
+          "intensity": "high",
+          "turn_index": 5
+        },
+        {
+          "reasoning": "User wants a haircut that resembles a specific style suggested by the other speaker, showing a desire to achieve a desired look.",
+          "target_label": "specific haircut style",
+          "original_mention": "I want a haircut just like that kind.",
+          "axis": "wanting",
+          "sub_axis": "goal",
+          "polarity": "positive",
+          "intensity": "high",
+          "turn_index": 7
+        }
+      ]
+    }
+  },
+  {
+    "dialogue_id": 10,
+    "original_dialogue": "A: I think I'm going to China this vacation.How about you ?\nB: Me ? I prefer France .\nA: I went to France last summer .\nB: Oh , really ? I went to China last winter !",
+    "predictions": {
+      "dialogue_id": 1,
+      "user_id": "B",
+      "preferences": [
+        {
+          "reasoning": "User expresses a clear preference for France when asked about vacation choices, indicating a liking for that destination.",
+          "target_label": "France",
+          "original_mention": "I prefer France",
+          "axis": "liking",
+          "sub_axis": "identification",
+          "polarity": "positive",
+          "intensity": "medium",
+          "turn_index": 2
+        }
+      ]
+    }
+  },
+  {
+    "dialogue_id": 11,
+    "original_dialogue": "A: John , do you mind helping me prepare for the picnic ?\nB: Sure . Have you checked the weather report ?\nA: Yes . It says it will be sunny all day . No sign of rain at all .\nB: I'd like some toast and chicken wings .\nA: Okay . Please take some fruit salad and crackers for me .\nB: Done . Oh , don't forget to take napkins , disposable plates , cups and picnic blanket .\nA: That's great . We can also take the dragon kite with us . After the picnic , we can fly it .\nB: Cool , we can take shuttlecock and badminton racket .\nA: Okay , it sounds good .",
+    "predictions": {
+      "dialogue_id": 1,
+      "user_id": "A",
+      "preferences": [
+        {
+          "reasoning": "User shows enthusiasm and excitement about going to a picnic by suggesting fun activities like flying a dragon kite, indicating a positive feeling about this idea.",
+          "target_label": "dragon kite",
+          "original_mention": "dragon kite",
+          "axis": "liking",
+          "sub_axis": "stimulation",
+          "polarity": "positive",
+          "intensity": "medium",
+          "turn_index": 8
+        },
+        {
+          "reasoning": "User expresses agreement with the suggestions made about picnic items and activities, suggesting that they like the idea of taking those items and doing those activities, which reflects a positive sentiment toward the overall picnic preparation.",
+          "target_label": "picnic preparation",
+          "original_mention": "sounds good",
+          "axis": "liking",
+          "sub_axis": "",
+          "polarity": "positive",
+          "intensity": "medium",
+          "turn_index": 10
+        }
+      ]
+    }
+  },
+  {
+    "dialogue_id": 12,
+    "original_dialogue": "A: Wow , you ’ re up early today ! What ’ s for breakfast ?\nB: Well , I felt like baking , so I made some muffins .\nA: Smells good ! I ’ ll make some coffee . Do you want me to make you some eggs ?\nB: Sure , I'll take mine , sunny side up .\nA: Www , I don ’ t know how you can eat your eggs like that ! Ever since I was small , I ’ Ve had eggs and soldiers .\nB: You know , my dad had scrambled eggs every morning for twenty years . It drove my mom crazy !\nA: You know what really drives me crazy ? When I ask for soft boiled eggs , and they overcook them , so they come out hard boiled ! How can you dipyour toast into a hard boiled egg ?\nB: You ’ re so picky sometimes .\nA: Here you go , honey , fried eggs .\nB: Dammit ! I asked for sunny side up ! How many times do I have to tell you .",
+    "predictions": {
+      "dialogue_id": 1,
+      "user_id": "A",
+      "preferences": [
+        {
+          "reasoning": "User has a strong emotional reaction when the eggs are not prepared to their liking. They feel frustrated to the point of using an expletive, indicating a strong desire for the specific way they prefer their eggs, which is sunny side up.",
+          "target_label": "eggs",
+          "original_mention": "sunny side up",
+          "axis": "wanting",
+          "sub_axis": "goal",
+          "polarity": "negative",
+          "intensity": "high",
+          "turn_index": 8
+        }
+      ]
+    }
+  },
+  {
+    "dialogue_id": 13,
+    "original_dialogue": "A: How do you like the food here ?\nB: I don't like it very much.But every-body likes their own food best .\nA: There are many things I miss . You can't get the ingredients here .\nB: Are you sure ? All the big cities have specialty shops , which sell all sorts of ethnic foods .\nA: Perhaps . i just haven't had time to find them yet .",
+    "predictions": {
+      "dialogue_id": 1,
+      "user_id": "B",
+      "preferences": [
+        {
+          "reasoning": "User expresses a lack of enjoyment for the food available, indicating a negative sentiment towards the experience of eating food at this location.",
+          "target_label": "food",
+          "original_mention": "I don't like it very much",
+          "axis": "liking",
+          "sub_axis": "",
+          "polarity": "negative",
+          "intensity": "medium",
+          "turn_index": 1
+        },
+        {
+          "reasoning": "Despite disliking the food, user acknowledges that everyone has their own preferences, suggesting a personal understanding of diverse tastes and an interest in the topic of food variety.",
+          "target_label": "food preferences",
+          "original_mention": "every-body likes their own food best",
+          "axis": "wanting",
+          "sub_axis": "interest",
+          "polarity": "positive",
+          "intensity": "medium",
+          "turn_index": 1
+        }
+      ]
+    }
+  },
+  {
+    "dialogue_id": 14,
+    "original_dialogue": "A: Let's go to Wangfujing by bus .\nB: Better take the subway . It's faster , and more convenient .\nA: OK , it will be a new experience for me .\nB: We have a rather comprehensive subway system here . You can get almost anywhere rather quickly on a subway , especially at this time of day when the traffic is heavy .\nA: Where do we pay the fare ?\nB: Just give the man standing there 3 yuan and he'll give you a token . Then , you slip it into the slot at the turnstile and push the turnstile to get in .\nA: Let me pay for it . Where can I get a subway map ?\nB: Ask the worker who sells tokens to give you one . It's free fo charge . Actually maps showing subway routes are posted at most stations .\nA: Do I have to pay an additional fare to change trains ?\nB: No , you don't have to . Here comes the train .",
+    "predictions": {
+      "dialogue_id": 1,
+      "user_id": "User",
+      "preferences": [
+        {
+          "reasoning": "User shows a willingness to try the subway system as indicated by their response 'OK, it will be a new experience for me.' This suggests they are open to new experiences and likely view this as positive.",
+          "target_label": "subway system",
+          "original_mention": "new experience",
+          "axis": "liking",
+          "sub_axis": "stimulation",
+          "polarity": "positive",
+          "intensity": "medium",
+          "turn_index": 2
+        },
+        {
+          "reasoning": "User's question about paying the fare indicates a need for clarity and understanding of the process involved in using the subway. This highlights a necessary functional need in navigating public transportation.",
+          "target_label": "fare payment process",
+          "original_mention": "Where do we pay the fare?",
+          "axis": "need",
+          "sub_axis": "functional",
+          "polarity": "neutral",
+          "intensity": "medium",
+          "turn_index": 3
+        },
+        {
+          "reasoning": "User's inquiry about 'getting a subway map' shows an interest in furthering their knowledge about the subway system, indicating a desire to be prepared and informed during the experience.",
+          "target_label": "subway map",
+          "original_mention": "Where can I get a subway map?",
+          "axis": "wanting",
+          "sub_axis": "interest",
+          "polarity": "positive",
+          "intensity": "medium",
+          "turn_index": 4
+        },
+        {
+          "reasoning": "User's intention to 'pay for it' signifies a proactive attitude towards participating in the subway journey, which reflects positively on their engagement with the new experience.",
+          "target_label": "fare payment",
+          "original_mention": "Let me pay for it.",
+          "axis": "wanting",
+          "sub_axis": "goal",
+          "polarity": "positive",
+          "intensity": "medium",
+          "turn_index": 3
+        }
+      ]
+    }
+  },
+  {
+    "dialogue_id": 15,
+    "original_dialogue": "A: Look , there's no way we can convince people they need fresh motor oil every morning .\nB: No , but you can let them know that yours is the cream of the crop-the purest motor oil in the world . Careful , hold it by the java jacket . This coffee drink has half and half-what do you think ?\nA: It tastes funny . Why can't people just stick to plain and simple coffee ?\nB: That's just the point ! Purity is the essence of good coffee , right ?",
+    "predictions": {
+      "dialogue_id": 1,
+      "user_id": "A",
+      "preferences": [
+        {
+          "reasoning": "User prefers plain coffee over flavored or complex varieties. This suggests a dislike for additives or enhancements, which is a strong indication of their preference for simplicity.",
+          "target_label": "coffee",
+          "original_mention": "plain and simple coffee",
+          "axis": "liking",
+          "sub_axis": "aesthetic/sensory",
+          "polarity": "negative",
+          "intensity": "high",
+          "turn_index": 3
+        }
+      ]
+    }
+  },
+  {
+    "dialogue_id": 16,
+    "original_dialogue": "A: Good morning . What can I do for you , sir ?\nB: I'd like to see some coats . Would you recommend me some of them ?\nA: Sure . Come to look at these styles . They sell very well .\nB: Which models do you sell the most ?\nA: How about these ? They are the current bestsellers .\nB: I like this style , but I don't like its color . Do you have this coat in yellow ?\nA: Yes , I will find one for you . Here you are . It's made of exceptionally good quality , pure wool , and is very soft .\nB: It looks nice .\nA: Yeah , this is the latest model.If you like it , you can try it on .",
+    "predictions": {
+      "dialogue_id": 1,
+      "user_id": "B",
+      "preferences": [
+        {
+          "reasoning": "The user expresses a clear liking for a specific style of coat, but not for the color of that style. The mention of liking suggests a positive sentiment towards the aesthetic of the coat's style while indicating a preference against its current color.",
+          "target_label": "style",
+          "original_mention": "I like this style , but I don't like its color",
+          "axis": "liking",
+          "sub_axis": "aesthetic/sensory",
+          "polarity": "positive",
+          "intensity": "medium",
+          "turn_index": 3
+        },
+        {
+          "reasoning": "The user wants the coat in a different color (yellow), showing a desire to have it match their preferences better; this indicates a level of commitment to finding something that satisfies their aesthetic desires.",
+          "target_label": "color",
+          "original_mention": "Do you have this coat in yellow ?",
+          "axis": "wanting",
+          "sub_axis": "interest",
+          "polarity": "positive",
+          "intensity": "medium",
+          "turn_index": 4
+        }
+      ]
+    }
+  },
+  {
+    "dialogue_id": 17,
+    "original_dialogue": "A: Out of every movie that you've seen , which one is your favorite ?\nB: I'm going to have to say that Superbad is the best movie ever .\nA: You think so , how come ?\nB: Well , Superbad is super funny .\nA: You're not lying , I found that movie absolutely hilarious .\nB: I didn't know that you saw Superbad before .\nA: I made sure to be in line to see it the first day it came out .\nB: I couldn't keep from laughing throughout the whole movie .\nA: I was laughing hysterically the whole time ; my stomach muscles hurt afterwards .\nB: That's exactly how I felt .\nA: I got the movie when it came out on DVD , do you want to come over ?\nB: I would love to .",
+    "predictions": {
+      "dialogue_id": 1,
+      "user_id": "A",
+      "preferences": [
+        {
+          "reasoning": "User expresses a level of enthusiasm about seeing the movie 'Superbad' the first day it came out, reflecting a strong positive sentiment towards the movie itself.",
+          "target_label": "Superbad",
+          "original_mention": "Superbad is the best movie ever",
+          "axis": "liking",
+          "sub_axis": "aesthetic/sensory",
+          "polarity": "positive",
+          "intensity": "high",
+          "turn_index": 2
+        },
+        {
+          "reasoning": "User mentions laughing hysterically the whole time during the movie, which indicates a high level of enjoyment and amusement, showing a strong emotional response to the movie.",
+          "target_label": "Superbad",
+          "original_mention": "I was laughing hysterically the whole time",
+          "axis": "liking",
+          "sub_axis": "stimulation",
+          "polarity": "positive",
+          "intensity": "high",
+          "turn_index": 6
+        },
+        {
+          "reasoning": "User demonstrated eagerness to share and enjoy the movie with the other speaker, indicating a desire for social interaction based around their shared experience of the movie.",
+          "target_label": "social interaction",
+          "original_mention": "do you want to come over?",
+          "axis": "wanting",
+          "sub_axis": "interest",
+          "polarity": "positive",
+          "intensity": "medium",
+          "turn_index": 8
+        }
+      ]
+    }
+  },
+  {
+    "dialogue_id": 18,
+    "original_dialogue": "A: May I help you , sir ?\nB: I'd like to buy a shirt .\nA: What color do you want ?\nB: I prefer the blue one .\nA: What size are you ?\nB: I'm not sure . Could you measure me , please ?\nA: No problem . I think 40 will be fine for you .\nB: Can I try it on ?\nA: Of course . The fitting room is this way , please .",
+    "predictions": {
+      "dialogue_id": 1,
+      "user_id": "B",
+      "preferences": [
+        {
+          "reasoning": "User expresses a favoring toward a specific color, which indicates a liking for it.",
+          "target_label": "color",
+          "original_mention": "blue",
+          "axis": "liking",
+          "sub_axis": "aesthetic/sensory",
+          "polarity": "positive",
+          "intensity": "medium",
+          "turn_index": 4
+        },
+        {
+          "reasoning": "User expresses the desire to try the shirt on, which indicates an interest in confirming the fit before purchase.",
+          "target_label": "shirt",
+          "original_mention": "try it on",
+          "axis": "wanting",
+          "sub_axis": "interest",
+          "polarity": "positive",
+          "intensity": "medium",
+          "turn_index": 6
+        }
+      ]
+    }
+  },
+  {
+    "dialogue_id": 19,
+    "original_dialogue": "A: What do you think of this flat ?\nB: It's not really all that good . The bedroom is a little small for us .\nA: Small , but it should be enough for our needs . I think .\nB: But there's no hot water after 10 at night . Sometimes I like to have a hot shower before bed . especially in the winter . It feels good .\nA: That's true . But I love the living room ; it's huge and filled with sunshine .\nB: True , and I like the kitchen . It's new and well equipped .\nA: It has a great balcony with an incredible view of the park .\nB: You're right . The view is spectacular . But that bedroom is so small . We'd never be able to fit all of our stuff in there .\nA: Maybe we could get some new furniture . Better stuff .\nB: I haven't thought of that .",
+    "predictions": {
+      "dialogue_id": 1,
+      "user_id": "B",
+      "preferences": [
+        {
+          "reasoning": "User expresses a fondness for the ability to take a hot shower before bed, particularly in winter, indicating a preference for warmth and comfort.",
+          "target_label": "hot water",
+          "original_mention": "no hot water after 10 at night",
+          "axis": "wanting",
+          "sub_axis": "interest",
+          "polarity": "positive",
+          "intensity": "medium",
+          "turn_index": 4
+        },
+        {
+          "reasoning": "User appreciates the kitchen's state of being new and well equipped, showing a positive sentiment towards its features which implies liking for functionality and quality.",
+          "target_label": "kitchen",
+          "original_mention": "it's new and well equipped",
+          "axis": "liking",
+          "sub_axis": "aesthetic/sensory",
+          "polarity": "positive",
+          "intensity": "medium",
+          "turn_index": 6
+        },
+        {
+          "reasoning": "User acknowledges the spectacular view, which suggests they value beautiful aspects of a living space, indicating a preference for inspiring surroundings.",
+          "target_label": "view",
+          "original_mention": "the view is spectacular",
+          "axis": "liking",
+          "sub_axis": "aesthetic/sensory",
+          "polarity": "positive",
+          "intensity": "medium",
+          "turn_index": 8
+        }
+      ]
+    }
+  },
+  {
+    "dialogue_id": 20,
+    "original_dialogue": "A: Do you like Barry ?\nB: No , not very much . He ’ s too ambitious and dishonest .\nA: I agree . I like his brother , Paul . They are not alike .\nB: Yes . They are completely different . Paul is very sociable and much more honest than his brother .\nA: What kind of person do you consider yourself to be ?\nB: I think I ’ m polite , careful , relaxed and shy .\nA: Oh , I don ’ t think you ’ re shy ! You are always chatting with new people when we go to a party .\nB: Well , yes , but those people always start talking to me . I never talk to them first . Perhaps I ’ m not as shy as I think . Anyway , you ’ re certainly not shy !\nA: You ’ re right . I love going out and making new friends .\nB: So , you ’ ll be at my birthday party on Friday ?\nA: Of course !",
+    "predictions": {
+      "dialogue_id": 1,
+      "user_id": "B",
+      "preferences": [
+        {
+          "reasoning": "User expresses a dislike for Barry due to his negative traits of ambition and dishonesty. This reflects a clear negative sentiment towards the character.",
+          "target_label": "Barry",
+          "original_mention": "No, not very much. He’s too ambitious and dishonest.",
+          "axis": "liking",
+          "sub_axis": "",
+          "polarity": "negative",
+          "intensity": "medium",
+          "turn_index": 1
+        },
+        {
+          "reasoning": "User prefers Paul's characteristics over Barry's, indicating admiration for sociability and honesty. This reflects a positive preference towards Paul as a person.",
+          "target_label": "Paul",
+          "original_mention": "I like his brother, Paul. They are not alike.",
+          "axis": "liking",
+          "sub_axis": "",
+          "polarity": "positive",
+          "intensity": "medium",
+          "turn_index": 1
+        }
+      ]
+    }
+  },
+  {
+    "dialogue_id": 21,
+    "original_dialogue": "A: What's the best way downtown ?\nB: Let me see . It depends .\nA: Depends ? Depends on what ?\nB: If you are in a hurry , you should take a taxi .\nA: Is that expensive ?\nB: Yes , very . Believe it or not , it will cost you more than one hundred dollars .\nA: I am in no particular hurry .\nB: Take a bus then . It will only cost you 5 dollars .\nA: That's not so bad .",
+    "predictions": {
+      "dialogue_id": 1,
+      "user_id": "A",
+      "preferences": [
+        {
+          "reasoning": "User evaluates the cost of taking a bus as being reasonable compared to the taxi fare they mentioned earlier.",
+          "target_label": "bus",
+          "original_mention": "That's not so bad",
+          "axis": "liking",
+          "sub_axis": "aesthetic/sensory",
+          "polarity": "positive",
+          "intensity": "medium",
+          "turn_index": 7
+        }
+      ]
+    }
+  },
+  {
+    "dialogue_id": 22,
+    "original_dialogue": "A: That's great ! We made 20 minutes earlier .\nB: Good thing , we took a taxi .\nA: Mom , you are the best !\nB: Hey , look there . It is an advertisement of the piano training class on the billboard . The place is not far from our home .\nA: Mom , come on . What are you thinking about ?\nB: Your sister is in high school now ; no one plays the piano at home .\nA: Don't tell me you want me to do that ?\nB: Why ? Why not ! The piano is right there .\nA: But I don't like playing the piano . And the homework keeps me busy enough .\nB: Anyway , I will have a look at the piano class after work by myself .\nA: How depressed !",
+    "predictions": {
+      "dialogue_id": 1,
+      "user_id": "A",
+      "preferences": [
+        {
+          "reasoning": "User A expresses a disinterest and negative feeling towards piano playing, indicating a lack of enjoyment or liking for it.",
+          "target_label": "piano playing",
+          "original_mention": "I don't like playing the piano",
+          "axis": "liking",
+          "sub_axis": "",
+          "polarity": "negative",
+          "intensity": "high",
+          "turn_index": 8
+        },
+        {
+          "reasoning": "User A feels overwhelmed by homework, indicating a pressing need that may affect their engagement with other activities.",
+          "target_label": "homework",
+          "original_mention": "the homework keeps me busy enough",
+          "axis": "need",
+          "sub_axis": "functional",
+          "polarity": "neutral",
+          "intensity": "high",
+          "turn_index": 8
+        }
+      ]
+    }
+  },
+  {
+    "dialogue_id": 23,
+    "original_dialogue": "A: Do you like this dress , madam ?\nB: I like the colour very much . It's a lovely dress , but it's too small for me .\nA: What about this one ? It's a lovely dress . It's very smart . Short skirts are in fashion now . Would you like to try it ?\nB: All right . I'm afraid this green dress is too small for me as well . It's smaller than the blue one . I don't like the colour either . It doesn't suit me at all . I think the blue dress is prettier . Co\nA: I'm afraid I haven't got a larger dress . This is the largest dress in the shop .",
+    "predictions": {
+      "dialogue_id": 1,
+      "user_id": "B",
+      "preferences": [
+        {
+          "reasoning": "The user expresses a strong dislike for the colour of the green dress and states that it doesn't suit them, indicating a negative perception of this specific dress.",
+          "target_label": "green dress",
+          "original_mention": "this green dress",
+          "axis": "liking",
+          "sub_axis": "aesthetic/sensory",
+          "polarity": "negative",
+          "intensity": "high",
+          "turn_index": 4
+        },
+        {
+          "reasoning": "The user indicates a preference for the blue dress over the green one by proclaiming it prettier, showcasing a clear positive evaluation towards the blue dress.",
+          "target_label": "blue dress",
+          "original_mention": "the blue one",
+          "axis": "liking",
+          "sub_axis": "aesthetic/sensory",
+          "polarity": "positive",
+          "intensity": "high",
+          "turn_index": 4
+        }
+      ]
+    }
+  },
+  {
+    "dialogue_id": 24,
+    "original_dialogue": "A: What shall we do after the volleyball match ?\nB: How about going to the Olympic souvenir store to have a look ? I remember there is one in the gym .\nA: That's a good idea . I was thinking of buying some gifts for my family .\nB: Me , too . What did you have in mind ?\nA: I haven't decided yet , but I think the Olympic Mascots are a must .\nB: I agree . They're very lovely , especially Huanhuan\nA: Is that the red one ? That is my favorite , too . Do you know how much they are ?\nB: The five dolls are sold together as a set , and they're priced according to the size . The bigger they are the more expensive .\nA: Oh , I see . If I buy more than a set , can I get any discount ?\nB: I don't think so . All the souvenirs of the Olympic Games are very hot right now .\nA: Any other ideas ?\nB: There are lots of things , such as postcards , key chains , posters and various arts and crafts .\nA: It all sounds great . We can go there after the match . I can't wait to see what they have .",
+    "predictions": {
+      "dialogue_id": 1,
+      "user_id": "A",
+      "preferences": [
+        {
+          "reasoning": "User expresses excitement and anticipation about going to the store and seeing the various souvenirs, indicating a positive emotional response toward the experience.",
+          "target_label": "Olympic souvenirs",
+          "original_mention": "what they have",
+          "axis": "liking",
+          "sub_axis": "stimulation",
+          "polarity": "positive",
+          "intensity": "high",
+          "turn_index": 8
+        },
+        {
+          "reasoning": "User indicates a desire to purchase specific items, like the Olympic mascots, showing a personal interest in those products.",
+          "target_label": "Olympic mascots",
+          "original_mention": "the Olympic Mascots",
+          "axis": "wanting",
+          "sub_axis": "interest",
+          "polarity": "positive",
+          "intensity": "medium",
+          "turn_index": 5
+        }
+      ]
+    }
+  },
+  {
+    "dialogue_id": 25,
+    "original_dialogue": "A: Good evening , ma'am . Table for one ?\nB: Yes , please .\nA: Will this table be all right ?\nB: Actually , I'd like a booth by the window if that's possible .\nA: Certainly . How about this one ?\nB: This will be fine , thanks .\nA: ( Handing her a menu ) Your waiter will be here in a minute to take your order .\nB: Thank you .",
+    "predictions": {
+      "dialogue_id": 1,
+      "user_id": "B",
+      "preferences": [
+        {
+          "reasoning": "The user expresses a desire to sit in a specific type of seating arrangement that they prefer, indicating a strong liking for booths, especially by the window.",
+          "target_label": "booth by the window",
+          "original_mention": "a booth by the window",
+          "axis": "liking",
+          "sub_axis": "aesthetic/sensory",
+          "polarity": "positive",
+          "intensity": "medium",
+          "turn_index": 3
+        },
+        {
+          "reasoning": "The user shows satisfaction with the alternative provided by the staff, which suggests a positive outcome was achieved even if it was not the original preference.",
+          "target_label": "table",
+          "original_mention": "this will be fine",
+          "axis": "liking",
+          "sub_axis": "",
+          "polarity": "positive",
+          "intensity": "medium",
+          "turn_index": 5
+        }
+      ]
+    }
+  },
+  {
+    "dialogue_id": 26,
+    "original_dialogue": "A: Lucy , where are you going ?\nB: I want to go to the supermarket .\nA: Wait a few minutes and I'll go there with you .\nB: Let's get a shopping cart .\nA: Good idea\nB: What are you going to buy ?\nA: Let's check out the fruit section first .\nB: OK . I'd like some oranges . But they don't look quite ripe yet .\nA: Look , nice fresh cherries ! They are ripe and soft . I'll take some .\nB: I'll take some , too .\nA: Let's go to the snacks section . I want some chocolate and sweets .\nB: OK . I'll go and buy some cakes .\nA: Do you want to buy something else ?\nB: No . Let's go over to the check-out stand .",
+    "predictions": {
+      "dialogue_id": 1,
+      "user_id": "B",
+      "preferences": [
+        {
+          "reasoning": "The user expresses a desire for oranges but indicates a concern about their ripeness, suggesting some hesitance in the preference for them.",
+          "target_label": "oranges",
+          "original_mention": "I'd like some oranges . But they don't look quite ripe yet .",
+          "axis": "wanting",
+          "sub_axis": "interest",
+          "polarity": "negative",
+          "intensity": "medium",
+          "turn_index": 8
+        },
+        {
+          "reasoning": "The user displays a positive interest in cherries as they agree to take some after observing them and the description is positive, indicating they are ripe and soft.",
+          "target_label": "cherries",
+          "original_mention": "I'll take some .",
+          "axis": "wanting",
+          "sub_axis": "interest",
+          "polarity": "positive",
+          "intensity": "medium",
+          "turn_index": 9
+        },
+        {
+          "reasoning": "The user expresses a clear intention to buy cakes, indicating a strong desire for them as they agree to go buy them immediately following the mention.",
+          "target_label": "cakes",
+          "original_mention": "I'll go and buy some cakes .",
+          "axis": "wanting",
+          "sub_axis": "goal",
+          "polarity": "positive",
+          "intensity": "high",
+          "turn_index": 12
+        }
+      ]
+    }
+  },
+  {
+    "dialogue_id": 27,
+    "original_dialogue": "A: So , tell me about you new house . How is it different to your old one ?\nB: Well , first of all , it ’ s much bigger . It has the same number of rooms , but each room is larger . We also have a larger garden , which our dog loves , of course !\nA: So , it ’ s a three-bedrooms detached house ?\nB: Yes . One bedroom is for my wife and I . there ’ s another for our daughter . My wife wants to use the third one as a guest room , but I ’ d like to make it into a study . Our daughter is also keen on making it a study , so that ’ s probably what will happen .\nA: What ’ s the kitchen like ? I know both you and your wife like to cook .\nB: That ’ s one of the main reason we chose that particular house . The kitchen and dining room are together . It ’ s really large .\nA: Are the rooms nice and bright ?\nB: Yes , they are . That ’ s very important to us . We like to live in a home with plenty of natural light . Each room has large windows .\nA: Do you have a balcony ?\nB: No , we don ’ t . We wish weがあったのに . That ’ s the only thing we wanted , but don ’ t have . The area is very nice and the neighbours seem friendly .\nA: You ’ re right on the edge of the city , aren ’ t you ? There can ’ t be much noise or traffic there . Is it easy to get into city centre ?\nB: It ’ s a very quiet neighbourhood . There ’ s some traffic , but not much . It ’ s not very difficult to get to the city centre , but you must remember to turn left and right at the right places or you ’ ll get lost . So when are you going to drop by ?",
+    "predictions": {
+      "dialogue_id": 1,
+      "user_id": "User",
+      "preferences": [
+        {
+          "reasoning": "The speaker expresses a strong preference for living in a home with abundant natural light, which is deemed very important to them.",
+          "target_label": "natural light",
+          "original_mention": "plenty of natural light",
+          "axis": "liking",
+          "sub_axis": "aesthetic/sensory",
+          "polarity": "positive",
+          "intensity": "high",
+          "turn_index": 7
+        },
+        {
+          "reasoning": "The speaker expresses a desire for a balcony, indicating that it was a wanted feature for their new house that they unfortunately do not have.",
+          "target_label": "balcony",
+          "original_mention": "we wish we had a balcony",
+          "axis": "wanting",
+          "sub_axis": "goal",
+          "polarity": "negative",
+          "intensity": "medium",
+          "turn_index": 9
+        }
+      ]
+    }
+  },
+  {
+    "dialogue_id": 28,
+    "original_dialogue": "A: How nice these sunglasses are !\nB: Yes , they are the latest designs . Would you like to try them on ?\nA: I want to try on this pair .\nB: The round shape pair ?\nA: That's right .\nB: I think it suits you well .\nA: I agree , how much ?\nB: 120 yuan .\nA: It's not expensive . OK . I'll take them .",
+    "predictions": {
+      "dialogue_id": 1,
+      "user_id": "User",
+      "preferences": [
+        {
+          "reasoning": "User expresses a desire to purchase the sunglasses after trying them on and agreeing that they look good. The statement 'It's not expensive' indicates a positive evaluation of the price relative to their perceived value. This reflects a liking for the product.",
+          "target_label": "sunglasses",
+          "original_mention": "these sunglasses",
+          "axis": "liking",
+          "sub_axis": "aesthetic/sensory",
+          "polarity": "positive",
+          "intensity": "medium",
+          "turn_index": 0
+        },
+        {
+          "reasoning": "User's intention to buy the sunglasses indicates they want to obtain this specific item, showing a strong desire or goal to complete the purchase after the positive experience of trying them.",
+          "target_label": "sunglasses",
+          "original_mention": "I'll take them",
+          "axis": "wanting",
+          "sub_axis": "goal",
+          "polarity": "positive",
+          "intensity": "high",
+          "turn_index": 6
+        }
+      ]
+    }
+  },
+  {
+    "dialogue_id": 29,
+    "original_dialogue": "A: Look ! It ’ s the start of the Olympic Games .\nB: So what ?\nA: You want to watch , don ’ t you ?\nB: Not really . I couldn ’ t careless about the Olympic Games .\nA: Please yourself .",
+    "predictions": {
+      "dialogue_id": 1,
+      "user_id": "B",
+      "preferences": [
+        {
+          "reasoning": "User expresses apathy towards the Olympic Games, indicating a lack of interest.",
+          "target_label": "Olympic Games",
+          "original_mention": "couldn't care less about the Olympic Games",
+          "axis": "wanting",
+          "sub_axis": "interest",
+          "polarity": "negative",
+          "intensity": "high",
+          "turn_index": 3
+        }
+      ]
+    }
+  },
+  {
+    "dialogue_id": 30,
+    "original_dialogue": "A: OK , Ann , you spent quite a bit of time in Australia recently so why don't you talk about that ?\nB: I really liked living in Australia . I was an international student and I studied education at the university of Sydney . And living in Sydney was fantasticbecuase I could go to the beach anytime I wanted and there was a great nightlife in Sydney . There are lots of great clubs . And people were very , very friendly and easy-going and I met a lot of international people in living Sydney .\nA: Mm-hm . How long were you there ?\nB: I was there for almost a year .\nA: Oh , OK .\nB: And I travelled a little bit in Australia . I went up the east coast . Up to Frasier Island . Which is a world heritage site . And I saw dingo running along the beach and sharks in the water . We climbed cliffs and went through a rain forest and went camping and then we went up to the ... , which is a but north . And the further north you go in Australia , the hotter it gets . So we were able to go swimming in the ocean and I went diving for the first time but it was a little bit risky cause I didn't have a diving license , so I went on an introductory dive and I saw a giant clam that had a really purple spongy inside that I was able to touch and then the clam closed up really quickly .\nA: So , did you , did you lose your finger ?\nB: Almost .\nA: Almost . Ah , you're lucky . Um , it's funny , you go in the water and you worry about sharks , but not clams .\nB: Exactly .\nA: Will you be going back to Australia soon ?\nB: I'd like to go and live there for at least another year . Probably I'll go back to Sydney or maybe I'll go down to Melbourne because it's a really interesting cultural city . They have lot of museums and parks .",
+    "predictions": {
+      "dialogue_id": 1,
+      "user_id": "B",
+      "preferences": [
+        {
+          "reasoning": "The speaker expresses a desire to return to Australia and live there for a longer period, indicating a strong preference for continuing their experience in that location.",
+          "target_label": "Australia",
+          "original_mention": "I'd like to go and live there for at least another year.",
+          "axis": "wanting",
+          "sub_axis": "goal",
+          "polarity": "positive",
+          "intensity": "high",
+          "turn_index": 5
+        },
+        {
+          "reasoning": "The speaker's reference to wanting to live in Sydney or possibly move to Melbourne shows a particular liking for these locations, especially highlighting Melbourne as a culturally interesting city.",
+          "target_label": "Melbourne",
+          "original_mention": "maybe I'll go down to Melbourne because it's a really interesting cultural city.",
+          "axis": "wanting",
+          "sub_axis": "interest",
+          "polarity": "positive",
+          "intensity": "medium",
+          "turn_index": 5
+        }
+      ]
+    }
+  }
+]

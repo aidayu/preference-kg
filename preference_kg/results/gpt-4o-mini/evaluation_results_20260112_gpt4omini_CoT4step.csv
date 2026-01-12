@@ -1,0 +1,44 @@
+Experiment Information,,
+Timestamp,20260112_161922,
+Model,gpt-4o-mini,
+Few-shot IDs,"[0, 18, 46]",
+Total Test Dialogues,47,
+,,
+Metric,Value,Count
+Total Ground Truth Annotations,90,
+Total LLM Predictions,179,
+Matched Entities,74,
+,,
+Entity Recall,82.22%,74/90
+Entity Precision,41.34%,74/179
+Entity F1,55.02%,
+,,
+Axis Accuracy,58.89%,53/90
+Axis Recall,58.89%,53/90
+Axis Precision,29.61%,
+Axis F1,39.41%,
+,,
+Sub-Axis Accuracy,38.89%,35/90
+Sub-Axis Recall,38.89%,35/90
+Sub-Axis Precision,19.55%,
+Sub-Axis F1,26.02%,
+,,
+Polarity Accuracy,78.89%,71/90
+Polarity Recall,78.89%,71/90
+Polarity Precision,39.66%,
+Polarity F1,52.79%,
+,,
+Intensity Accuracy,62.22%,56/90
+Intensity Recall,62.22%,56/90
+Intensity Precision,31.28%,
+Intensity F1,41.64%,
+,,
+Context Accuracy,56.67%,51/90
+Context Recall,56.67%,51/90
+Context Precision,28.49%,
+Context F1,37.92%,
+,,
+Perfect Match Accuracy,12.22%,11/90
+Perfect Match Recall,12.22%,11/90
+Perfect Match Precision,6.15%,
+Perfect Match F1,8.18%,

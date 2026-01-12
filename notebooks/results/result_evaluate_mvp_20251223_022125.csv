@@ -1,0 +1,6 @@
+Metric,Value,Count
+Total Annotated Entities,50,
+Axis Accuracy,34.00%,17/50
+Sub-Axis Accuracy,14.00%,7/50
+Polarity Accuracy,36.00%,18/50
+Perfect Match Rate,12.00%,6/50

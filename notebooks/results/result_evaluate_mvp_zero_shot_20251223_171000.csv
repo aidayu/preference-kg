@@ -1,0 +1,28 @@
+Metric,Value,Count
+Total Ground Truth Annotations,50,
+Total LLM Predictions,62,
+Matched Entities,28,
+,,
+Entity Recall,56.00%,28/50
+Entity Precision,45.16%,28/62
+Entity F1,50.00%,
+,,
+Axis Accuracy,32.00%,16/50
+Axis Recall,32.00%,16/50
+Axis Precision,25.81%,
+Axis F1,28.57%,
+,,
+Sub-Axis Accuracy,14.00%,7/50
+Sub-Axis Recall,14.00%,7/50
+Sub-Axis Precision,11.29%,
+Sub-Axis F1,12.50%,
+,,
+Polarity Accuracy,48.00%,24/50
+Polarity Recall,48.00%,24/50
+Polarity Precision,38.71%,
+Polarity F1,42.86%,
+,,
+Perfect Match Accuracy,12.00%,6/50
+Perfect Match Recall,12.00%,6/50
+Perfect Match Precision,9.68%,
+Perfect Match F1,10.71%,

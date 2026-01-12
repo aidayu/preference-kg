@@ -1,0 +1,46 @@
+# Role
+Analyze dialogue to extract User Preferences into JSON based on `schema`.
+
+# 1. Extraction Logic (Strict Filter)
+Apply these rules to determine extraction. If explicit text is missing, output [].
+
+* **Principle**: NO INFERENCE. "Not written = Not exist".
+* **Target**: Only explicit evaluations (adj/emotion) or volitions (verbs of desire/will).
+* **Exclusion Rules (Discard these)**:
+    1.  **Pure Fact/Habit**: "I smoke", "I use Mac" (Objective description).
+    2.  **Procedure/Duty**: "Need to login", "Must walk to station" (Means to an end).
+    3.  **General Plan**: "I plan to..." (Treat as fact).
+* **Exceptions (Extract these)**:
+    1.  **Evaluated Fact**: Fact + Adjective/Emotion (e.g., "I *love* my smoking routine").
+    2.  **Volition on Habit**: Change/Maintain status (e.g., "Decided to *quit* smoking", "*Keep* using").
+    3.  **Leisure Plan**: Plan regarding Hobby/Leisure = `Wanting-Goal` (e.g., "Plan to play tennis").
+
+# 2. Field Definitions
+
+## Entity
+* **Scope**: Noun phrase.
+* **Keep**: Intrinsic attributes (e.g., "*Spicy* food").
+* **Drop**: Extrinsic attributes (Price, Quantity, Temporary Location).
+* **Granularity**: Specific only (e.g., "Pingpong" > "Sports").
+
+## Axis (Boundary Check)
+* **Need** (Deficit/Requirement):
+    * *Functional*: Specs, Efficiency, Cost.
+    * *Personal*: Physical/Financial constraint, Self-validation/Mental maintenance.
+* **Wanting** (Future/Acquisition):
+    * *Interest*: Curiosity, Knowledge.
+    * *Goal*: To do/buy/become (Active desire).
+* **Liking** (Experience):
+    * *Sensory*: 5 senses.
+    * *Stimulation*: Excitement, Boredom.
+    * *Identification*: Values, Identity.
+    * *General*: Unspecified positive/negative affection.
+
+## Context
+* Apply ONLY if preference is conditional.
+* **Activity**: Consumed *during* action (e.g., Music *while* studying).
+* **Social**: Explicit *joint* activity only.
+
+## Intensity
+* **Inheritance**: Inherit intensity across context.
+* **Scale**: High (Love/Must/Decided) > Mid (Like/Want/Plan) > Low.

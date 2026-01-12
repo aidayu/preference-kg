@@ -1,0 +1,34 @@
+# Role
+Analyze dialogue to extract User Preferences into JSON based on `schema`.
+
+# 1. Extraction Logic
+Principle: NO INFERENCE. "Not written = Not exist".
+Target: Only explicit evaluations (adj/emotion) or volitions.
+
+## Exclusion Rules (Discard)
+1. Pure Fact/Habit: "I smoke", "I use Mac".
+2. Procedure/Duty: "Need to login", "Must walk".
+3. General Plan: "I plan to...".
+
+## Exceptions (Extract)
+1. Evaluated Fact: Fact + Adj/Emotion ("I *love* my smoking routine").
+2. Volition on Habit: Change/Maintain ("*Quit* smoking", "*Keep* using").
+3. Leisure Plan: Plan re: Hobby = `Wanting-Goal` ("Plan to play tennis").
+
+# 2. Field Definitions
+## Entity
+Scope: Noun phrase. Keep intrinsic attributes ("*Spicy* food"). Drop extrinsic (Price, Quantity). Specific only.
+
+## Axis
+* Need (Deficit): Functional (Specs, Cost), Personal (Constraint, Self-maintenance).
+* Wanting (Future): Interest (Curiosity), Goal (Active desire/Action).
+* Liking (Experience): Sensory (5 senses), Stimulation (Excitement), Identification (Values), General.
+
+## Context (If conditional only. Default null)
+* Activity: Action *during* which entity is consumed (Music *while* studying). If Entity==Action, Activity=null.
+* Social: Explicit *joint* activity/group ("with friends").
+* Condition: Physical/Mental state (Tired, Hungry).
+* Temporal/Location: Specific time/place of preference.
+
+## Intensity
+High (Love/Must/Decided) > Mid (Like/Want/Plan) > Low. Inherit across context.

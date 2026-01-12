@@ -1,0 +1,122 @@
+{
+  "name": "preference_extraction",
+  "strict": true,
+  "schema": {
+    "type": "object",
+    "properties": {
+      "dialogue_id": {
+        "type": "integer"
+      },
+      "user_id": {
+        "type": "string"
+      },
+      "preferences": {
+        "type": "array",
+        "items": {
+          "type": "object",
+          "properties": {
+            "reasoning": {
+              "type": "string",
+              "description": "Why this extraction? Quote specific words."
+            },
+            "combined_axis": {
+              "type": "string",
+              "description": "The specific evaluation axis combining the main axis and sub-axis.",
+              "enum": [
+                "liking__aesthetic_sensory",
+                "liking__stimulation",
+                "liking__identification",
+                "liking__general",
+                "wanting__interest",
+                "wanting__goal",
+                "need__functional",
+                "need__social",
+                "need__personal"
+              ]
+            },
+            "entity": {
+              "type": "string",
+              "description": "Specific object/concept (normalized noun)."
+            },
+            "original_mention": {
+              "type": "string"
+            },
+            "context_tags": {
+              "type": "array",
+              "description": "Select ALL applicable context tags. If none apply, return an empty list.",
+              "items": {
+                "type": "string",
+                "enum": [
+                  "activity-working_studying",
+                  "activity-eating",
+                  "activity-drinking",
+                  "activity-driving",
+                  "activity-relaxing",
+                  "activity-shopping",
+                  "social-solo",
+                  "social-group",
+                  "condition-tired",
+                  "condition-hungry_thirsty",
+                  "condition-sick_pain",
+                  "condition-stressed",
+                  "condition-busy",
+                  "condition-bored",
+                  "temporal-morning",
+                  "temporal-noon",
+                  "temporal-afternoon",
+                  "temporal-night",
+                  "temporal-spring",
+                  "temporal-summer",
+                  "temporal-fall",
+                  "temporal-winter",
+                  "temporal-weekday",
+                  "temporal-weekend",
+                  "temporal-holiday",
+                  "location-home",
+                  "location-workplace",
+                  "location-school",
+                  "location-restaurant_bar",
+                  "location-shop",
+                  "location-travel",
+                  "location-outdoor"
+                ]
+              }
+            },
+            "polarity": {
+              "type": "string",
+              "enum": [
+                "positive",
+                "negative",
+                "neutral"
+              ]
+            },
+            "intensity": {
+              "type": "string",
+              "enum": [
+                "high",
+                "medium",
+                "low"
+              ]
+            }
+          },
+          "required": [
+            "reasoning",
+            "combined_axis",
+            "entity",
+            "original_mention",
+            "context_tags",
+            "polarity",
+            "intensity"
+          ],
+          "additionalProperties": false
+        }
+      }
+    },
+    "required": [
+      "dialogue_id",
+      "user_id",
+      "preferences"
+    ],
+    "additionalProperties": false
+  }
+}

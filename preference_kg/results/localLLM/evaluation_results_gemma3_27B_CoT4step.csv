@@ -1,0 +1,44 @@
+Experiment Information,,
+Timestamp,20260112_185850,
+Model,gemma3:27b,
+Few-shot IDs,"[0, 18, 46]",
+Total Test Dialogues,47,
+,,
+Metric,Value,Count
+Total Ground Truth Annotations,90,
+Total LLM Predictions,119,
+Matched Entities,63,
+,,
+Entity Recall,70.00%,63/90
+Entity Precision,52.94%,63/119
+Entity F1,60.29%,
+,,
+Axis Accuracy,53.33%,48/90
+Axis Recall,53.33%,48/90
+Axis Precision,40.34%,
+Axis F1,45.93%,
+,,
+Sub-Axis Accuracy,40.00%,36/90
+Sub-Axis Recall,40.00%,36/90
+Sub-Axis Precision,30.25%,
+Sub-Axis F1,34.45%,
+,,
+Polarity Accuracy,66.67%,60/90
+Polarity Recall,66.67%,60/90
+Polarity Precision,50.42%,
+Polarity F1,57.42%,
+,,
+Intensity Accuracy,31.11%,28/90
+Intensity Recall,31.11%,28/90
+Intensity Precision,23.53%,
+Intensity F1,26.79%,
+,,
+Context Accuracy,44.44%,40/90
+Context Recall,44.44%,40/90
+Context Precision,33.61%,
+Context F1,38.28%,
+,,
+Perfect Match Accuracy,10.00%,9/90
+Perfect Match Recall,10.00%,9/90
+Perfect Match Precision,7.56%,
+Perfect Match F1,8.61%,

@@ -1,0 +1,114 @@
+[
+  {
+        "dialogue_id": 0,
+        "original_index": 1815,
+        "original_dialogue": "System: I think modern painting means nothing .\nUser: I think so too . It's just pointless .\nSystem: Then why are so many crazy about it\nUser: I don't know.Maybe they are really crazy .\nSystem: Maybe .",
+        "translated_dialogue": "System: 現代絵画なんて意味ないと思うよ。\nUser: そう思うよ。ただただ無意味だ。\nSystem: じゃあなんであんなに熱狂するんだ？\nUser: わからない。たぶん本当に頭がおかしいんだろう。\nSystem: そうかもね。",
+        "annotations": [
+            {
+                "entity": "modern painting",
+                "axis": "liking",
+                "sub_axis": "identification",
+                "polarity": "negative",
+                "intensity": "high",
+                "context": [
+                    "None"
+                ],
+                "explicitness": "explicit"
+            }
+        ]
+    },
+    {
+        "dialogue_id": 18,
+        "original_index": 603,
+        "original_dialogue": "System: Look ! It ’ s the start of the Olympic Games .\nUser: So what ?\nSystem: You want to watch , don ’ t you ?\nUser: Not really . I couldn ’ t careless about the Olympic Games .\nSystem: Please yourself .",
+        "translated_dialogue": "System: 見て！オリンピックの始まりよ。\nUser: だから何？\nSystem: 見たいんでしょう？\nUser: 別に。オリンピックなんてどうでもいいわ。\nSystem: 勝手にしなさい。",
+        "annotations": [
+            {
+                "entity": "Olympic Games",
+                "axis": "wanting",
+                "sub_axis": "interest",
+                "polarity": "neutral",
+                "intensity": "mid",
+                "context": [
+                    "None"
+                ],
+                "explicitness": "explicit"
+            }
+        ]
+    },
+    {
+        "dialogue_id": 46,
+        "original_index": 1,
+        "original_dialogue": "System: Say , Jim , how about going for a few beers after dinner ?\nUser: You know that is tempting but is really not good for our fitness .\nSystem: What do you mean ? It will help us to relax .\nUser: Do you really think so ? I don't . It will just make us fat and act silly . Remember last time ?\nSystem: I guess you are right.But what shall we do ? I don't feel like sitting at home .\nUser: I suggest a walk over to the gym where we can play pingpong and meet some of our friends .\nSystem: That's a good idea . I hear Mary and Sally often go there to play pingpong.Perhaps we can make a foursome with them .\nUser: Sounds great to me ! If they are willing , we could ask them to go dancing with us.That is excellent exercise and fun , too .\nSystem: Good.Let ' s go now .\nUser: All right .",
+        "translated_dialogue": "System: ねえ、ジム、夕食後にビールでも飲みにいかない？\nUser: 確かに魅力的だけど、本当に健康に良くないよ。\nSystem: どういう意味？リラックスできるじゃないか。\nUser: 本当にそう思う？僕は違う。ただ太ってバカみたいな行動をするだけさ。前回を覚えてる？\nSystem: 確かにそうかも。でもどうする？家にいるのもつまらないし。\nUser: ジムまで歩いて行って、卓球でもしながら友達に会おうよ。\nSystem: それはいい考えだ。メアリーとサリーがよくピンポンしに行ってるって聞いたよ。彼女たちと一緒に4人でやれるかも。\nUser: いいね！もし彼女たちがOKなら、一緒にダンスに行こうって誘えるよ。運動にもなるし楽しいしね。\nSystem: よし、今すぐ行こう。\nUser: 了解。",
+        "annotations": [
+            {
+                "entity": "beers",
+                "axis": "liking",
+                "sub_axis": "aesthetic/sensory",
+                "polarity": "positive",
+                "intensity": "mid",
+                "context": [
+                    "Night"
+                ],
+                "explicitness": "explicit"
+            },
+            {
+                "entity": "beers",
+                "axis": "need",
+                "sub_axis": "personal",
+                "polarity": "negative",
+                "intensity": "mid",
+                "context": [
+                    "None"
+                ],
+                "explicitness": "explicit"
+            },
+            {
+                "entity": "pingpong",
+                "axis": "wanting",
+                "sub_axis": "goal",
+                "polarity": "positive",
+                "intensity": "mid",
+                "context": [
+                    "group"
+                ],
+                "explicitness": "explicit"
+            },
+            {
+                "entity": "dancing",
+                "axis": "wanting",
+                "sub_axis": "goal",
+                "polarity": "positive",
+                "intensity": "mid",
+                "context": [
+                    "group"
+                ],
+                "explicitness": "explicit"
+            },
+            {
+                "entity": "dancing",
+                "axis": "need",
+                "sub_axis": "functional",
+                "polarity": "positive",
+                "intensity": "mid",
+                "context": [
+                    "group"
+                ],
+                "explicitness": "explicit"
+            },
+            {
+                "entity": "dancing",
+                "axis": "liking",
+                "sub_axis": "stimulation",
+                "polarity": "positive",
+                "intensity": "mid",
+                "context": [
+                    "group"
+                ],
+                "explicitness": "explicit"
+            }
+        ]
+    }
+]

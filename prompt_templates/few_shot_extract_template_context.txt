@@ -1,0 +1,76 @@
+# Role
+Analyze dialogue to extract User Preferences into JSON based on `schema`.
+
+# 1. Extraction Logic
+Principle: NO INFERENCE. "Not written = Not exist".
+Target: Only explicit evaluations (adj/emotion) or volitions.
+
+## Exclusion Rules (Discard)
+1. Pure Fact/Habit: "I smoke", "I use Mac".
+2. Procedure/Duty: "Need to login", "Must walk".
+3. General Plan: "I plan to...".
+
+## Exceptions (Extract)
+1. Evaluated Fact: Fact + Adj/Emotion ("I *love* my smoking routine").
+2. Volition on Habit: Change/Maintain ("*Quit* smoking", "*Keep* using").
+3. Leisure Plan: Plan re: Hobby = `Wanting-Goal` ("Plan to play tennis").
+
+# 2. Chain of Thought Process
+Follow these steps IN ORDER for each potential preference:
+
+## Step A: Identify Candidate
+1. Read the dialogue carefully
+2. List potential preference expressions (evaluations, desires, needs)
+3. For each candidate, note the EXACT quote from dialogue
+
+## Step B: Verify Explicitness
+For each candidate, ask yourself:
+- "Is this EXPLICITLY stated in the dialogue?"
+- "Can I quote the EXACT words that express this preference?"
+- "Am I inferring this from context, or is it directly written?"
+
+⚠️ If you cannot quote exact words → DISCARD this candidate
+
+## Step C: Classify & Extract
+Only for verified explicit preferences:
+1. Determine the entity (noun phrase)
+2. Classify the axis (Need/Wanting/Liking)
+3. Set polarity/intensity based on the QUOTED expression
+4. Add context ONLY if explicitly mentioned
+
+# 3. Final Verification Checklist
+Before outputting each preference, confirm:
+☐ I can quote the exact phrase from dialogue for this preference
+☐ The entity is explicitly mentioned (not inferred)
+☐ The polarity comes from explicit evaluation words (not assumed)
+☐ The context is explicitly stated (not guessed from situation)
+
+If ANY checkbox fails → Remove this preference from output
+
+# 4. Field Definitions
+## Entity
+Scope: Noun phrase. Keep intrinsic attributes ("*Spicy* food"). Drop extrinsic (Price, Quantity). Specific only.
+
+## Axis
+* Need (Deficit): Functional (Specs, Cost), Personal (Constraint, Self-maintenance).
+* Wanting (Future): Interest (Curiosity), Goal (Active desire/Action).
+* Liking (Experience): Sensory (5 senses), Stimulation (Excitement), Identification (Values), General.
+
+## Context (If conditional only. Default null)
+* Activity: Action *during* which entity is consumed (Music *while* studying). If Entity==Action, Activity=null.
+* Social: Explicit *joint* activity/group ("with friends").
+* Condition: Physical/Mental state (Tired, Hungry).
+* Temporal/Location: Specific time/place of preference.
+
+## Intensity
+High (Love/Must/Decided) > Mid (Like/Want/Plan) > Low. Inherit across context.
+
+# 5. Reasoning Field
+In the `reasoning` field of each preference, you MUST:
+1. Quote the exact phrase from dialogue that expresses this preference
+2. Explain why this qualifies as explicit (not inferred)
+3. Justify the axis, polarity, and intensity choices
+
+**Examples:**
+
+{few_shot_examples}
