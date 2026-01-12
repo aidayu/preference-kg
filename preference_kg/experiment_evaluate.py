@@ -4,8 +4,8 @@ import os
 from datetime import datetime
 
 # --- 設定 ---
-EXPERIMENT_RESULTS_PATH = "/home/y-aida/Programs/preference-kg/preference_kg/results/experiment_results_gemma3_27B_CoT4step.json"
-RESULT_DIR = "/home/y-aida/Programs/preference-kg/preference_kg/results"
+EXPERIMENT_RESULTS_PATH = "/home/y-aida/Programs/preference-kg/preference_kg/results/gpt-4o/experiment_results_20260112_194507.json"
+RESULT_DIR = "/home/y-aida/Programs/preference-kg/preference_kg/results/gpt-4o"
 
 
 def load_experiment_results(filepath):
@@ -56,6 +56,81 @@ def normalize_sub_axis(sub_axis_value):
     # スラッシュをアンダースコアに変換して正規化
     normalized = sub_axis_value.lower().strip().replace("/", "_")
     return normalized
+
+
+def augment_with_ancestors(axis: str, sub_axis: str) -> set:
+    """
+    予測または正解のラベルを親を含めて拡張する
+    
+    階層: axis (親) -> sub_axis (子)
+    例: liking, aesthetic_sensory -> {"liking", "liking__aesthetic_sensory"}
+    
+    Args:
+        axis: 親軸 (liking, wanting, need)
+        sub_axis: 子軸 (aesthetic_sensory, goal など)
+    
+    Returns:
+        拡張されたラベルセット
+    """
+    labels = set()
+    
+    if axis:
+        labels.add(axis)  # 親を追加
+        if sub_axis:
+            labels.add(f"{axis}__{sub_axis}")  # 子（フルパス）を追加
+    
+    return labels
+
+
+def compute_hierarchical_metrics(gt_pairs: list, pred_pairs: list) -> dict:
+    """
+    階層的Precision/Recall/F1を計算する (Micro平均)
+    
+    Kiritchenko et al. (2006) の手法:
+    - 各ペアごとに予測と正解を親ラベルで拡張 (augment)
+    - 全ペアのラベルを集約（重複許容）
+    - hP = Σ|Y_aug ∩ Ŷ_aug| / Σ|Ŷ_aug|
+    - hR = Σ|Y_aug ∩ Ŷ_aug| / Σ|Y_aug|
+    - hF1 = 2 * hP * hR / (hP + hR)
+    
+    Args:
+        gt_pairs: [(axis, sub_axis), ...] 正解ラベルのリスト
+        pred_pairs: [(axis, sub_axis), ...] 予測ラベルのリスト（同じ長さ）
+    
+    Returns:
+        {"h_precision": float, "h_recall": float, "h_f1": float, ...}
+    """
+    if len(gt_pairs) != len(pred_pairs):
+        raise ValueError("gt_pairs and pred_pairs must have the same length")
+    
+    total_gt_labels = 0
+    total_pred_labels = 0
+    total_intersection = 0
+    
+    # 各ペアごとに計算して集約
+    for (gt_axis, gt_sub_axis), (pred_axis, pred_sub_axis) in zip(gt_pairs, pred_pairs):
+        gt_aug = augment_with_ancestors(gt_axis, gt_sub_axis)
+        pred_aug = augment_with_ancestors(pred_axis, pred_sub_axis)
+        
+        intersection = gt_aug & pred_aug
+        
+        total_gt_labels += len(gt_aug)
+        total_pred_labels += len(pred_aug)
+        total_intersection += len(intersection)
+    
+    # Micro平均で計算
+    h_precision = total_intersection / total_pred_labels if total_pred_labels > 0 else 0
+    h_recall = total_intersection / total_gt_labels if total_gt_labels > 0 else 0
+    h_f1 = (2 * h_precision * h_recall) / (h_precision + h_recall) if (h_precision + h_recall) > 0 else 0
+    
+    return {
+        "h_precision": h_precision,
+        "h_recall": h_recall,
+        "h_f1": h_f1,
+        "gt_augmented_size": total_gt_labels,
+        "pred_augmented_size": total_pred_labels,
+        "intersection_size": total_intersection,
+    }
 
 
 def normalize_context(context_value):
@@ -286,15 +361,31 @@ def evaluate_experiment(experiment_data):
     entity_precision = matched_items / total_pred_items if total_pred_items > 0 else 0
     entity_f1 = (2 * entity_precision * entity_recall) / (entity_precision + entity_recall) if (entity_precision + entity_recall) > 0 else 0
     
-    # Axis metrics
+    # Axis metrics (traditional)
     axis_recall = correct_axis / total_gt_items
     axis_precision = tp_axis / total_pred_items if total_pred_items > 0 else 0
     axis_f1 = (2 * axis_precision * axis_recall) / (axis_precision + axis_recall) if (axis_precision + axis_recall) > 0 else 0
     
-    # Sub-Axis metrics
+    # Sub-Axis metrics (traditional)
     sub_axis_recall = correct_sub_axis / total_gt_items
     sub_axis_precision = tp_sub_axis / total_pred_items if total_pred_items > 0 else 0
     sub_axis_f1 = (2 * sub_axis_precision * sub_axis_recall) / (sub_axis_precision + sub_axis_recall) if (sub_axis_precision + sub_axis_recall) > 0 else 0
+    
+    # 階層的Axis評価 (Hierarchical F1)
+    # マッチしたペアから(axis, sub_axis)ペアを抽出
+    gt_axis_pairs = []
+    pred_axis_pairs = []
+    for pair in matched_pairs:
+        gt = pair["gt"]
+        pred = pair["pred"]
+        gt_axis = gt.get("axis", "")
+        gt_sub_axis = normalize_sub_axis(gt.get("sub_axis"))
+        pred_axis = pred.get("axis", "")
+        pred_sub_axis = normalize_sub_axis(pred.get("sub_axis"))
+        gt_axis_pairs.append((gt_axis, gt_sub_axis))
+        pred_axis_pairs.append((pred_axis, pred_sub_axis))
+    
+    hierarchical_metrics = compute_hierarchical_metrics(gt_axis_pairs, pred_axis_pairs)
     
     # Polarity metrics
     polarity_recall = correct_polarity / total_gt_items
@@ -332,17 +423,25 @@ def evaluate_experiment(experiment_data):
         "entity_precision": entity_precision,
         "entity_f1": entity_f1,
         
-        # Axis metrics
+        # Axis metrics (traditional)
         "axis_accuracy": axis_recall,
         "axis_recall": axis_recall,
         "axis_precision": axis_precision,
         "axis_f1": axis_f1,
         
-        # Sub-Axis metrics
+        # Sub-Axis metrics (traditional)
         "sub_axis_accuracy": sub_axis_recall,
         "sub_axis_recall": sub_axis_recall,
         "sub_axis_precision": sub_axis_precision,
         "sub_axis_f1": sub_axis_f1,
+        
+        # Hierarchical Axis metrics
+        "h_axis_recall": hierarchical_metrics["h_recall"],
+        "h_axis_precision": hierarchical_metrics["h_precision"],
+        "h_axis_f1": hierarchical_metrics["h_f1"],
+        "h_gt_augmented_size": hierarchical_metrics["gt_augmented_size"],
+        "h_pred_augmented_size": hierarchical_metrics["pred_augmented_size"],
+        "h_intersection_size": hierarchical_metrics["intersection_size"],
         
         # Polarity metrics
         "polarity_accuracy": polarity_recall,
@@ -419,6 +518,12 @@ def save_evaluation_results(metrics, experiment_info, output_path):
         writer.writerow(["Sub-Axis F1", f"{metrics['sub_axis_f1']:.2%}", ""])
         writer.writerow(["", "", ""])
         
+        # Hierarchical Axis metrics
+        writer.writerow(["Hierarchical Axis Recall", f"{metrics['h_axis_recall']:.2%}", f"{metrics['h_intersection_size']}/{metrics['h_gt_augmented_size']}"])
+        writer.writerow(["Hierarchical Axis Precision", f"{metrics['h_axis_precision']:.2%}", f"{metrics['h_intersection_size']}/{metrics['h_pred_augmented_size']}"])
+        writer.writerow(["Hierarchical Axis F1", f"{metrics['h_axis_f1']:.2%}", ""])
+        writer.writerow(["", "", ""])
+        
         # Polarity metrics
         writer.writerow(["Polarity Accuracy", f"{metrics['polarity_accuracy']:.2%}", f"{metrics['correct_polarity']}/{metrics['total_gt_items']}"])
         writer.writerow(["Polarity Recall", f"{metrics['polarity_recall']:.2%}", f"{metrics['correct_polarity']}/{metrics['total_gt_items']}"])
@@ -480,6 +585,12 @@ def print_evaluation_summary(metrics):
     print(f"  Recall:    {metrics['sub_axis_recall']:.2%}")
     print(f"  Precision: {metrics['sub_axis_precision']:.2%}")
     print(f"  F1:        {metrics['sub_axis_f1']:.2%}")
+    print()
+    
+    print("--- Hierarchical Axis Metrics (Kiritchenko et al. 2006) ---")
+    print(f"  hRecall:    {metrics['h_axis_recall']:.2%} ({metrics['h_intersection_size']}/{metrics['h_gt_augmented_size']})")
+    print(f"  hPrecision: {metrics['h_axis_precision']:.2%} ({metrics['h_intersection_size']}/{metrics['h_pred_augmented_size']})")
+    print(f"  hF1:        {metrics['h_axis_f1']:.2%}")
     print()
     
     print("--- Polarity Metrics ---")
