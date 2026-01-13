@@ -20,6 +20,7 @@ from evaluation import (
     compute_f1,
     save_evaluation_results,
     print_evaluation_summary,
+    find_optimal_matching,
 )
 
 # --- 設定 ---
@@ -87,26 +88,16 @@ def evaluate_experiment(experiment_data: dict) -> dict | None:
         total_gt_items += len(ground_truths)
         total_pred_items += len(predictions)
         
-        used_predictions = set()
+        # 最適マッチングを使用（Hungarian algorithm）
+        matching_results = find_optimal_matching(ground_truths, predictions)
         
-        for gt in ground_truths:
+        for gt_idx, pred_idx, match, score in matching_results:
+            gt = ground_truths[gt_idx]
             gt_entity = gt["entity"].lower().strip()
-            
-            match = None
-            match_idx = None
-            for idx, pred in enumerate(predictions):
-                if idx in used_predictions:
-                    continue
-                pred_entity = pred["entity"].lower().strip()
-                if gt_entity in pred_entity or pred_entity in gt_entity:
-                    match = pred
-                    match_idx = idx
-                    break
             
             status = "MISSING"
             if match:
                 matched_items += 1
-                used_predictions.add(match_idx)
                 
                 is_axis_ok = (match["axis"] == gt["axis"])
                 

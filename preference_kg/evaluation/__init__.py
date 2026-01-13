@@ -3,6 +3,7 @@
 嗜好抽出結果の評価に関する機能を提供
 - normalizers: 正規化関数
 - metrics: 評価指標計算
+- matching: GT-Pred間の最適マッチング
 - reporter: 結果出力
 """
 
@@ -17,6 +18,11 @@ from .metrics import (
     compute_hierarchical_metrics,
     compute_f1,
     compute_basic_metrics,
+)
+from .matching import (
+    compute_matching_score,
+    find_optimal_matching,
+    get_unmatched_predictions,
 )
 from .reporter import (
     save_evaluation_results,
@@ -34,7 +40,12 @@ __all__ = [
     "compute_hierarchical_metrics",
     "compute_f1",
     "compute_basic_metrics",
+    # matching
+    "compute_matching_score",
+    "find_optimal_matching",
+    "get_unmatched_predictions",
     # reporter
     "save_evaluation_results",
     "print_evaluation_summary",
 ]
+
