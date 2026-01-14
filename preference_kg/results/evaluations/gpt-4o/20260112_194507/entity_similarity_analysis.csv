@@ -1,0 +1,249 @@
+dialogue_id,gt_entity,pred_entity,similarity,is_match,gt_axis,gt_sub_axis,gt_polarity,pred_axis,pred_sub_axis,pred_polarity
+1,drink,drink,1.0,True,wanting,goal,positive,liking,aesthetic_sensory,positive
+1,drink,food,0.4467611854636919,False,wanting,goal,positive,liking,aesthetic_sensory,positive
+1,bar,drink,0.3210906710109937,False,wanting,goal,positive,liking,aesthetic_sensory,positive
+1,bar,food,0.31747271850991043,False,wanting,goal,positive,liking,aesthetic_sensory,positive
+1,food,drink,0.4467611854636919,False,liking,aesthetic/sensory,positive,liking,aesthetic_sensory,positive
+1,food,food,1.0,True,liking,aesthetic/sensory,positive,liking,aesthetic_sensory,positive
+2,ham salad sandwich,ham salad sandwich,1.0,True,wanting,goal,positive,liking,aesthetic_sensory,positive
+2,ham salad sandwich,eggs,0.31051131003163435,False,wanting,goal,positive,liking,aesthetic_sensory,neutral
+2,ham salad sandwich,bread,0.2896647100733378,False,wanting,goal,positive,liking,aesthetic_sensory,neutral
+2,egg,ham salad sandwich,0.2643904873550261,False,wanting,goal,positive,liking,aesthetic_sensory,positive
+2,egg,eggs,0.5865206931401991,False,wanting,goal,positive,liking,aesthetic_sensory,neutral
+2,egg,bread,0.44318858599412747,False,wanting,goal,positive,liking,aesthetic_sensory,neutral
+2,bread,ham salad sandwich,0.2896647100733378,False,wanting,goal,positive,liking,aesthetic_sensory,positive
+2,bread,eggs,0.4025621434365372,False,wanting,goal,positive,liking,aesthetic_sensory,neutral
+2,bread,bread,1.0,True,wanting,goal,positive,liking,aesthetic_sensory,neutral
+4,warm hot pot,hot pot,0.8486990942502579,True,liking,aesthetic/sensory,positive,liking,aesthetic_sensory,positive
+4,warm hot pot,winter nights,0.28591124718844285,False,liking,aesthetic/sensory,positive,liking,general,positive
+5,piano,piano,1.0,True,liking,stimulation,positive,liking,stimulation,positive
+5,hobby,piano,0.2995628305870532,False,liking,identification,positive,liking,stimulation,positive
+6,The Bangkok,new Thai restaurant,0.5505850053727129,False,wanting,goal,positive,wanting,goal,positive
+6,The Bangkok,dinner,0.24145644827502605,False,wanting,goal,positive,wanting,goal,positive
+6,new Thai restaurant,new Thai restaurant,1.0,True,wanting,goal,positive,wanting,goal,positive
+6,new Thai restaurant,dinner,0.29986163101751356,False,wanting,goal,positive,wanting,goal,positive
+7,France,France,1.0,True,liking,,positive,wanting,goal,positive
+8,muffin,muffins,0.9084546121274881,True,wanting,goal,positive,liking,aesthetic_sensory,positive
+8,muffin,sunny side up eggs,0.29909560234434657,False,wanting,goal,positive,liking,aesthetic_sensory,positive
+8,sunny side up,muffins,0.31293700952446973,False,wanting,goal,positive,liking,aesthetic_sensory,positive
+8,sunny side up,sunny side up eggs,0.9137485905909773,True,wanting,goal,positive,liking,aesthetic_sensory,positive
+8,baking,muffins,0.4821846901427869,False,wanting,goal,positive,liking,aesthetic_sensory,positive
+8,baking,sunny side up eggs,0.2926183665320283,False,wanting,goal,positive,liking,aesthetic_sensory,positive
+9,own food,food,0.6589857812028987,False,liking,aesthetic/sensory,positive,liking,general,negative
+9,own food,own food,1.0,True,liking,aesthetic/sensory,positive,liking,general,positive
+10,Superbad,Superbad,1.0,True,liking,stimulation,positive,liking,stimulation,positive
+10,Superbad,Superbad,1.0,True,wanting,goal,positive,liking,stimulation,positive
+11,blue shirt,blue one,0.5886051447649118,False,wanting,goal,positive,liking,aesthetic_sensory,positive
+12,Barry,Barry,1.0,True,liking,,negative,liking,identification,negative
+12,Barry,Paul,0.38495536837307537,False,liking,,negative,liking,identification,positive
+12,Barry,myself,0.2909997944339527,False,liking,,negative,liking,identification,neutral
+12,Paul,Barry,0.38495536837307537,False,liking,,positive,liking,identification,negative
+12,Paul,Paul,1.0,True,liking,,positive,liking,identification,positive
+12,Paul,myself,0.31143845108379953,False,liking,,positive,liking,identification,neutral
+13,blue dress,colour,0.3492079997234217,False,liking,aesthetic/sensory,positive,liking,aesthetic_sensory,positive
+13,blue dress,dress,0.5793669509558611,False,liking,aesthetic/sensory,positive,liking,aesthetic_sensory,positive
+13,blue dress,green dress,0.6843165627234915,False,liking,aesthetic/sensory,positive,liking,aesthetic_sensory,negative
+13,blue dress,blue dress,1.0,True,liking,aesthetic/sensory,positive,liking,aesthetic_sensory,positive
+14,souvenir store,Olympic souvenir store,0.6989346451297459,False,wanting,goal,positive,wanting,goal,positive
+14,souvenir store,Olympic Mascots,0.18212777095805013,False,wanting,goal,positive,liking,aesthetic_sensory,positive
+14,souvenir store,Huanhuan,0.23023755334550522,False,wanting,goal,positive,liking,aesthetic_sensory,positive
+14,souvenir store,postcards,0.37400015134786024,False,wanting,goal,positive,wanting,interest,neutral
+14,souvenir store,key chains,0.23565901868827382,False,wanting,goal,positive,wanting,interest,neutral
+14,souvenir store,posters,0.30567982627565604,False,wanting,goal,positive,wanting,interest,neutral
+14,souvenir store,arts and crafts,0.2651475946678376,False,wanting,goal,positive,wanting,interest,neutral
+14,Olympic Mascots,Olympic souvenir store,0.5288656078117002,False,wanting,goal,positive,wanting,goal,positive
+14,Olympic Mascots,Olympic Mascots,1.0,True,wanting,goal,positive,liking,aesthetic_sensory,positive
+14,Olympic Mascots,Huanhuan,0.158097369393938,False,wanting,goal,positive,liking,aesthetic_sensory,positive
+14,Olympic Mascots,postcards,0.1966532561736364,False,wanting,goal,positive,wanting,interest,neutral
+14,Olympic Mascots,key chains,0.2362228704833462,False,wanting,goal,positive,wanting,interest,neutral
+14,Olympic Mascots,posters,0.26730851632604974,False,wanting,goal,positive,wanting,interest,neutral
+14,Olympic Mascots,arts and crafts,0.1373136319193446,False,wanting,goal,positive,wanting,interest,neutral
+14,Olympic Mascots,Olympic souvenir store,0.5288656078117002,False,liking,aesthetic/sensory,positive,wanting,goal,positive
+14,Olympic Mascots,Olympic Mascots,1.0,True,liking,aesthetic/sensory,positive,liking,aesthetic_sensory,positive
+14,Olympic Mascots,Huanhuan,0.158097369393938,False,liking,aesthetic/sensory,positive,liking,aesthetic_sensory,positive
+14,Olympic Mascots,postcards,0.1966532561736364,False,liking,aesthetic/sensory,positive,wanting,interest,neutral
+14,Olympic Mascots,key chains,0.2362228704833462,False,liking,aesthetic/sensory,positive,wanting,interest,neutral
+14,Olympic Mascots,posters,0.26730851632604974,False,liking,aesthetic/sensory,positive,wanting,interest,neutral
+14,Olympic Mascots,arts and crafts,0.1373136319193446,False,liking,aesthetic/sensory,positive,wanting,interest,neutral
+14,Huanhuan,Olympic souvenir store,0.15788630915288307,False,liking,aesthetic/sensory,positive,wanting,goal,positive
+14,Huanhuan,Olympic Mascots,0.158097369393938,False,liking,aesthetic/sensory,positive,liking,aesthetic_sensory,positive
+14,Huanhuan,Huanhuan,1.0,True,liking,aesthetic/sensory,positive,liking,aesthetic_sensory,positive
+14,Huanhuan,postcards,0.2559352338151363,False,liking,aesthetic/sensory,positive,wanting,interest,neutral
+14,Huanhuan,key chains,0.14679761351276935,False,liking,aesthetic/sensory,positive,wanting,interest,neutral
+14,Huanhuan,posters,0.29367986370408045,False,liking,aesthetic/sensory,positive,wanting,interest,neutral
+14,Huanhuan,arts and crafts,0.16780921169938218,False,liking,aesthetic/sensory,positive,wanting,interest,neutral
+15,booth by the window,booth by the window,1.0,True,wanting,goal,positive,liking,aesthetic_sensory,positive
+16,orange,supermarket,0.21485523882379345,False,wanting,goal,positive,wanting,goal,positive
+16,orange,oranges,0.645510765439633,False,wanting,goal,positive,liking,aesthetic_sensory,neutral
+16,orange,cherries,0.36379677584031916,False,wanting,goal,positive,liking,aesthetic_sensory,positive
+16,orange,cakes,0.2525300100947411,False,wanting,goal,positive,wanting,goal,positive
+16,fresh and ripe and soft cherries,supermarket,0.17255466822899804,False,wanting,goal,positive,wanting,goal,positive
+16,fresh and ripe and soft cherries,oranges,0.376501301398332,False,wanting,goal,positive,liking,aesthetic_sensory,neutral
+16,fresh and ripe and soft cherries,cherries,0.7136191753820222,True,wanting,goal,positive,liking,aesthetic_sensory,positive
+16,fresh and ripe and soft cherries,cakes,0.23474230106890126,False,wanting,goal,positive,wanting,goal,positive
+16,cake,supermarket,0.2028469982606132,False,wanting,goal,positive,wanting,goal,positive
+16,cake,oranges,0.24147439827747832,False,wanting,goal,positive,liking,aesthetic_sensory,neutral
+16,cake,cherries,0.3321653752615349,False,wanting,goal,positive,liking,aesthetic_sensory,positive
+16,cake,cakes,0.8332387634032965,True,wanting,goal,positive,wanting,goal,positive
+17,latest design sunglasses,sunglasses,0.679812073354086,False,liking,aesthetic/sensory,positive,liking,aesthetic_sensory,positive
+17,latest design sunglasses,round shape pair,0.25663078284199164,False,liking,aesthetic/sensory,positive,liking,aesthetic_sensory,positive
+17,latest design and round shape sunglass,sunglasses,0.5553466947175257,False,wanting,goal,positive,liking,aesthetic_sensory,positive
+17,latest design and round shape sunglass,round shape pair,0.45526451752467384,False,wanting,goal,positive,liking,aesthetic_sensory,positive
+17,latest design and round shape sunglass,sunglasses,0.5553466947175257,False,need,functional,positive,liking,aesthetic_sensory,positive
+17,latest design and round shape sunglass,round shape pair,0.45526451752467384,False,need,functional,positive,liking,aesthetic_sensory,positive
+19,perfume Diana gave,perfume,0.5840925731009501,False,liking,aesthetic/sensory,positive,liking,aesthetic_sensory,positive
+19,perfume Diana gave,perfume,0.5840925731009501,False,liking,aesthetic/sensory,positive,need,personal,negative
+20,novels about early America,novels about early America,1.0,True,liking,stimulation,positive,liking,general,positive
+20,novels about early America,novels by Hemingway,0.5043583829896915,False,liking,stimulation,positive,liking,general,positive
+20,novels about early America,simple words,0.16762355531128564,False,liking,stimulation,positive,liking,aesthetic_sensory,positive
+20,novels about early America,spirit,0.08667905418233673,False,liking,stimulation,positive,liking,identification,positive
+20,Hemingway,novels about early America,0.29124524490482956,False,liking,,positive,liking,general,positive
+20,Hemingway,novels by Hemingway,0.7391197885709944,True,liking,,positive,liking,general,positive
+20,Hemingway,simple words,0.26649607968259326,False,liking,,positive,liking,aesthetic_sensory,positive
+20,Hemingway,spirit,0.19626724083054553,False,liking,,positive,liking,identification,positive
+20,spirit Hemingway convey,novels about early America,0.23307668518995778,False,liking,,positive,liking,general,positive
+20,spirit Hemingway convey,novels by Hemingway,0.5571872725660685,False,liking,,positive,liking,general,positive
+20,spirit Hemingway convey,simple words,0.33950565150715334,False,liking,,positive,liking,aesthetic_sensory,positive
+20,spirit Hemingway convey,spirit,0.48412094728782307,False,liking,,positive,liking,identification,positive
+23,whole wheat toast,whole wheat toast,1.0,True,wanting,goal,positive,liking,aesthetic_sensory,positive
+23,milk,whole wheat toast,0.31435245621738056,False,wanting,goal,positive,liking,aesthetic_sensory,positive
+23,toast,whole wheat toast,0.5151156454613253,False,wanting,goal,positive,liking,aesthetic_sensory,positive
+25,Burger Queen,milkshake,0.3319870259005496,False,wanting,goal,positive,liking,aesthetic_sensory,positive
+25,Burger Queen,vanilla milkshake,0.31659093836305474,False,wanting,goal,positive,liking,aesthetic_sensory,positive
+25,Burger Queen,fried food,0.35657908618041195,False,wanting,goal,positive,need,personal,negative
+25,vanilla milkshake,milkshake,0.7926784746369983,True,liking,aesthetic/sensory,positive,liking,aesthetic_sensory,positive
+25,vanilla milkshake,vanilla milkshake,1.0,True,liking,aesthetic/sensory,positive,liking,aesthetic_sensory,positive
+25,vanilla milkshake,fried food,0.23297682982638582,False,liking,aesthetic/sensory,positive,need,personal,negative
+26,back-packer,back-packer,1.0,True,liking,identification,positive,wanting,goal,positive
+26,back-packer,traveling,0.35965050125478387,False,liking,identification,positive,wanting,goal,positive
+26,back-packer,back-packer,1.0,True,wanting,goal,positive,wanting,goal,positive
+26,back-packer,traveling,0.35965050125478387,False,wanting,goal,positive,wanting,goal,positive
+28,aisle seat,aisle seat,1.0,True,need,personal,positive,liking,general,positive
+28,aisle seat,window,0.2261965056437248,False,need,personal,positive,liking,aesthetic_sensory,negative
+28,window seat,aisle seat,0.5779226560259874,False,need,personal,negative,liking,general,positive
+28,window seat,window,0.5602356460025627,False,need,personal,negative,liking,aesthetic_sensory,negative
+29,Catherine Zeta-Jones,Catherine Zeta-Jones,1.0,True,liking,,positive,liking,identification,positive
+29,Catherine Zeta-Jones,The Terminal,0.13591352637745982,False,liking,,positive,liking,stimulation,positive
+29,Catherine Zeta-Jones,Steven Spielberg,0.3067841734534288,False,liking,,positive,liking,identification,positive
+29,Catherine Zeta-Jones,Catherine Zeta-Jones,1.0,True,liking,aesthetic/sensory,positive,liking,identification,positive
+29,Catherine Zeta-Jones,The Terminal,0.13591352637745982,False,liking,aesthetic/sensory,positive,liking,stimulation,positive
+29,Catherine Zeta-Jones,Steven Spielberg,0.3067841734534288,False,liking,aesthetic/sensory,positive,liking,identification,positive
+29,movie,Catherine Zeta-Jones,0.26974219341029254,False,wanting,goal,positive,liking,identification,positive
+29,movie,The Terminal,0.21017714140664814,False,wanting,goal,positive,liking,stimulation,positive
+29,movie,Steven Spielberg,0.4047183480272731,False,wanting,goal,positive,liking,identification,positive
+30,vegetarian pizza,Italian food,0.45292386570412574,False,wanting,goal,positive,liking,general,positive
+30,Italian food,Italian food,1.0,True,wanting,goal,positive,liking,general,positive
+31,western music,western music,1.0,True,liking,,positive,liking,aesthetic_sensory,positive
+31,western music,concert,0.3214637328670772,False,liking,,positive,wanting,goal,positive
+31,western music concert,western music,0.8111426393277723,True,wanting,goal,positive,liking,aesthetic_sensory,positive
+31,western music concert,concert,0.5151958927531354,False,wanting,goal,positive,wanting,goal,positive
+32,fish,fish,1.0,True,liking,aesthetic/sensory,positive,liking,aesthetic_sensory,positive
+32,fish,apple pie,0.225607438435194,False,liking,aesthetic/sensory,positive,liking,aesthetic_sensory,positive
+32,apple pie,fish,0.225607438435194,False,wanting,goal,positive,liking,aesthetic_sensory,positive
+32,apple pie,apple pie,1.0,True,wanting,goal,positive,liking,aesthetic_sensory,positive
+32,The baked fish in tomato sauce,fish,0.43913538528004403,False,wanting,goal,positive,liking,aesthetic_sensory,positive
+32,The baked fish in tomato sauce,apple pie,0.32828492859985975,False,wanting,goal,positive,liking,aesthetic_sensory,positive
+33,clean sky,rain,0.2440866781184796,False,liking,aesthetic/sensory,positive,liking,general,positive
+33,clean sky,sky,0.5131683679894051,False,liking,aesthetic/sensory,positive,liking,aesthetic_sensory,positive
+33,clean sky,stars,0.32946429665691734,False,liking,aesthetic/sensory,positive,liking,aesthetic_sensory,positive
+33,clear stars,rain,0.25389157009338154,False,liking,aesthetic/sensory,positive,liking,general,positive
+33,clear stars,sky,0.48081339394035805,False,liking,aesthetic/sensory,positive,liking,aesthetic_sensory,positive
+33,clear stars,stars,0.6896544503298585,False,liking,aesthetic/sensory,positive,liking,aesthetic_sensory,positive
+34,two carats diamond ring,diamond ring,0.70198784092643,True,wanting,goal,positive,wanting,goal,positive
+34,two carats diamond ring,old-fashioned,0.12849765937990276,False,wanting,goal,positive,liking,aesthetic_sensory,negative
+34,two carats diamond ring,size,0.17980328234025558,False,wanting,goal,positive,need,functional,negative
+35,English corner,English corner,1.0,True,wanting,goal,negative,wanting,interest,negative
+36,hockey,hockey,1.0,True,wanting,goal,positive,wanting,goal,positive
+36,hockey,yachting,0.32604082473651147,False,wanting,goal,positive,wanting,goal,positive
+36,yachting,hockey,0.32604082473651147,False,wanting,goal,positive,wanting,goal,positive
+36,yachting,yachting,1.0,True,wanting,goal,positive,wanting,goal,positive
+37,smoking,smoking,1.0,True,wanting,goal,negative,need,personal,negative
+37,smoking,coming out of the closet,0.28113169043941943,False,wanting,goal,negative,wanting,goal,positive
+37,coming out of the closet,smoking,0.28113169043941943,False,wanting,goal,positive,need,personal,negative
+37,coming out of the closet,coming out of the closet,1.0,True,wanting,goal,positive,wanting,goal,positive
+38,Terminator,Terminator,1.0,True,liking,stimulation,positive,liking,general,positive
+38,Terminator,action movies,0.3991633581885535,False,liking,stimulation,positive,liking,stimulation,positive
+38,action movie,Terminator,0.44299506070894207,False,liking,stimulation,positive,liking,general,positive
+38,action movie,action movies,0.9117205948271258,True,liking,stimulation,positive,liking,stimulation,positive
+39,painting,painting,1.0,True,liking,aesthetic/sensory,positive,liking,aesthetic_sensory,positive
+41,big city,job in Beijing,0.34230776031397936,False,wanting,goal,positive,wanting,goal,positive
+41,big city,big cities,0.8321371609719248,True,wanting,goal,positive,wanting,goal,positive
+41,big city,development opportunities,0.2335116655187677,False,wanting,goal,positive,wanting,interest,positive
+41,big city,higher salaries,0.30736289058139826,False,wanting,goal,positive,need,functional,positive
+41,big city,living expenses,0.22573923587738967,False,wanting,goal,positive,need,personal,negative
+41,big city,apartment,0.3836529499127924,False,wanting,goal,positive,need,functional,positive
+41,big city,better life for parents,0.1873198495609908,False,wanting,goal,positive,wanting,goal,positive
+41,saving rent,job in Beijing,0.28255267298067654,False,need,functional,positive,wanting,goal,positive
+41,saving rent,big cities,0.19536695103035087,False,need,functional,positive,wanting,goal,positive
+41,saving rent,development opportunities,0.22547674072099536,False,need,functional,positive,wanting,interest,positive
+41,saving rent,higher salaries,0.24465560520964894,False,need,functional,positive,need,functional,positive
+41,saving rent,living expenses,0.47655216875732087,False,need,functional,positive,need,personal,negative
+41,saving rent,apartment,0.44736799037742,False,need,functional,positive,need,functional,positive
+41,saving rent,better life for parents,0.2986885226925921,False,need,functional,positive,wanting,goal,positive
+41,offering parents a better life,job in Beijing,0.26081645770804746,False,wanting,goal,positive,wanting,goal,positive
+41,offering parents a better life,big cities,0.22483594320024863,False,wanting,goal,positive,wanting,goal,positive
+41,offering parents a better life,development opportunities,0.45038154350214377,False,wanting,goal,positive,wanting,interest,positive
+41,offering parents a better life,higher salaries,0.41746220836232845,False,wanting,goal,positive,need,functional,positive
+41,offering parents a better life,living expenses,0.32641490181792704,False,wanting,goal,positive,need,personal,negative
+41,offering parents a better life,apartment,0.20977239405121603,False,wanting,goal,positive,need,functional,positive
+41,offering parents a better life,better life for parents,0.7594097861526998,True,wanting,goal,positive,wanting,goal,positive
+43,movie,movie,1.0,True,liking,aesthetic/sensory,positive,liking,aesthetic_sensory,positive
+43,movie,breakfast,0.21081311712642614,False,liking,aesthetic/sensory,positive,wanting,goal,positive
+43,coffee shop,movie,0.23973841490027473,False,wanting,goal,positive,liking,aesthetic_sensory,positive
+43,coffee shop,breakfast,0.41034792782264673,False,wanting,goal,positive,wanting,goal,positive
+44,Marketing,Marketing,1.0,True,wanting,interest,positive,wanting,interest,positive
+44,Marketing,Project Management,0.40810453844648187,False,wanting,interest,positive,liking,general,positive
+44,Marketing,English training program,0.23510636425348486,False,wanting,interest,positive,wanting,goal,positive
+44,Marketing,computer training program,0.22891086064380065,False,wanting,interest,positive,wanting,goal,positive
+44,Marketing,Finance,0.4223699173652466,False,wanting,interest,positive,wanting,goal,positive
+44,Marketing,certificates,0.24955123583657526,False,wanting,interest,positive,need,personal,negative
+44,Marketing,Microsoft Office,0.2808323108559395,False,wanting,interest,positive,liking,general,positive
+44,Project Management,Marketing,0.40810453844648187,False,liking,stimulation,positive,wanting,interest,positive
+44,Project Management,Project Management,1.0,True,liking,stimulation,positive,liking,general,positive
+44,Project Management,English training program,0.25388326857282933,False,liking,stimulation,positive,wanting,goal,positive
+44,Project Management,computer training program,0.3239833605783032,False,liking,stimulation,positive,wanting,goal,positive
+44,Project Management,Finance,0.34469380311801345,False,liking,stimulation,positive,wanting,goal,positive
+44,Project Management,certificates,0.14999700024488258,False,liking,stimulation,positive,need,personal,negative
+44,Project Management,Microsoft Office,0.32446961746613334,False,liking,stimulation,positive,liking,general,positive
+44,Project Management,Marketing,0.40810453844648187,False,wanting,interest,positive,wanting,interest,positive
+44,Project Management,Project Management,1.0,True,wanting,interest,positive,liking,general,positive
+44,Project Management,English training program,0.25388326857282933,False,wanting,interest,positive,wanting,goal,positive
+44,Project Management,computer training program,0.3239833605783032,False,wanting,interest,positive,wanting,goal,positive
+44,Project Management,Finance,0.34469380311801345,False,wanting,interest,positive,wanting,goal,positive
+44,Project Management,certificates,0.14999700024488258,False,wanting,interest,positive,need,personal,negative
+44,Project Management,Microsoft Office,0.32446961746613334,False,wanting,interest,positive,liking,general,positive
+44,Project Management,Marketing,0.40810453844648187,False,need,functional,positive,wanting,interest,positive
+44,Project Management,Project Management,1.0,True,need,functional,positive,liking,general,positive
+44,Project Management,English training program,0.25388326857282933,False,need,functional,positive,wanting,goal,positive
+44,Project Management,computer training program,0.3239833605783032,False,need,functional,positive,wanting,goal,positive
+44,Project Management,Finance,0.34469380311801345,False,need,functional,positive,wanting,goal,positive
+44,Project Management,certificates,0.14999700024488258,False,need,functional,positive,need,personal,negative
+44,Project Management,Microsoft Office,0.32446961746613334,False,need,functional,positive,liking,general,positive
+44,certificate of computer skills,Marketing,0.14918898804636033,False,need,functional,negative,wanting,interest,positive
+44,certificate of computer skills,Project Management,0.21074935397592479,False,need,functional,negative,liking,general,positive
+44,certificate of computer skills,English training program,0.3486420305611021,False,need,functional,negative,wanting,goal,positive
+44,certificate of computer skills,computer training program,0.5703916463587193,False,need,functional,negative,wanting,goal,positive
+44,certificate of computer skills,Finance,0.20468443158200247,False,need,functional,negative,wanting,goal,positive
+44,certificate of computer skills,certificates,0.5729220784251151,False,need,functional,negative,need,personal,negative
+44,certificate of computer skills,Microsoft Office,0.36987244552369775,False,need,functional,negative,liking,general,positive
+45,ZhongShan Park,ZhongShan Park,1.0,True,liking,aesthetic/sensory,positive,wanting,goal,positive
+45,ZhongShan Park,scenery,0.26253777113345783,False,liking,aesthetic/sensory,positive,liking,aesthetic_sensory,positive
+47,background music,radio,0.3511291370747065,False,need,functional,positive,liking,aesthetic_sensory,negative
+47,background music,background music,1.0,True,need,functional,positive,liking,aesthetic_sensory,positive
+47,radio,radio,1.0,True,need,functional,negative,liking,aesthetic_sensory,negative
+47,radio,background music,0.3511291370747065,False,need,functional,negative,liking,aesthetic_sensory,positive
+48,cooking,cooking,1.0,True,liking,,positive,liking,general,positive
+48,cooking,delicious food,0.46365112259362024,False,liking,,positive,liking,aesthetic_sensory,positive
+48,cooking,new recipes,0.44457199491586125,False,liking,,positive,liking,stimulation,positive
+48,cooking,cooking,1.0,True,liking,aesthetic/sensory,positive,liking,general,positive
+48,cooking,delicious food,0.46365112259362024,False,liking,aesthetic/sensory,positive,liking,aesthetic_sensory,positive
+48,cooking,new recipes,0.44457199491586125,False,liking,aesthetic/sensory,positive,liking,stimulation,positive
+48,trying new recipes,cooking,0.4724928537153332,False,liking,,positive,liking,general,positive
+48,trying new recipes,delicious food,0.4394797920630826,False,liking,,positive,liking,aesthetic_sensory,positive
+48,trying new recipes,new recipes,0.8243811749537697,True,liking,,positive,liking,stimulation,positive
+49,white coffee,Folk music,0.21066856935818057,False,wanting,goal,positive,liking,general,negative
+49,white coffee,classical music,0.20738560476952228,False,wanting,goal,positive,liking,general,positive
+49,Folk music,Folk music,1.0,True,liking,,negative,liking,general,negative
+49,Folk music,classical music,0.5150622687587652,False,liking,,negative,liking,general,positive
+49,classical music,Folk music,0.5150622687587652,False,liking,,positive,liking,general,negative
+49,classical music,classical music,1.0,True,liking,,positive,liking,general,positive
