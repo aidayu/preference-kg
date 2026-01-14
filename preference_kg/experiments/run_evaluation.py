@@ -1,6 +1,8 @@
 """嗜好抽出結果の評価スクリプト
 
 evaluation/ モジュールを使用して抽出結果を評価する
+- 対話ごとにOptimal Matchingで評価
+- Micro/Macro/Weighted F1で集計
 """
 
 import json
@@ -13,14 +15,10 @@ sys.path.insert(0, os.path.dirname(os.path.dirname(os.path.abspath(__file__))))
 
 from evaluation import (
     split_combined_axis,
-    normalize_sub_axis,
-    normalize_context,
-    normalize_intensity,
-    compute_hierarchical_metrics,
-    compute_f1,
-    save_evaluation_results,
-    print_evaluation_summary,
-    find_optimal_matching,
+    evaluate_dialogue,
+    aggregate_all_metrics,
+    DialogueResult,
+    AggregatedMetrics,
 )
 
 # --- 設定 ---
@@ -34,7 +32,25 @@ def load_experiment_results(filepath: str) -> dict:
         return json.load(f)
 
 
-def evaluate_experiment(experiment_data: dict) -> dict | None:
+def convert_predictions(extracted_prefs: dict) -> list[dict]:
+    """抽出結果を評価用の形式に変換する"""
+    if "error" in extracted_prefs:
+        return []
+    
+    predictions_raw = extracted_prefs.get("preferences", [])
+    predictions = []
+    
+    for pred in predictions_raw:
+        axis, sub_axis = split_combined_axis(pred.get("combined_axis", ""))
+        pred_converted = pred.copy()
+        pred_converted["axis"] = axis
+        pred_converted["sub_axis"] = sub_axis
+        predictions.append(pred_converted)
+    
+    return predictions
+
+
+def evaluate_experiment(experiment_data: dict) -> tuple[list[DialogueResult], dict[str, AggregatedMetrics]] | None:
     """
     実験結果を評価する
     
@@ -42,219 +58,94 @@ def evaluate_experiment(experiment_data: dict) -> dict | None:
         experiment_data: 実験データ全体
     
     Returns:
-        metrics: 評価指標の辞書
+        (dialogue_results, aggregated_metrics): 対話ごとの結果と集計結果
     """
     results = experiment_data.get("results", [])
     
-    total_gt_items = 0
-    total_pred_items = 0
-    matched_items = 0
-    
-    correct_axis = 0
-    correct_sub_axis = 0
-    correct_polarity = 0
-    correct_intensity = 0
-    correct_context = 0
-    perfect_matches = 0
-    
-    tp_axis = 0
-    tp_sub_axis = 0
-    tp_polarity = 0
-    tp_intensity = 0
-    tp_context = 0
-    
-    matched_pairs = []
+    if len(results) == 0:
+        print("評価対象データがありません。")
+        return None
     
     print(f"\n--- 評価開始: {len(results)}件の対話 ---")
+    
+    dialogue_results = []
     
     for result_entry in results:
         dialogue_id = result_entry["dialogue_id"]
         ground_truths = result_entry.get("ground_truth_annotations", [])
-        
         extracted_prefs = result_entry.get("extracted_preferences", {})
-        if "error" in extracted_prefs:
-            predictions = []
-        else:
-            predictions_raw = extracted_prefs.get("preferences", [])
-            
-            predictions = []
-            for pred in predictions_raw:
-                axis, sub_axis = split_combined_axis(pred.get("combined_axis", ""))
-                pred_converted = pred.copy()
-                pred_converted["axis"] = axis
-                pred_converted["sub_axis"] = sub_axis
-                predictions.append(pred_converted)
+        predictions = convert_predictions(extracted_prefs)
         
-        total_gt_items += len(ground_truths)
-        total_pred_items += len(predictions)
+        # 対話ごとの評価
+        result = evaluate_dialogue(
+            dialogue_id=str(dialogue_id),
+            ground_truths=ground_truths,
+            predictions=predictions,
+        )
+        dialogue_results.append(result)
         
-        # 最適マッチングを使用（Hungarian algorithm）
-        matching_results = find_optimal_matching(ground_truths, predictions)
+        # 対話ごとのサマリー表示
+        status = "SKIP" if result.n_gt == 0 else (
+            "PERFECT" if result.perfect_tp == result.n_gt else "PARTIAL"
+        )
+        print(f"[ID:{dialogue_id}] GT={result.n_gt}, Pred={result.n_pred}, "
+              f"Entity-F1={result.entity_f1:.2%}, Axis-F1={result.axis_f1:.2%} -> {status}")
+    
+    # 集計
+    aggregated = aggregate_all_metrics(dialogue_results)
+    
+    return dialogue_results, aggregated
+
+
+def print_aggregated_summary(aggregated: dict[str, AggregatedMetrics]):
+    """集計結果を表示する"""
+    print("\n" + "=" * 80)
+    print("評価結果サマリー (Micro / Macro / Weighted F1)")
+    print("=" * 80)
+    
+    header = f"{'Metric':<20} {'Micro-F1':>10} {'Macro-F1':>10} {'Weighted-F1':>12}"
+    print(header)
+    print("-" * 60)
+    
+    for name, metrics in aggregated.items():
+        row = f"{name:<20} {metrics.micro_f1:>10.2%} {metrics.macro_f1:>10.2%} {metrics.weighted_f1:>12.2%}"
+        print(row)
+    
+    print("=" * 80)
+
+
+def save_aggregated_results(
+    aggregated: dict[str, AggregatedMetrics],
+    dialogue_results: list[DialogueResult],
+    experiment_info: dict,
+    output_path: str,
+):
+    """集計結果をCSVに保存する"""
+    with open(output_path, "w", encoding="utf-8") as f:
+        # 実験情報
+        f.write("Experiment Information,,,,\n")
+        f.write(f"Timestamp,{experiment_info.get('timestamp', '')},,,\n")
+        f.write(f"Model,{experiment_info.get('model', '')},,,\n")
+        f.write(f"Few-shot IDs,\"{experiment_info.get('few_shot_ids', '')}\",,,\n")
+        f.write(f"Total Test Dialogues,{experiment_info.get('total_test_dialogues', len(dialogue_results))},,,\n")
+        f.write(",,,,\n")
         
-        for gt_idx, pred_idx, match, score in matching_results:
-            gt = ground_truths[gt_idx]
-            gt_entity = gt["entity"].lower().strip()
-            
-            status = "MISSING"
-            if match:
-                matched_items += 1
-                
-                is_axis_ok = (match["axis"] == gt["axis"])
-                
-                gt_sub_axis = normalize_sub_axis(gt.get("sub_axis"))
-                pred_sub_axis = normalize_sub_axis(match.get("sub_axis"))
-                is_sub_axis_ok = (pred_sub_axis == gt_sub_axis)
-                is_polarity_ok = (match["polarity"] == gt["polarity"])
-                
-                gt_intensity = normalize_intensity(gt.get("intensity"))
-                pred_intensity = normalize_intensity(match.get("intensity"))
-                is_intensity_ok = (pred_intensity == gt_intensity) if (gt_intensity and pred_intensity) else False
-                
-                gt_context = normalize_context(gt.get("context", []))
-                pred_context = normalize_context(match.get("context_tags", []))
-                
-                if len(gt_context) == 0 and len(pred_context) == 0:
-                    is_context_ok = True
-                elif len(gt_context) > 0 and len(pred_context) > 0:
-                    is_context_ok = len(gt_context & pred_context) > 0
-                else:
-                    is_context_ok = False
-                
-                if is_axis_ok:
-                    correct_axis += 1
-                    tp_axis += 1
-                if is_sub_axis_ok:
-                    correct_sub_axis += 1
-                    tp_sub_axis += 1
-                if is_polarity_ok:
-                    correct_polarity += 1
-                    tp_polarity += 1
-                if is_intensity_ok:
-                    correct_intensity += 1
-                    tp_intensity += 1
-                if is_context_ok:
-                    correct_context += 1
-                    tp_context += 1
-                
-                if is_axis_ok and is_sub_axis_ok and is_polarity_ok and is_intensity_ok and is_context_ok:
-                    perfect_matches += 1
-                    status = "PERFECT"
-                else:
-                    status = "MISMATCH"
-                
-                matched_pairs.append({
-                    "dialogue_id": dialogue_id,
-                    "gt": gt,
-                    "pred": match,
-                })
-            
-            print(f"[ID:{dialogue_id}] GT: {gt_entity} ({gt['axis']}/{gt.get('sub_axis')}) -> {status}")
-            if status == "MISMATCH" and match:
-                print(f"   Expected: {gt['axis']}, {gt.get('sub_axis')}, {gt['polarity']}, {gt.get('intensity')}, {gt.get('context')}")
-                print(f"   Got:      {match['axis']}, {match.get('sub_axis')}, {match['polarity']}, {match.get('intensity')}, {match.get('context_tags')}")
-    
-    if total_gt_items == 0:
-        print("評価対象データがありません。")
-        return None
-    
-    # Entity-level metrics
-    entity_recall = matched_items / total_gt_items
-    entity_precision = matched_items / total_pred_items if total_pred_items > 0 else 0
-    entity_f1 = compute_f1(entity_precision, entity_recall)
-    
-    # Axis metrics
-    axis_recall = correct_axis / total_gt_items
-    axis_precision = tp_axis / total_pred_items if total_pred_items > 0 else 0
-    axis_f1 = compute_f1(axis_precision, axis_recall)
-    
-    # Sub-Axis metrics
-    sub_axis_recall = correct_sub_axis / total_gt_items
-    sub_axis_precision = tp_sub_axis / total_pred_items if total_pred_items > 0 else 0
-    sub_axis_f1 = compute_f1(sub_axis_precision, sub_axis_recall)
-    
-    # Hierarchical Axis metrics
-    gt_axis_pairs = []
-    pred_axis_pairs = []
-    for pair in matched_pairs:
-        gt = pair["gt"]
-        pred = pair["pred"]
-        gt_axis_pairs.append((gt.get("axis", ""), normalize_sub_axis(gt.get("sub_axis"))))
-        pred_axis_pairs.append((pred.get("axis", ""), normalize_sub_axis(pred.get("sub_axis"))))
-    
-    hierarchical_metrics = compute_hierarchical_metrics(gt_axis_pairs, pred_axis_pairs)
-    
-    # Polarity metrics
-    polarity_recall = correct_polarity / total_gt_items
-    polarity_precision = tp_polarity / total_pred_items if total_pred_items > 0 else 0
-    polarity_f1 = compute_f1(polarity_precision, polarity_recall)
-    
-    # Intensity metrics
-    intensity_recall = correct_intensity / total_gt_items
-    intensity_precision = tp_intensity / total_pred_items if total_pred_items > 0 else 0
-    intensity_f1 = compute_f1(intensity_precision, intensity_recall)
-    
-    # Context metrics
-    context_recall = correct_context / total_gt_items
-    context_precision = tp_context / total_pred_items if total_pred_items > 0 else 0
-    context_f1 = compute_f1(context_precision, context_recall)
-    
-    # Perfect match metrics
-    perfect_recall = perfect_matches / total_gt_items
-    perfect_precision = perfect_matches / total_pred_items if total_pred_items > 0 else 0
-    perfect_f1 = compute_f1(perfect_precision, perfect_recall)
-    
-    return {
-        "total_gt_items": total_gt_items,
-        "total_pred_items": total_pred_items,
-        "matched_items": matched_items,
-        "correct_axis": correct_axis,
-        "correct_sub_axis": correct_sub_axis,
-        "correct_polarity": correct_polarity,
-        "correct_intensity": correct_intensity,
-        "correct_context": correct_context,
-        "perfect_matches": perfect_matches,
+        # 集計結果
+        f.write("Metric,Micro-F1,Macro-F1,Weighted-F1,Total TP\n")
+        for name, metrics in aggregated.items():
+            f.write(f"{name},{metrics.micro_f1:.4f},{metrics.macro_f1:.4f},{metrics.weighted_f1:.4f},{metrics.total_tp}\n")
         
-        "entity_recall": entity_recall,
-        "entity_precision": entity_precision,
-        "entity_f1": entity_f1,
+        f.write(",,,,\n")
         
-        "axis_accuracy": axis_recall,
-        "axis_recall": axis_recall,
-        "axis_precision": axis_precision,
-        "axis_f1": axis_f1,
-        
-        "sub_axis_accuracy": sub_axis_recall,
-        "sub_axis_recall": sub_axis_recall,
-        "sub_axis_precision": sub_axis_precision,
-        "sub_axis_f1": sub_axis_f1,
-        
-        "h_axis_recall": hierarchical_metrics["h_recall"],
-        "h_axis_precision": hierarchical_metrics["h_precision"],
-        "h_axis_f1": hierarchical_metrics["h_f1"],
-        "h_gt_augmented_size": hierarchical_metrics["gt_augmented_size"],
-        "h_pred_augmented_size": hierarchical_metrics["pred_augmented_size"],
-        "h_intersection_size": hierarchical_metrics["intersection_size"],
-        
-        "polarity_accuracy": polarity_recall,
-        "polarity_recall": polarity_recall,
-        "polarity_precision": polarity_precision,
-        "polarity_f1": polarity_f1,
-        
-        "intensity_accuracy": intensity_recall,
-        "intensity_recall": intensity_recall,
-        "intensity_precision": intensity_precision,
-        "intensity_f1": intensity_f1,
-        
-        "context_accuracy": context_recall,
-        "context_recall": context_recall,
-        "context_precision": context_precision,
-        "context_f1": context_f1,
-        
-        "perfect_match_accuracy": perfect_recall,
-        "perfect_recall": perfect_recall,
-        "perfect_precision": perfect_precision,
-        "perfect_f1": perfect_f1,
-    }
+        # 詳細（Precision/Recallも含む）
+        f.write("Detailed Metrics,,,,\n")
+        f.write("Metric,Type,Precision,Recall,F1\n")
+        for name, metrics in aggregated.items():
+            f.write(f"{name},Micro,{metrics.micro_precision:.4f},{metrics.micro_recall:.4f},{metrics.micro_f1:.4f}\n")
+            f.write(f"{name},Macro,{metrics.macro_precision:.4f},{metrics.macro_recall:.4f},{metrics.macro_f1:.4f}\n")
+            f.write(f"{name},Weighted,{metrics.weighted_precision:.4f},{metrics.weighted_recall:.4f},{metrics.weighted_f1:.4f}\n")
+    
+    print(f"結果を保存しました: {output_path}")
 
 
 def main(experiment_results_path=EXPERIMENT_RESULTS_PATH, result_dir=RESULT_DIR):
@@ -272,20 +163,22 @@ def main(experiment_results_path=EXPERIMENT_RESULTS_PATH, result_dir=RESULT_DIR)
     print(f"テスト対話数: {experiment_info.get('total_test_dialogues')}")
     
     print("\n[2/4] 評価実行中...")
-    metrics = evaluate_experiment(experiment_data)
+    eval_result = evaluate_experiment(experiment_data)
     
-    if not metrics:
+    if eval_result is None:
         print("評価に失敗しました。")
         return
     
+    dialogue_results, aggregated = eval_result
+    
     print("\n[3/4] 結果表示中...")
-    print_evaluation_summary(metrics)
+    print_aggregated_summary(aggregated)
     
     print("\n[4/4] 結果保存中...")
     os.makedirs(result_dir, exist_ok=True)
     timestamp = datetime.now().strftime("%Y%m%d_%H%M%S")
     output_path = os.path.join(result_dir, f"evaluation_results_{timestamp}.csv")
-    save_evaluation_results(metrics, experiment_info, output_path)
+    save_aggregated_results(aggregated, dialogue_results, experiment_info, output_path)
     
     print("\n✓ 評価完了！")
 

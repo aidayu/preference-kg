@@ -4,6 +4,8 @@
 - normalizers: 正規化関数
 - metrics: 評価指標計算
 - matching: GT-Pred間の最適マッチング
+- dialogue_evaluator: 対話単位評価
+- aggregators: Micro/Macro/Weighted F1集計
 - reporter: 結果出力
 """
 
@@ -23,6 +25,16 @@ from .matching import (
     compute_matching_score,
     find_optimal_matching,
     get_unmatched_predictions,
+)
+from .dialogue_evaluator import (
+    DialogueResult,
+    evaluate_dialogue,
+)
+from .aggregators import (
+    AggregatedMetrics,
+    aggregate_metrics,
+    aggregate_hierarchical_metrics,
+    aggregate_all_metrics,
 )
 from .reporter import (
     save_evaluation_results,
@@ -44,8 +56,15 @@ __all__ = [
     "compute_matching_score",
     "find_optimal_matching",
     "get_unmatched_predictions",
+    # dialogue_evaluator
+    "DialogueResult",
+    "evaluate_dialogue",
+    # aggregators
+    "AggregatedMetrics",
+    "aggregate_metrics",
+    "aggregate_hierarchical_metrics",
+    "aggregate_all_metrics",
     # reporter
     "save_evaluation_results",
     "print_evaluation_summary",
 ]
-

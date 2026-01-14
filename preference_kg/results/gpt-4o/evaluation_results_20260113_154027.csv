@@ -1,0 +1,42 @@
+Experiment Information,,,,
+Timestamp,20260112_194507,,,
+Model,gpt-4o,,,
+Few-shot IDs,"[0, 18, 46]",,,
+Total Test Dialogues,47,,,
+,,,,
+Metric,Micro-F1,Macro-F1,Weighted-F1,Total TP
+Entity,0.6122,0.6609,0.6429,60
+Axis,0.4633,0.4461,0.4347,41
+Sub-Axis,0.3210,0.3046,0.2866,26
+Hierarchical Axis,0.4637,0.4662,0.4408,0
+Polarity,0.5907,0.6445,0.6199,57
+Intensity,0.4972,0.5255,0.5047,45
+Context,0.5055,0.5340,0.5004,46
+Perfect Match,0.1745,0.1656,0.1521,13
+,,,,
+Detailed Metrics,,,,
+Metric,Type,Precision,Recall,F1
+Entity,Micro,0.5660,0.6667,0.6122
+Entity,Macro,0.6777,0.7139,0.6609
+Entity,Weighted,0.6784,0.6667,0.6429
+Axis,Micro,0.4713,0.4556,0.4633
+Axis,Macro,0.4694,0.4917,0.4461
+Axis,Weighted,0.4757,0.4556,0.4347
+Sub-Axis,Micro,0.3611,0.2889,0.3210
+Sub-Axis,Macro,0.3495,0.3282,0.3046
+Sub-Axis,Weighted,0.3459,0.2889,0.2866
+Hierarchical Axis,Micro,0.5583,0.3964,0.4637
+Hierarchical Axis,Macro,0.5377,0.4425,0.4662
+Hierarchical Axis,Weighted,0.5306,0.4094,0.4408
+Polarity,Micro,0.5534,0.6333,0.5907
+Polarity,Macro,0.6757,0.6901,0.6445
+Polarity,Weighted,0.6757,0.6333,0.6199
+Intensity,Micro,0.4945,0.5000,0.4972
+Intensity,Macro,0.5816,0.5456,0.5255
+Intensity,Weighted,0.5839,0.5000,0.5047
+Context,Micro,0.5000,0.5111,0.5055
+Context,Macro,0.5504,0.5702,0.5340
+Context,Weighted,0.5339,0.5111,0.5004
+Perfect Match,Micro,0.2203,0.1444,0.1745
+Perfect Match,Macro,0.1992,0.1687,0.1656
+Perfect Match,Weighted,0.1922,0.1444,0.1521
