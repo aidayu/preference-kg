@@ -213,7 +213,7 @@ def run_experiment():
     
     # 結果保存
     print("\n[5/5] 結果保存中...")
-    output_dir = os.path.join(os.path.dirname(__file__), f"../results/{MODEL_NAME}")
+    output_dir = os.path.join(os.path.dirname(__file__), f"../results/experiments/{MODEL_NAME}")
     os.makedirs(output_dir, exist_ok=True)
     
     timestamp = datetime.now().strftime("%Y%m%d_%H%M%S")

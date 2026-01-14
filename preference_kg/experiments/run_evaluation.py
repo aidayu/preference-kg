@@ -9,6 +9,7 @@ import json
 import os
 import sys
 from datetime import datetime
+from pathlib import Path
 
 # 親ディレクトリをパスに追加（experiments/ から preference_kg/ へ）
 sys.path.insert(0, os.path.dirname(os.path.dirname(os.path.abspath(__file__))))
@@ -21,9 +22,26 @@ from evaluation import (
     AggregatedMetrics,
 )
 
-# --- 設定 ---
-EXPERIMENT_RESULTS_PATH = "/home/y-aida/Programs/preference-kg/preference_kg/results/gpt-4o/experiment_results_20260112_194507.json"
-RESULT_DIR = "/home/y-aida/Programs/preference-kg/preference_kg/results/gpt-4o"
+# =====================================================================
+# === ユーザー設定 ===
+# 評価したい実験結果のパスをここに貼り付けてください
+# =====================================================================
+EXPERIMENT_RESULTS_PATH = "/home/y-aida/Programs/preference-kg/preference_kg/results/experiments/gpt-4o/experiment_results_20260112_194507.json"
+# =====================================================================
+
+# --- 以下は自動生成（編集不要） ---
+import re
+RESULTS_ROOT = Path(__file__).parent.parent / "results"
+
+# パスからモデル名とタイムスタンプを抽出
+_exp_path = Path(EXPERIMENT_RESULTS_PATH)
+_filename = _exp_path.stem  # "experiment_results_20260112_194507"
+_timestamp_match = re.search(r"(\d{8}_\d{6})", _filename)
+EXPERIMENT_TIMESTAMP = _timestamp_match.group(1) if _timestamp_match else datetime.now().strftime("%Y%m%d_%H%M%S")
+MODEL_NAME = _exp_path.parent.name  # "gpt-4o"
+
+# 評価結果の出力先
+EVALUATION_OUTPUT_DIR = RESULTS_ROOT / "evaluations" / MODEL_NAME / EXPERIMENT_TIMESTAMP
 
 
 def load_experiment_results(filepath: str) -> dict:
@@ -148,10 +166,15 @@ def save_aggregated_results(
     print(f"結果を保存しました: {output_path}")
 
 
-def main(experiment_results_path=EXPERIMENT_RESULTS_PATH, result_dir=RESULT_DIR):
+def main(experiment_results_path=EXPERIMENT_RESULTS_PATH, evaluation_output_dir=EVALUATION_OUTPUT_DIR):
     """メイン評価関数"""
+    # Path を文字列に変換
+    experiment_results_path = str(experiment_results_path)
+    evaluation_output_dir = str(evaluation_output_dir)
+    
     print("=== 実験結果評価開始 ===")
     print(f"実験結果ファイル: {experiment_results_path}")
+    print(f"評価結果出力先: {evaluation_output_dir}")
     
     print("\n[1/4] 実験結果読み込み中...")
     experiment_data = load_experiment_results(experiment_results_path)
@@ -175,9 +198,9 @@ def main(experiment_results_path=EXPERIMENT_RESULTS_PATH, result_dir=RESULT_DIR)
     print_aggregated_summary(aggregated)
     
     print("\n[4/4] 結果保存中...")
-    os.makedirs(result_dir, exist_ok=True)
+    os.makedirs(evaluation_output_dir, exist_ok=True)
     timestamp = datetime.now().strftime("%Y%m%d_%H%M%S")
-    output_path = os.path.join(result_dir, f"evaluation_results_{timestamp}.csv")
+    output_path = os.path.join(evaluation_output_dir, f"evaluation_{timestamp}_SemEMatch_3F1.csv")
     save_aggregated_results(aggregated, dialogue_results, experiment_info, output_path)
     
     print("\n✓ 評価完了！")
@@ -185,3 +208,4 @@ def main(experiment_results_path=EXPERIMENT_RESULTS_PATH, result_dir=RESULT_DIR)
 
 if __name__ == "__main__":
     main()
+
