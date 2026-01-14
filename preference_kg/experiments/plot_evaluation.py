@@ -10,6 +10,13 @@ import matplotlib.pyplot as plt
 import numpy as np
 import pandas as pd
 
+# =====================================================================
+# === ユーザー設定 ===
+# グラフ化したい評価結果CSVのパスをここに貼り付けてください
+# =====================================================================
+EVALUATION_CSV_PATH = "/home/y-aida/Programs/preference-kg/preference_kg/results/evaluations/localLLM/20260114_173623/evaluation_20260114_173714_SemEMatch_3F1.csv"
+# =====================================================================
+
 
 def parse_evaluation_csv(filepath: str) -> dict:
     """
@@ -193,9 +200,10 @@ def create_precision_recall_chart(data: dict, output_path: str):
     plt.close()
 
 
-def main():
+def main():    
     parser = argparse.ArgumentParser(description="評価結果CSVからグラフを生成")
-    parser.add_argument("csv_path", help="評価結果CSVファイルのパス")
+    parser.add_argument("csv_path", nargs="?", default=EVALUATION_CSV_PATH,
+                        help="評価結果CSVファイルのパス（省略時は上記設定を使用）")
     parser.add_argument("-o", "--output", help="出力画像パス（省略時はCSVと同じ場所）")
     parser.add_argument("-t", "--title", help="グラフタイトル")
     parser.add_argument("--type", choices=["f1", "prf", "both"], default="both",
@@ -204,6 +212,8 @@ def main():
     args = parser.parse_args()
     
     csv_path = Path(args.csv_path)
+    print(f"評価結果ファイル: {csv_path}")
+    
     if not csv_path.exists():
         print(f"Error: File not found: {csv_path}")
         return
@@ -221,3 +231,4 @@ def main():
 
 if __name__ == "__main__":
     main()
+
