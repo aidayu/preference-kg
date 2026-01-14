@@ -4,6 +4,7 @@
 - normalizers: 正規化関数
 - metrics: 評価指標計算
 - matching: GT-Pred間の最適マッチング
+- semantic_similarity: 意味的類似度計算（OpenAI Embeddings）
 - dialogue_evaluator: 対話単位評価
 - aggregators: Micro/Macro/Weighted F1集計
 - reporter: 結果出力
@@ -26,6 +27,13 @@ from .matching import (
     find_optimal_matching,
     get_unmatched_predictions,
 )
+from .semantic_similarity import (
+    compute_entity_similarity,
+    entities_match,
+    clear_embedding_cache,
+    get_cache_info,
+    ENTITY_SIMILARITY_THRESHOLD,
+)
 from .dialogue_evaluator import (
     DialogueResult,
     evaluate_dialogue,
@@ -40,6 +48,7 @@ from .reporter import (
     save_evaluation_results,
     print_evaluation_summary,
 )
+
 
 __all__ = [
     # normalizers
@@ -56,6 +65,12 @@ __all__ = [
     "compute_matching_score",
     "find_optimal_matching",
     "get_unmatched_predictions",
+    # semantic_similarity
+    "compute_entity_similarity",
+    "entities_match",
+    "clear_embedding_cache",
+    "get_cache_info",
+    "ENTITY_SIMILARITY_THRESHOLD",
     # dialogue_evaluator
     "DialogueResult",
     "evaluate_dialogue",
@@ -68,3 +83,4 @@ __all__ = [
     "save_evaluation_results",
     "print_evaluation_summary",
 ]
+

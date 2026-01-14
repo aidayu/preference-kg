@@ -2,12 +2,14 @@
 
 GT（正解）とPred（予測）の嗜好オブジェクト間の最適マッチングを行う。
 Hungarian algorithmを使用して、スコア合計が最大となる1対1マッチングを計算する。
+意味的類似度計算にはOpenAI Embeddingsを使用する。
 """
 
 import numpy as np
 from scipy.optimize import linear_sum_assignment
 
 from .normalizers import normalize_sub_axis, normalize_context, normalize_intensity
+from .semantic_similarity import compute_entity_similarity, ENTITY_SIMILARITY_THRESHOLD
 
 
 def compute_matching_score(gt: dict, pred: dict) -> float:
@@ -15,7 +17,7 @@ def compute_matching_score(gt: dict, pred: dict) -> float:
     GTとPred嗜好オブジェクト間の類似度スコアを計算する。
     
     スコア配分:
-    - Entity部分一致: 1.0
+    - Entity意味的類似度: 0.0-1.0（閾値以上で有効、それ以下は0）
     - Axis一致: 1.0
     - Sub-axis一致: 1.0
     - Polarity一致: 1.0
@@ -31,17 +33,20 @@ def compute_matching_score(gt: dict, pred: dict) -> float:
     """
     score = 0.0
     
-    # Entity部分一致チェック（必須条件）
-    gt_entity = gt.get("entity", "").lower().strip()
-    pred_entity = pred.get("entity", "").lower().strip()
+    # Entity意味的類似度チェック（必須条件）
+    gt_entity = gt.get("entity", "").strip()
+    pred_entity = pred.get("entity", "").strip()
     
     if not gt_entity or not pred_entity:
         return 0.0
     
-    if gt_entity in pred_entity or pred_entity in gt_entity:
-        score += 1.0
+    entity_similarity = compute_entity_similarity(gt_entity, pred_entity)
+    
+    if entity_similarity >= ENTITY_SIMILARITY_THRESHOLD:
+        # 類似度をそのままスコアに加算（0.8-1.0の範囲）
+        score += entity_similarity
     else:
-        # Entityが一致しない場合はマッチ不可
+        # 類似度が閾値未満の場合はマッチ不可
         return 0.0
     
     # Axis一致
