@@ -21,7 +21,7 @@ _client: OpenAI | None = None
 EMBEDDING_MODEL = "text-embedding-3-small"
 
 # エンティティマッチングの類似度閾値
-ENTITY_SIMILARITY_THRESHOLD = 0.7
+ENTITY_SIMILARITY_THRESHOLD = 0.75
 
 
 def _get_client() -> OpenAI:

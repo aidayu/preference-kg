@@ -14,24 +14,22 @@ from .semantic_similarity import compute_entity_similarity, ENTITY_SIMILARITY_TH
 
 def compute_matching_score(gt: dict, pred: dict) -> float:
     """
-    GTとPred嗜好オブジェクト間の類似度スコアを計算する。
+    GTとPred嗜好オブジェクト間のマッチングスコアを計算する。
     
-    スコア配分:
-    - Entity意味的類似度: 0.0-1.0（閾値以上で有効、それ以下は0）
-    - Axis一致: 1.0
-    - Sub-axis一致: 1.0
-    - Polarity一致: 1.0
-    - Intensity一致: 0.5
-    - Context重複あり: 0.5
+    スコア計算式:
+        スコア = entity類似度 × 10 + axis一致(1 or 0) + sub_axis一致(1 or 0)
+        
+        - entity類似度が閾値未満の場合はスコア0（マッチ不可）
+        - sub_axis一致はaxisが一致している場合のみ考慮
     
     Args:
         gt: 正解の嗜好オブジェクト
         pred: 予測の嗜好オブジェクト
     
     Returns:
-        0.0-5.0のスコア（高いほど良いマッチ）
+        0.0-12.0のスコア（高いほど良いマッチ）
     """
-    score = 0.0
+    ENTITY_WEIGHT = 10
     
     # Entity意味的類似度チェック（必須条件）
     gt_entity = gt.get("entity", "").strip()
@@ -42,44 +40,27 @@ def compute_matching_score(gt: dict, pred: dict) -> float:
     
     entity_similarity = compute_entity_similarity(gt_entity, pred_entity)
     
-    if entity_similarity >= ENTITY_SIMILARITY_THRESHOLD:
-        # 類似度をそのままスコアに加算（0.8-1.0の範囲）
-        score += entity_similarity
-    else:
+    if entity_similarity < ENTITY_SIMILARITY_THRESHOLD:
         # 類似度が閾値未満の場合はマッチ不可
         return 0.0
     
+    # スコア計算開始
+    score = entity_similarity * ENTITY_WEIGHT
+    
     # Axis一致
-    if gt.get("axis") == pred.get("axis"):
+    axis_match = gt.get("axis") == pred.get("axis")
+    if axis_match:
         score += 1.0
     
-    # Sub-axis一致（正規化して比較）
-    gt_sub_axis = normalize_sub_axis(gt.get("sub_axis"))
-    pred_sub_axis = normalize_sub_axis(pred.get("sub_axis"))
-    if gt_sub_axis == pred_sub_axis:
-        score += 1.0
-    
-    # Polarity一致
-    if gt.get("polarity") == pred.get("polarity"):
-        score += 1.0
-    
-    # Intensity一致（正規化して比較）
-    gt_intensity = normalize_intensity(gt.get("intensity"))
-    pred_intensity = normalize_intensity(pred.get("intensity"))
-    if gt_intensity and pred_intensity and gt_intensity == pred_intensity:
-        score += 0.5
-    
-    # Context重複チェック
-    gt_context = normalize_context(gt.get("context", []))
-    pred_context = normalize_context(pred.get("context_tags", []))
-    
-    if len(gt_context) == 0 and len(pred_context) == 0:
-        score += 0.5
-    elif len(gt_context) > 0 and len(pred_context) > 0:
-        if len(gt_context & pred_context) > 0:
-            score += 0.5
+    # Sub-axis一致（Axisが一致している場合のみ）
+    if axis_match:
+        gt_sub_axis = normalize_sub_axis(gt.get("sub_axis"))
+        pred_sub_axis = normalize_sub_axis(pred.get("sub_axis"))
+        if gt_sub_axis == pred_sub_axis:
+            score += 1.0
     
     return score
+
 
 
 def find_optimal_matching(
