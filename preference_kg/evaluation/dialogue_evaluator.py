@@ -77,6 +77,17 @@ class DialogueResult:
     perfect_precision: float = 0.0
     perfect_recall: float = 0.0
     perfect_f1: float = 0.0
+    
+    # マッチしたペア数（Accuracy計算用）
+    n_matched: int = 0
+    
+    # 条件付き分類精度 (Matched内でのAccuracy)
+    axis_accuracy: float = 0.0
+    sub_axis_accuracy: float = 0.0
+    polarity_accuracy: float = 0.0
+    intensity_accuracy: float = 0.0
+    context_accuracy: float = 0.0
+    perfect_accuracy: float = 0.0
 
 
 def _calc_prf_from_counts(tp: int, fp: int, fn: int) -> tuple[float, float, float]:
@@ -210,6 +221,16 @@ def evaluate_dialogue(
     
     result.perfect_precision, result.perfect_recall, result.perfect_f1 = _calc_prf_from_counts(
         result.perfect_tp, fp, result.perfect_fn)
+    
+    # 条件付き分類精度 (マッチしたペア内でのAccuracy)
+    result.n_matched = result.entity_tp
+    if result.n_matched > 0:
+        result.axis_accuracy = result.axis_tp / result.n_matched
+        result.sub_axis_accuracy = result.sub_axis_tp / result.n_matched
+        result.polarity_accuracy = result.polarity_tp / result.n_matched
+        result.intensity_accuracy = result.intensity_tp / result.n_matched
+        result.context_accuracy = result.context_tp / result.n_matched
+        result.perfect_accuracy = result.perfect_tp / result.n_matched
     
     # 階層的嗜好軸
     result.h_axis_gt_size = h_gt_total

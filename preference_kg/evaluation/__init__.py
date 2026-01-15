@@ -40,7 +40,9 @@ from .dialogue_evaluator import (
 )
 from .aggregators import (
     AggregatedMetrics,
+    AggregatedAccuracy,
     aggregate_metrics,
+    aggregate_accuracy,
     aggregate_hierarchical_metrics,
     aggregate_all_metrics,
 )
@@ -76,7 +78,9 @@ __all__ = [
     "evaluate_dialogue",
     # aggregators
     "AggregatedMetrics",
+    "AggregatedAccuracy",
     "aggregate_metrics",
+    "aggregate_accuracy",
     "aggregate_hierarchical_metrics",
     "aggregate_all_metrics",
     # reporter

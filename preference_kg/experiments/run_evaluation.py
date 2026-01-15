@@ -20,13 +20,14 @@ from evaluation import (
     aggregate_all_metrics,
     DialogueResult,
     AggregatedMetrics,
+    AggregatedAccuracy,
 )
 
 # =====================================================================
 # === ユーザー設定 ===
 # 評価したい実験結果のパスをここに貼り付けてください
 # =====================================================================
-EXPERIMENT_RESULTS_PATH = "/home/y-aida/Programs/preference-kg/preference_kg/results/experiments/llama3_8B/experiment_results_llama3_8B_CoT4step.json"
+EXPERIMENT_RESULTS_PATH = "/home/y-aida/Programs/preference-kg/preference_kg/results/experiments/gemma3:27b/experiment_results_20260115_174401_delReasoning.json"
 # =====================================================================
 
 # --- 以下は自動生成（編集不要） ---
@@ -68,7 +69,7 @@ def convert_predictions(extracted_prefs: dict) -> list[dict]:
     return predictions
 
 
-def evaluate_experiment(experiment_data: dict) -> tuple[list[DialogueResult], dict[str, AggregatedMetrics]] | None:
+def evaluate_experiment(experiment_data: dict) -> tuple[list[DialogueResult], dict[str, AggregatedMetrics], AggregatedAccuracy] | None:
     """
     実験結果を評価する
     
@@ -76,7 +77,7 @@ def evaluate_experiment(experiment_data: dict) -> tuple[list[DialogueResult], di
         experiment_data: 実験データ全体
     
     Returns:
-        (dialogue_results, aggregated_metrics): 対話ごとの結果と集計結果
+        (dialogue_results, aggregated_metrics, accuracy): 対話ごとの結果と集計結果とAccuracy
     """
     results = experiment_data.get("results", [])
     
@@ -110,12 +111,12 @@ def evaluate_experiment(experiment_data: dict) -> tuple[list[DialogueResult], di
               f"Entity-F1={result.entity_f1:.2%}, Axis-F1={result.axis_f1:.2%} -> {status}")
     
     # 集計
-    aggregated = aggregate_all_metrics(dialogue_results)
+    aggregated, accuracy = aggregate_all_metrics(dialogue_results)
     
-    return dialogue_results, aggregated
+    return dialogue_results, aggregated, accuracy
 
 
-def print_aggregated_summary(aggregated: dict[str, AggregatedMetrics]):
+def print_aggregated_summary(aggregated: dict[str, AggregatedMetrics], accuracy: AggregatedAccuracy):
     """集計結果を表示する"""
     print("\n" + "=" * 80)
     print("評価結果サマリー (Micro / Macro / Weighted F1)")
@@ -130,10 +131,34 @@ def print_aggregated_summary(aggregated: dict[str, AggregatedMetrics]):
         print(row)
     
     print("=" * 80)
+    
+    # 条件付き分類精度を表示
+    print("\n" + "=" * 80)
+    print(f"条件付き分類精度 (マッチしたペア内でのAccuracy, N={accuracy.total_matched})")
+    print("=" * 80)
+    
+    header = f"{'Attribute':<20} {'Micro-Acc':>12} {'Macro-Acc':>12}"
+    print(header)
+    print("-" * 50)
+    
+    acc_data = [
+        ("Axis", accuracy.axis_micro_accuracy, accuracy.axis_accuracy),
+        ("Sub-Axis", accuracy.sub_axis_micro_accuracy, accuracy.sub_axis_accuracy),
+        ("Polarity", accuracy.polarity_micro_accuracy, accuracy.polarity_accuracy),
+        ("Intensity", accuracy.intensity_micro_accuracy, accuracy.intensity_accuracy),
+        ("Context", accuracy.context_micro_accuracy, accuracy.context_accuracy),
+        ("Perfect", accuracy.perfect_micro_accuracy, accuracy.perfect_accuracy),
+    ]
+    
+    for attr, micro, macro in acc_data:
+        print(f"{attr:<20} {micro:>12.2%} {macro:>12.2%}")
+    
+    print("=" * 80)
 
 
 def save_aggregated_results(
     aggregated: dict[str, AggregatedMetrics],
+    accuracy: AggregatedAccuracy,
     dialogue_results: list[DialogueResult],
     experiment_info: dict,
     output_path: str,
@@ -146,12 +171,25 @@ def save_aggregated_results(
         f.write(f"Model,{experiment_info.get('model', '')},,,\n")
         f.write(f"Few-shot IDs,\"{experiment_info.get('few_shot_ids', '')}\",,,\n")
         f.write(f"Total Test Dialogues,{experiment_info.get('total_test_dialogues', len(dialogue_results))},,,\n")
+        f.write(f"Total Matched Pairs,{accuracy.total_matched},,,\n")
         f.write(",,,,\n")
         
         # 集計結果
         f.write("Metric,Micro-F1,Macro-F1,Weighted-F1,Total TP\n")
         for name, metrics in aggregated.items():
             f.write(f"{name},{metrics.micro_f1:.4f},{metrics.macro_f1:.4f},{metrics.weighted_f1:.4f},{metrics.total_tp}\n")
+        
+        f.write(",,,,\n")
+        
+        # 条件付き分類精度
+        f.write("Conditional Classification Accuracy (within matched pairs),,,,\n")
+        f.write("Attribute,Micro-Accuracy,Macro-Accuracy,,\n")
+        f.write(f"Axis,{accuracy.axis_micro_accuracy:.4f},{accuracy.axis_accuracy:.4f},,\n")
+        f.write(f"Sub-Axis,{accuracy.sub_axis_micro_accuracy:.4f},{accuracy.sub_axis_accuracy:.4f},,\n")
+        f.write(f"Polarity,{accuracy.polarity_micro_accuracy:.4f},{accuracy.polarity_accuracy:.4f},,\n")
+        f.write(f"Intensity,{accuracy.intensity_micro_accuracy:.4f},{accuracy.intensity_accuracy:.4f},,\n")
+        f.write(f"Context,{accuracy.context_micro_accuracy:.4f},{accuracy.context_accuracy:.4f},,\n")
+        f.write(f"Perfect,{accuracy.perfect_micro_accuracy:.4f},{accuracy.perfect_accuracy:.4f},,\n")
         
         f.write(",,,,\n")
         
@@ -192,16 +230,16 @@ def main(experiment_results_path=EXPERIMENT_RESULTS_PATH, evaluation_output_dir=
         print("評価に失敗しました。")
         return
     
-    dialogue_results, aggregated = eval_result
+    dialogue_results, aggregated, accuracy = eval_result
     
     print("\n[3/4] 結果表示中...")
-    print_aggregated_summary(aggregated)
+    print_aggregated_summary(aggregated, accuracy)
     
     print("\n[4/4] 結果保存中...")
     os.makedirs(evaluation_output_dir, exist_ok=True)
     timestamp = datetime.now().strftime("%Y%m%d_%H%M%S")
     output_path = os.path.join(evaluation_output_dir, f"evaluation_{timestamp}_SemEMatch_3F1.csv")
-    save_aggregated_results(aggregated, dialogue_results, experiment_info, output_path)
+    save_aggregated_results(aggregated, accuracy, dialogue_results, experiment_info, output_path)
     
     print("\n✓ 評価完了！")
 

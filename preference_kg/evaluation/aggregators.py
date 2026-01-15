@@ -38,6 +38,29 @@ class AggregatedMetrics:
     n_dialogues: int = 0
 
 
+@dataclass
+class AggregatedAccuracy:
+    """集計された条件付き分類精度"""
+    # 各属性のマクロ平均Accuracy (対話ごとのAccuracyの平均)
+    axis_accuracy: float = 0.0
+    sub_axis_accuracy: float = 0.0
+    polarity_accuracy: float = 0.0
+    intensity_accuracy: float = 0.0
+    context_accuracy: float = 0.0
+    perfect_accuracy: float = 0.0
+    
+    # Micro Accuracy (全ペア統合)
+    axis_micro_accuracy: float = 0.0
+    sub_axis_micro_accuracy: float = 0.0
+    polarity_micro_accuracy: float = 0.0
+    intensity_micro_accuracy: float = 0.0
+    context_micro_accuracy: float = 0.0
+    perfect_micro_accuracy: float = 0.0
+    
+    total_matched: int = 0
+    n_dialogues: int = 0
+
+
 def _compute_f1(precision: float, recall: float) -> float:
     """F1スコアを計算"""
     return 2 * precision * recall / (precision + recall) if (precision + recall) > 0 else 0.0
@@ -140,9 +163,59 @@ def aggregate_hierarchical_metrics(results: list[DialogueResult]) -> AggregatedM
     return agg
 
 
-def aggregate_all_metrics(results: list[DialogueResult]) -> dict[str, AggregatedMetrics]:
+def aggregate_accuracy(results: list[DialogueResult]) -> AggregatedAccuracy:
+    """条件付き分類精度を集計する"""
+    n = len(results)
+    agg = AggregatedAccuracy(n_dialogues=n)
+    
+    if n == 0:
+        return agg
+    
+    # numpy配列に変換
+    n_matched = np.array([r.n_matched for r in results])
+    axis_tp = np.array([r.axis_tp for r in results])
+    sub_axis_tp = np.array([r.sub_axis_tp for r in results])
+    polarity_tp = np.array([r.polarity_tp for r in results])
+    intensity_tp = np.array([r.intensity_tp for r in results])
+    context_tp = np.array([r.context_tp for r in results])
+    perfect_tp = np.array([r.perfect_tp for r in results])
+    
+    # Micro Accuracy: 全マッチペア統合
+    total_matched = n_matched.sum()
+    agg.total_matched = int(total_matched)
+    
+    if total_matched > 0:
+        agg.axis_micro_accuracy = float(axis_tp.sum() / total_matched)
+        agg.sub_axis_micro_accuracy = float(sub_axis_tp.sum() / total_matched)
+        agg.polarity_micro_accuracy = float(polarity_tp.sum() / total_matched)
+        agg.intensity_micro_accuracy = float(intensity_tp.sum() / total_matched)
+        agg.context_micro_accuracy = float(context_tp.sum() / total_matched)
+        agg.perfect_micro_accuracy = float(perfect_tp.sum() / total_matched)
+    
+    # Macro Accuracy: 対話ごとのAccuracyの平均 (マッチありの対話のみ)
+    valid_mask = n_matched > 0
+    if valid_mask.sum() > 0:
+        with np.errstate(divide='ignore', invalid='ignore'):
+            axis_acc = np.where(n_matched > 0, axis_tp / n_matched, 0.0)
+            sub_axis_acc = np.where(n_matched > 0, sub_axis_tp / n_matched, 0.0)
+            polarity_acc = np.where(n_matched > 0, polarity_tp / n_matched, 0.0)
+            intensity_acc = np.where(n_matched > 0, intensity_tp / n_matched, 0.0)
+            context_acc = np.where(n_matched > 0, context_tp / n_matched, 0.0)
+            perfect_acc = np.where(n_matched > 0, perfect_tp / n_matched, 0.0)
+        
+        agg.axis_accuracy = float(axis_acc[valid_mask].mean())
+        agg.sub_axis_accuracy = float(sub_axis_acc[valid_mask].mean())
+        agg.polarity_accuracy = float(polarity_acc[valid_mask].mean())
+        agg.intensity_accuracy = float(intensity_acc[valid_mask].mean())
+        agg.context_accuracy = float(context_acc[valid_mask].mean())
+        agg.perfect_accuracy = float(perfect_acc[valid_mask].mean())
+    
+    return agg
+
+
+def aggregate_all_metrics(results: list[DialogueResult]) -> tuple[dict[str, AggregatedMetrics], AggregatedAccuracy]:
     """すべての評価指標を集計する"""
-    return {
+    f1_metrics = {
         "Entity": aggregate_metrics(results, "Entity", "entity_tp", "entity_fn", "entity_fp"),
         "Axis": aggregate_metrics(results, "Axis", "axis_tp", "axis_fn", "entity_fp"),
         "Sub-Axis": aggregate_metrics(results, "Sub-Axis", "sub_axis_tp", "sub_axis_fn", "entity_fp"),
@@ -152,3 +225,5 @@ def aggregate_all_metrics(results: list[DialogueResult]) -> dict[str, Aggregated
         "Context": aggregate_metrics(results, "Context", "context_tp", "context_fn", "entity_fp"),
         "Perfect Match": aggregate_metrics(results, "Perfect Match", "perfect_tp", "perfect_fn", "entity_fp"),
     }
+    accuracy_metrics = aggregate_accuracy(results)
+    return f1_metrics, accuracy_metrics
