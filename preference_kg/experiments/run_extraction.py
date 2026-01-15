@@ -18,7 +18,7 @@ SCHEMA_TEMPLATE_PATH = os.path.join(TEMPLATE_DIR, "schema_template_cot.json")
 AXIS_DEFINITIONS_PATH = os.path.join(TEMPLATE_DIR, "axis_definitions_en.json")
 
 # モデル設定
-MODEL_NAME = "gpt-4o"
+MODEL_NAME = "gemma3:27b"
 
 # Few-shot用のdialogue_id
 FEW_SHOT_IDS = [0, 18, 46]
@@ -121,8 +121,8 @@ def extract_preferences_with_few_shot(dialogue_text, dialogue_id, system_prompt,
     """
     try:
         client = OpenAI(
-            # base_url="http://localhost:11434/v1",
-            # api_key="gemma3:27b"
+            base_url="http://localhost:11434/v1",
+            api_key="gemma3:27b"
         )
 
         completion = client.chat.completions.create(

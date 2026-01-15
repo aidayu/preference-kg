@@ -1,0 +1,2635 @@
+{
+  "experiment_info": {
+    "timestamp": "20260115_172147",
+    "dataset_path": "/home/y-aida/Programs/preference-kg/data/interim/dailydialog_annotated_20260108_fined2.json",
+    "few_shot_ids": [
+      0,
+      18,
+      46
+    ],
+    "total_test_dialogues": 47,
+    "model": "llama3.1:8b",
+    "prompt_template": "/home/y-aida/Programs/preference-kg/preference_kg/experiments/../../prompt_templates/few_shot_extract_template_cot.txt",
+    "schema_template": "/home/y-aida/Programs/preference-kg/preference_kg/experiments/../../prompt_templates/schema_template_cot.json",
+    "axis_definitions": "/home/y-aida/Programs/preference-kg/preference_kg/experiments/../../prompt_templates/axis_definitions_en.json"
+  },
+  "results": [
+    {
+      "dialogue_id": 1,
+      "original_dialogue": "System: I feel like going for a drink , it's been a long day .\nUser: Great idea ! Peter , I could use the drink .\nSystem: How about the new bar across road ?\nUser: Sounds good . The food there is fantastic , too .\nSystem: I agree , I had lunch there last week .\nUser: excellent ! That sounds like a plan .",
+      "translated_dialogue": "System: 飲みに行きたい気分だ、今日は長い一日だった。\nUser: いいアイデアだ！ピーター、私も一杯飲みたいところだ。\nSystem: 向かいの新しいバーはどう？\nUser: 良さそうだ。そこの料理も素晴らしいんだ。\nSystem: そうだな、先週そこでランチを食べたんだ。\nUser: 素晴らしい！それで行こう。",
+      "ground_truth_annotations": [
+        {
+          "entity": "drink",
+          "axis": "wanting",
+          "sub_axis": "goal",
+          "polarity": "positive",
+          "intensity": "mid",
+          "context": [
+            "Tired"
+          ],
+          "explicitness": "explicit"
+        },
+        {
+          "entity": "bar",
+          "axis": "wanting",
+          "sub_axis": "goal",
+          "polarity": "positive",
+          "intensity": "mid",
+          "context": [
+            "Tired"
+          ],
+          "explicitness": "explicit"
+        },
+        {
+          "entity": "food",
+          "axis": "liking",
+          "sub_axis": "aesthetic/sensory",
+          "polarity": "positive",
+          "intensity": "high",
+          "context": [
+            "Bar"
+          ],
+          "explicitness": "explicit"
+        }
+      ],
+      "extracted_preferences": {
+        "chain_of_thought": "Entity 'drink' is mentioned with positive sentiment, axis is wanting-goal, intensity is high",
+        "dialogue_id": 0,
+        "user_id": "user",
+        "preferences": [
+          {
+            "reasoning": "Entity 'drink' is mentioned with positive sentiment",
+            "combined_axis": "wanting__goal",
+            "entity": "drink",
+            "original_mention": "going for a drink",
+            "context_tags": [],
+            "polarity": "positive",
+            "intensity": "high"
+          }
+        ]
+      }
+    },
+    {
+      "dialogue_id": 2,
+      "original_dialogue": "System: What are you thinking ?\nUser: I ’ m thinking about where we shall spend our vocation .\nSystem: It ’ s about 7 o ’ clock . let ’ s have our breakfast first .\nUser: Ok , dear.We will be late .\nSystem: What do you want ?\nUser: A ham salad sandwich .\nSystem: Sorry , I didn ’ t prepare this .\nUser: Then , I ’ d like some eggs and bread for breakfast instead .\nSystem: Ok , I ’ ll have it sent to you immediately .",
+      "translated_dialogue": "System: 何を考えてるの？\nUser: 休暇をどこで過ごそうか考えてるの。\nSystem: もう7時くらいよ。まずは朝食をとりましょう。\nUser: わかったわ、あなた。遅れてしまうよ。\nSystem: 何がいい？\nUser: ハムサラダサンドイッチ。\nSystem: ごめん、用意してないんだ。\nUser: じゃあ代わりに、朝食に卵とパンがいいな。\nSystem: わかった、すぐに届けてもらうよ。",
+      "ground_truth_annotations": [
+        {
+          "entity": "ham salad sandwich",
+          "axis": "wanting",
+          "sub_axis": "goal",
+          "polarity": "positive",
+          "intensity": "mid",
+          "context": [
+            "Morning"
+          ],
+          "explicitness": "explicit"
+        },
+        {
+          "entity": "egg",
+          "axis": "wanting",
+          "sub_axis": "goal",
+          "polarity": "positive",
+          "intensity": "mid",
+          "context": [
+            "Morning"
+          ],
+          "explicitness": "explicit"
+        },
+        {
+          "entity": "bread",
+          "axis": "wanting",
+          "sub_axis": "goal",
+          "polarity": "positive",
+          "intensity": "mid",
+          "context": [
+            "Morning"
+          ],
+          "explicitness": "explicit"
+        }
+      ],
+      "extracted_preferences": {
+        "chain_of_thought": "Entity 'vocation' is mentioned with neutral sentiment, but no explicit preference axis. However, the user's response implies a desire for a specific location.",
+        "dialogue_id": 0,
+        "user_id": "user",
+        "preferences": [
+          {
+            "reasoning": "Entity 'ham salad sandwich' is explicitly mentioned as a desired food item",
+            "combined_axis": "liking__aesthetic_sensory",
+            "entity": "ham salad sandwich",
+            "original_mention": "A ham salad sandwich",
+            "context_tags": [],
+            "polarity": "positive",
+            "intensity": "high"
+          },
+          {
+            "reasoning": "Entity 'eggs and bread' is explicitly mentioned as an alternative food item",
+            "combined_axis": "liking__aesthetic_sensory",
+            "entity": "eggs and bread",
+            "original_mention": "some eggs and bread for breakfast instead",
+            "context_tags": [],
+            "polarity": "positive",
+            "intensity": "high"
+          }
+        ]
+      }
+    },
+    {
+      "dialogue_id": 3,
+      "original_dialogue": "System: Can I take your order please ?\nUser: Can I get a burger and a large fries ?\nSystem: Sure . Anything to drink with that ?\nUser: A large coke , please .\nSystem: Eating here or to go ?\nUser: Eating here , please .\nSystem: That's 7 dollars and 25 cents . You can get free refills with your coke .",
+      "translated_dialogue": "System: ご注文をお伺いしてもよろしいですか？\nUser: バーガーとラージサイズのフライドポテトをお願いします。\nSystem: 承知いたしました。お飲み物は何かお付けしますか？\nUser: ラージサイズのコーラをお願いします。\nSystem: 店内でお召し上がりですか？それともお持ち帰りですか？\nUser: 店内でお願いします。\nSystem: 合計7ドル25セントになります。コーラは無料でお代わりいただけます。",
+      "ground_truth_annotations": [
+        {
+          "entity": "burger",
+          "axis": "wanting",
+          "sub_axis": "goal",
+          "polarity": "positive",
+          "intensity": "mid",
+          "context": [
+            "None"
+          ],
+          "explicitness": "explicit"
+        },
+        {
+          "entity": "large fries",
+          "axis": "wanting",
+          "sub_axis": "goal",
+          "polarity": "positive",
+          "intensity": "mid",
+          "context": [
+            "None"
+          ],
+          "explicitness": "explicit"
+        },
+        {
+          "entity": "large coke",
+          "axis": "wanting",
+          "sub_axis": "goal",
+          "polarity": "positive",
+          "intensity": "mid",
+          "context": [
+            "None"
+          ],
+          "explicitness": "explicit"
+        }
+      ],
+      "extracted_preferences": {
+        "chain_of_thought": "Entity 'burger' is mentioned as a food item, which falls under the axis of liking__aesthetic/sensory. The user expresses no sentiment explicitly, but since they are ordering it, we assume a positive intensity.",
+        "dialogue_id": 0,
+        "user_id": "user",
+        "preferences": [
+          {
+            "reasoning": "Entity 'burger' is mentioned as a food item, which falls under the axis of liking__aesthetic/sensory. The user expresses no sentiment explicitly, but since they are ordering it, we assume a positive intensity.",
+            "combined_axis": "liking__aesthetic_sensory",
+            "entity": "burger",
+            "original_mention": "burger",
+            "context_tags": [],
+            "polarity": "positive",
+            "intensity": "high"
+          }
+        ]
+      }
+    },
+    {
+      "dialogue_id": 4,
+      "original_dialogue": "System: Oh ! My mouth is on fire !\nUser: I feel so good . That warm hot pot certainly hits the spot on winter nights .\nSystem: I need more water !\nUser: Oooo ... gross ... you're sweating all over the place .\nSystem: It's your fault for mixing the two broths !\nUser: You're going to have a little Montezuma's revenge tomorrow morning .",
+      "translated_dialogue": "System: あっ！口が火傷しそう！\nUser: 最高に気持ちいいよ。冬の夜にはやっぱり温かい鍋が最高だね。\nSystem: 水がもっと欲しい！\nUser: うわっ…気持ち悪い…全身汗だくじゃないか。\nSystem: 二つのスープを混ぜたお前が悪いんだ！\nUser: 明日の朝はちょっとおならがひどくなるぞ。",
+      "ground_truth_annotations": [
+        {
+          "entity": "warm hot pot",
+          "axis": "liking",
+          "sub_axis": "aesthetic/sensory",
+          "polarity": "positive",
+          "intensity": "high",
+          "context": [
+            "Winter",
+            "Night"
+          ],
+          "explicitness": "explicit"
+        }
+      ],
+      "extracted_preferences": {
+        "chain_of_thought": "Entity 'hot pot' is mentioned with positive sentiment, indicating liking and stimulation. Context tags include 'winter nights', which indicates a specific time of day.",
+        "dialogue_id": 0,
+        "user_id": "user",
+        "preferences": [
+          {
+            "reasoning": "Entity 'hot pot' is mentioned with positive sentiment",
+            "combined_axis": "liking__stimulation",
+            "entity": "hot pot",
+            "original_mention": "warm hot pot",
+            "context_tags": [
+              "activity-eating",
+              "social-solo",
+              "temporal-winter"
+            ],
+            "polarity": "positive",
+            "intensity": "high"
+          }
+        ]
+      }
+    },
+    {
+      "dialogue_id": 5,
+      "original_dialogue": "System: Hey Joanne . What are you up to ?\nUser: I'm just watching some television .\nSystem: I'm so bored . I don't know what I'm going to do today and it is only ten in the morning .\nUser: Me too . Do you think we are boring people ?\nSystem: I don't think we are boring . It's just that we don't have any hobbies .\nUser: That's right . What do you think we should do as a hobby ?\nSystem: That all depends on what you like to do . For example , I like to doodle on the notepad , so I'm thinking about doing some real drawings .\nUser: I like to play the piano for fun .\nSystem: Yeah . That can be a good hobby .\nUser: Hobbies are great . I'm going to make a list of all the things I like to do .\nSystem: That's a great idea . I'm going to do the same .",
+      "translated_dialogue": "System: ねえジョアン。何してるの？\nUser: テレビ見てるだけよ。\nSystem: すごく退屈だわ。今日は何しようか迷ってるのに、まだ午前10時よ。\nUser: 私もよ。私たちってつまらない人間だと思う？\nSystem: 退屈な人間だとは思わないよ。ただ趣味がないだけさ。\nUser: そうだね。趣味として何をやろうか？\nSystem: それは君が好きなことによるよ。例えば僕はメモ帳に落書きするのが好きだから、ちゃんとした絵を描いてみようかなって思ってる。\nUser: 私は趣味でピアノを弾くのが好き。\nSystem: うん、それも良い趣味になりそう。\nUser: 趣味って素晴らしいよね。好きなことを全部リストにしてみようと思う。\nSystem: いいアイデアだね。僕も同じことをするよ。",
+      "ground_truth_annotations": [
+        {
+          "entity": "piano",
+          "axis": "liking",
+          "sub_axis": "stimulation",
+          "polarity": "positive",
+          "intensity": "mid",
+          "context": [
+            "None"
+          ],
+          "explicitness": "explicit"
+        },
+        {
+          "entity": "hobby",
+          "axis": "liking",
+          "sub_axis": "identification",
+          "polarity": "positive",
+          "intensity": "high",
+          "context": [
+            "None"
+          ],
+          "explicitness": "explicit"
+        }
+      ],
+      "extracted_preferences": {
+        "chain_of_thought": "Entity 'television' is mentioned with neutral sentiment. Entity 'hobbies' is mentioned with positive sentiment.",
+        "dialogue_id": 0,
+        "user_id": "user",
+        "preferences": [
+          {
+            "reasoning": "Entity 'television' is mentioned as an activity without explicit evaluation",
+            "combined_axis": "wanting__interest",
+            "entity": "television",
+            "original_mention": "some television",
+            "context_tags": [],
+            "polarity": "neutral",
+            "intensity": "low"
+          },
+          {
+            "reasoning": "Entity 'hobbies' is mentioned with positive sentiment and user expresses interest in finding a hobby",
+            "combined_axis": "liking__identification",
+            "entity": "hobbies",
+            "original_mention": "hobbies are great",
+            "context_tags": [],
+            "polarity": "positive",
+            "intensity": "high"
+          },
+          {
+            "reasoning": "Entity 'doodling' is mentioned as a hobby with positive sentiment and user expresses interest in doing it",
+            "combined_axis": "liking__aesthetic_sensory",
+            "entity": "doodling",
+            "original_mention": "I like to doodle on the notepad",
+            "context_tags": [],
+            "polarity": "positive",
+            "intensity": "high"
+          },
+          {
+            "reasoning": "Entity 'playing piano' is mentioned as a hobby with positive sentiment and user expresses interest in doing it",
+            "combined_axis": "liking__aesthetic_sensory",
+            "entity": "playing piano",
+            "original_mention": "I like to play the piano for fun",
+            "context_tags": [],
+            "polarity": "positive",
+            "intensity": "high"
+          }
+        ]
+      }
+    },
+    {
+      "dialogue_id": 6,
+      "original_dialogue": "System: Hi , Kenji .\nUser: Hi , Debbie . Have a seat . How's it going ?\nSystem: I'm OK . How are you doing ?\nUser: Pretty good . Listen ... have you heard about the new Thai restaurant over on University Avenue ?\nSystem: Do you mean The Bangkok ?\nUser: That's the one . A bunch of us are going there for dinner tomorrow night.How about coming with us ?\nSystem: Sure , I'd love to .\nUser: Great . I'll call and make reservations .\nSystem: Any time after 6 o'clock is good for me.Oh ! I'm late ! I have a class .\nUser: All right . I'll call you tonight and tell you the time .\nSystem: Great . Talk to you then .",
+      "translated_dialogue": "System: やあ、ケンジ。\nUser: やあ、デビー。座って。調子はどう？\nSystem: 大丈夫だよ。君はどう？\nUser: かなり良いよ。聞いてくれ…ユニバーシティ通りに新しいタイ料理レストランができたのを知ってる？\nSystem: ザ・バンコクのこと？\nUser: それだ。明日夜、みんなで夕食に行くんだ。一緒にどう？\nSystem: もちろん、喜んで。\nUser: いいね。電話して予約しておくよ。\nSystem: 6時以降ならいつでも大丈夫。あ！遅刻だ！授業があるんだ。\nUser: わかった。今夜電話して時間を伝えるよ。\nSystem: 素晴らしい。じゃあまたね。",
+      "ground_truth_annotations": [
+        {
+          "entity": "The Bangkok",
+          "axis": "wanting",
+          "sub_axis": "goal",
+          "polarity": "positive",
+          "intensity": "mid",
+          "context": [
+            "group"
+          ],
+          "explicitness": "explicit"
+        },
+        {
+          "entity": "new Thai restaurant",
+          "axis": "wanting",
+          "sub_axis": "goal",
+          "polarity": "positive",
+          "intensity": "mid",
+          "context": [
+            "group"
+          ],
+          "explicitness": "explicit"
+        }
+      ],
+      "extracted_preferences": {
+        "chain_of_thought": "Entity 'Thai restaurant' is mentioned with positive sentiment",
+        "dialogue_id": 0,
+        "user_id": "User",
+        "preferences": [
+          {
+            "reasoning": "Entity 'Thai restaurant' is mentioned with positive sentiment",
+            "combined_axis": "liking__aesthetic_sensory",
+            "entity": "Thai restaurant",
+            "original_mention": "the new Thai restaurant",
+            "context_tags": [],
+            "polarity": "positive",
+            "intensity": "high"
+          },
+          {
+            "reasoning": "Entity 'dinner' is mentioned with positive sentiment",
+            "combined_axis": "liking__aesthetic_sensory",
+            "entity": "dinner",
+            "original_mention": "dinner tomorrow night",
+            "context_tags": [
+              "social-group"
+            ],
+            "polarity": "positive",
+            "intensity": "high"
+          }
+        ]
+      }
+    },
+    {
+      "dialogue_id": 7,
+      "original_dialogue": "System: I think I'm going to China this vacation.How about you ?\nUser: Me ? I prefer France .\nSystem: I went to France last summer .\nUser: Oh , really ? I went to China last winter !",
+      "translated_dialogue": "System: 今度の休暇は中国に行こうと思うんだ。君は？\nUser: 私？私はフランスの方が好きだわ。\nSystem: 私は去年の夏にフランスに行ったよ。\nUser: ああ、そうなの？私は去年の冬に中国に行ったわ！",
+      "ground_truth_annotations": [
+        {
+          "entity": "France",
+          "axis": "liking",
+          "sub_axis": "",
+          "polarity": "positive",
+          "intensity": "mid",
+          "context": [
+            "None"
+          ],
+          "explicitness": "explicit"
+        }
+      ],
+      "extracted_preferences": {
+        "chain_of_thought": "Entity 'France' is mentioned with positive sentiment, and the user explicitly states a preference for it over China.",
+        "dialogue_id": 0,
+        "user_id": "user",
+        "preferences": [
+          {
+            "reasoning": "Entity 'France' is mentioned with positive sentiment",
+            "combined_axis": "wanting__goal",
+            "entity": "France",
+            "original_mention": "France",
+            "context_tags": [],
+            "polarity": "positive",
+            "intensity": "high"
+          }
+        ]
+      }
+    },
+    {
+      "dialogue_id": 8,
+      "original_dialogue": "System: Wow , you ’ re up early today ! What ’ s for breakfast ?\nUser: Well , I felt like baking , so I made some muffins .\nSystem: Smells good ! I ’ ll make some coffee . Do you want me to make you some eggs ?\nUser: Sure , I'll take mine , sunny side up .\nSystem: Www , I don ’ t know how you can eat your eggs like that ! Ever since I was small , I ’ Ve had eggs and soldiers .\nUser: You know , my dad had scrambled eggs every morning for twenty years . It drove my mom crazy !\nSystem: You know what really drives me crazy ? When I ask for soft boiled eggs , and they overcook them , so they come out hard boiled ! How can you dipyour toast into a hard boiled egg ?\nUser: You ’ re so picky sometimes .\nSystem: Here you go , honey , fried eggs .\nUser: Dammit ! I asked for sunny side up ! How many times do I have to tell you .",
+      "translated_dialogue": "System: わあ、今日は早起きだね！朝食は何？\nUser: ええと、焼きたい気分だったから、マフィンを作ったわ。\nSystem: いい匂いだ！コーヒーを淹れるよ。卵も作ろうか？\nUser: ええ、私のはサニーサイドアップでお願い。\nSystem: うわあ、よくそんな風に卵を食べられるね！小さい頃からずっとエッグ・アンド・ソルジャーズだったよ。\nUser: 知ってる？私の父は20年間、毎朝スクランブルエッグだったの。母は気が狂いそうだったわ！\nSystem: 私が本当に頭にくること知ってる？半熟卵を頼んだのに、火を通しすぎて固ゆでになってしまうこと！固ゆでの卵にどうやってトーストを浸すんだ？\nUser: あなたは時々本当に口うるさいわね。\nSystem: さあ、どうぞ、ハニー、目玉焼きだよ。\nUser: ちくしょう！サニーサイドアップって言ったでしょ！何度言えばわかるの。",
+      "ground_truth_annotations": [
+        {
+          "entity": "muffin",
+          "axis": "wanting",
+          "sub_axis": "goal",
+          "polarity": "positive",
+          "intensity": "mid",
+          "context": [
+            "Morning"
+          ],
+          "explicitness": "explicit"
+        },
+        {
+          "entity": "sunny side up",
+          "axis": "wanting",
+          "sub_axis": "goal",
+          "polarity": "positive",
+          "intensity": "mid",
+          "context": [
+            "Morning"
+          ],
+          "explicitness": "explicit"
+        },
+        {
+          "entity": "baking",
+          "axis": "wanting",
+          "sub_axis": "goal",
+          "polarity": "positive",
+          "intensity": "mid",
+          "context": [
+            "Morning"
+          ],
+          "explicitness": "explicit"
+        }
+      ],
+      "extracted_preferences": {
+        "chain_of_thought": "Entity 'eggs' is mentioned with positive sentiment in the user's preference. The user explicitly states they want their eggs 'sunny side up'.",
+        "dialogue_id": 0,
+        "user_id": "user",
+        "preferences": [
+          {
+            "reasoning": "Entity 'eggs' is mentioned with positive sentiment in the user's preference.",
+            "combined_axis": "liking__aesthetic_sensory",
+            "entity": "eggs",
+            "original_mention": "sunny side up eggs",
+            "context_tags": [],
+            "polarity": "positive",
+            "intensity": "high"
+          }
+        ]
+      }
+    },
+    {
+      "dialogue_id": 9,
+      "original_dialogue": "System: How do you like the food here ?\nUser: I don't like it very much.But every-body likes their own food best .\nSystem: There are many things I miss . You can't get the ingredients here .\nUser: Are you sure ? All the big cities have specialty shops , which sell all sorts of ethnic foods .\nSystem: Perhaps . i just haven't had time to find them yet .",
+      "translated_dialogue": "System: ここの食べ物はどう？\nUser: あまり好きじゃないわ。でも、みんな自分の国の食べ物が一番好きよね。\nSystem: 恋しいものがたくさんあるよ。ここでは材料が手に入らないんだ。\nUser: 本当に？大きな街にはどこでも、あらゆる種類のエスニックフードを売っている専門店があるわよ。\nSystem: たぶんね。まだそれらを見つける時間がなかっただけだ。",
+      "ground_truth_annotations": [
+        {
+          "entity": "own food",
+          "axis": "liking",
+          "sub_axis": "aesthetic/sensory",
+          "polarity": "positive",
+          "intensity": "mid",
+          "context": [
+            "None"
+          ],
+          "explicitness": "explicit"
+        }
+      ],
+      "extracted_preferences": {
+        "chain_of_thought": "Entity 'food' is mentioned with negative sentiment. The user explicitly states they don't like it very much.",
+        "dialogue_id": 0,
+        "user_id": "user",
+        "preferences": [
+          {
+            "reasoning": "Entity 'food' is mentioned with negative sentiment",
+            "combined_axis": "liking__aesthetic_sensory",
+            "entity": "food",
+            "original_mention": "the food here",
+            "context_tags": [],
+            "polarity": "negative",
+            "intensity": "high"
+          }
+        ]
+      }
+    },
+    {
+      "dialogue_id": 10,
+      "original_dialogue": "System: Out of every movie that you've seen , which one is your favorite ?\nUser: I'm going to have to say that Superbad is the best movie ever .\nSystem: You think so , how come ?\nUser: Well , Superbad is super funny .\nSystem: You're not lying , I found that movie absolutely hilarious .\nUser: I didn't know that you saw Superbad before .\nSystem: I made sure to be in line to see it the first day it came out .\nUser: I couldn't keep from laughing throughout the whole movie .\nSystem: I was laughing hysterically the whole time ; my stomach muscles hurt afterwards .\nUser: That's exactly how I felt .\nSystem: I got the movie when it came out on DVD , do you want to come over ?\nUser: I would love to .",
+      "translated_dialogue": "System: 今まで観た全ての映画の中で、どれが一番好き？\nUser: 『スーパーバッド 史上最悪の合コン計画』が史上最高の映画だと断言するわ。\nSystem: そう思うの？どうして？\nUser: ええと、『スーパーバッド』は超面白いからよ。\nSystem: 嘘じゃないわね、私もあの映画は心底爆笑したわ。\nUser: あなたが以前『スーパーバッド』を観たなんて知らなかったわ。\nSystem: 公開初日に並んで観るようにしたわよ。\nUser: 映画の間ずっと笑いが止まらなかったわ。\nSystem: 私は終始ヒステリックに笑っていたわ。後で腹筋が痛くなったほどよ。\nUser: まさに私も同じ気持ちだったわ。\nSystem: DVDが出た時にその映画を買ったんだけど、見に来ない？\nUser: ぜひ行きたいわ。",
+      "ground_truth_annotations": [
+        {
+          "entity": "Superbad",
+          "axis": "liking",
+          "sub_axis": "stimulation",
+          "polarity": "positive",
+          "intensity": "high",
+          "context": [
+            "None"
+          ],
+          "explicitness": "explicit"
+        },
+        {
+          "entity": "Superbad",
+          "axis": "wanting",
+          "sub_axis": "goal",
+          "polarity": "positive",
+          "intensity": "mid",
+          "context": [
+            "None"
+          ],
+          "explicitness": "explicit"
+        }
+      ],
+      "extracted_preferences": {
+        "chain_of_thought": "Entity 'Superbad' is mentioned with positive sentiment. Axis is liking__aesthetic/sensory due to user's evaluation of the movie as 'super funny'. Intensity is high based on explicit words 'best', 'hilarious', and 'laughing hysterically'. Context tags are not applicable.",
+        "dialogue_id": 0,
+        "user_id": "user",
+        "preferences": [
+          {
+            "reasoning": "Entity 'Superbad' is mentioned with positive sentiment. Axis is liking__aesthetic/sensory due to user's evaluation of the movie as 'super funny'. Intensity is high based on explicit words 'best', 'hilarious', and 'laughing hysterically'. Context tags are not applicable.",
+            "combined_axis": "liking__aesthetic_sensory",
+            "entity": "Superbad",
+            "original_mention": "Superbad",
+            "context_tags": [],
+            "polarity": "positive",
+            "intensity": "high"
+          }
+        ]
+      }
+    },
+    {
+      "dialogue_id": 11,
+      "original_dialogue": "System: May I help you , sir ?\nUser: I'd like to buy a shirt .\nSystem: What color do you want ?\nUser: I prefer the blue one .\nSystem: What size are you ?\nUser: I'm not sure . Could you measure me , please ?\nSystem: No problem . I think 40 will be fine for you .\nUser: Can I try it on ?\nSystem: Of course . The fitting room is this way , please .",
+      "translated_dialogue": "System: 何かお手伝いしましょうか、お客様？\nUser: シャツを買いたいのですが。\nSystem: 何色がよろしいですか？\nUser: 青いのがいいです。\nSystem: サイズはいくつですか？\nUser: よくわかりません。採寸していただけますか？\nSystem: 問題ありません。40で大丈夫だと思います。\nUser: 試着してもいいですか？\nSystem: もちろんです。試着室はこちらです、どうぞ。",
+      "ground_truth_annotations": [
+        {
+          "entity": "blue shirt",
+          "axis": "wanting",
+          "sub_axis": "goal",
+          "polarity": "positive",
+          "intensity": "mid",
+          "context": [
+            "None"
+          ],
+          "explicitness": "explicit"
+        }
+      ],
+      "extracted_preferences": {
+        "chain_of_thought": "Entity 'blue shirt' is mentioned with positive sentiment. Axis is liking__aesthetic/sensory.",
+        "dialogue_id": 0,
+        "user_id": "user",
+        "preferences": [
+          {
+            "reasoning": "Entity 'blue shirt' is mentioned with positive sentiment",
+            "combined_axis": "liking__aesthetic_sensory",
+            "entity": "blue shirt",
+            "original_mention": "the blue one",
+            "context_tags": [],
+            "polarity": "positive",
+            "intensity": "high"
+          }
+        ]
+      }
+    },
+    {
+      "dialogue_id": 12,
+      "original_dialogue": "System: Do you like Barry ?\nUser: No , not very much . He ’ s too ambitious and dishonest .\nSystem: I agree . I like his brother , Paul . They are not alike .\nUser: Yes . They are completely different . Paul is very sociable and much more honest than his brother .\nSystem: What kind of person do you consider yourself to be ?\nUser: I think I ’ m polite , careful , relaxed and shy .\nSystem: Oh , I don ’ t think you ’ re shy ! You are always chatting with new people when we go to a party .\nUser: Well , yes , but those people always start talking to me . I never talk to them first . Perhaps I ’ m not as shy as I think . Anyway , you ’ re certainly not shy !\nSystem: You ’ re right . I love going out and making new friends .\nUser: So , you ’ ll be at my birthday party on Friday ?\nSystem: Of course !",
+      "translated_dialogue": "System: バリーのことは好き？\nUser: いいえ、あまり好きじゃないわ。彼は野心がありすぎるし、不誠実よ。\nSystem: 同感だ。彼の弟のポールは好きだよ。彼らは似ていないね。\nUser: ええ。彼らは完全に違うわ。ポールはとても社交的で、彼の兄よりもずっと正直よ。\nSystem: あなたは自分のことをどんな人だと思いますか？\nUser: 私は、礼儀正しくて、慎重で、のんびりしていて、内気だと思うわ。\nSystem: あら、あなたが内気だとは思わないわ！パーティーに行くと、あなたはいつも新しい人と話しているじゃない！\nUser: ええと、そうね、でもいつも向こうから話しかけてくるのよ。私から話しかけることは決してないわ。たぶん、私が思っているほど内気ではないのかもしれない。とにかく、あなたは絶対に内気ではないわね！\nSystem: あなたの言う通りだわ。出かけて新しい友達を作るのが大好きよ。\nUser: じゃあ、金曜日の私の誕生日パーティーに来てくれる？\nSystem: もちろん！",
+      "ground_truth_annotations": [
+        {
+          "entity": "Barry",
+          "axis": "liking",
+          "sub_axis": "",
+          "polarity": "negative",
+          "intensity": "mid",
+          "context": [
+            "None"
+          ],
+          "explicitness": "explicit"
+        },
+        {
+          "entity": "Paul",
+          "axis": "liking",
+          "sub_axis": "",
+          "polarity": "positive",
+          "intensity": "mid",
+          "context": [
+            "None"
+          ],
+          "explicitness": "explicit"
+        }
+      ],
+      "extracted_preferences": {
+        "chain_of_thought": "Entity 'Barry' is mentioned with negative sentiment, axis 'liking', polarity 'negative'. Entity 'Paul' is mentioned with positive sentiment, axis 'liking', polarity 'positive'. User describes themselves as 'polite', 'careful', 'relaxed', and 'shy', but later corrects their self-description to not be shy. System agrees that the user is not shy and expresses a preference for going out and making new friends.",
+        "dialogue_id": 0,
+        "user_id": "user",
+        "preferences": [
+          {
+            "reasoning": "Entity 'Barry' is mentioned with negative sentiment, axis 'liking', polarity 'negative'",
+            "combined_axis": "liking__identification",
+            "entity": "Barry",
+            "original_mention": "Barry",
+            "context_tags": [],
+            "polarity": "negative",
+            "intensity": "high"
+          },
+          {
+            "reasoning": "Entity 'Paul' is mentioned with positive sentiment, axis 'liking', polarity 'positive'",
+            "combined_axis": "liking__identification",
+            "entity": "Paul",
+            "original_mention": "Paul",
+            "context_tags": [],
+            "polarity": "positive",
+            "intensity": "high"
+          },
+          {
+            "reasoning": "User describes themselves as 'polite', 'careful', 'relaxed', and 'shy'",
+            "combined_axis": "liking__identification",
+            "entity": "self",
+            "original_mention": "I think I'm polite, careful, relaxed and shy.",
+            "context_tags": [],
+            "polarity": "neutral",
+            "intensity": "low"
+          },
+          {
+            "reasoning": "System agrees that the user is not shy and expresses a preference for going out and making new friends",
+            "combined_axis": "wanting__goal",
+            "entity": "going out and making new friends",
+            "original_mention": "I love going out and making new friends.",
+            "context_tags": [
+              "social-group"
+            ],
+            "polarity": "positive",
+            "intensity": "high"
+          }
+        ]
+      }
+    },
+    {
+      "dialogue_id": 13,
+      "original_dialogue": "System: Do you like this dress , madam ?\nUser: I like the colour very much . It's a lovely dress , but it's too small for me .\nSystem: What about this one ? It's a lovely dress . It's very smart . Short skirts are in fashion now . Would you like to try it ?\nUser: All right . I'm afraid this green dress is too small for me as well . It's smaller than the blue one . I don't like the colour either . It doesn't suit me at all . I think the blue dress is prettier . Co\nSystem: I'm afraid I haven't got a larger dress . This is the largest dress in the shop .",
+      "translated_dialogue": "System: マダム、このドレスはいかがですか？\nUser: 色はとても気に入りました。素敵なドレスですが、私には小さすぎます。\nSystem: こちらはいかがですか？これも素敵なドレスです。とても粋ですよ。今はミニスカートが流行っています。試着してみませんか？\nUser: わかりました。この緑のドレスも私には小さすぎるようです。青いものより小さいです。色も好きではありません。全く似合いません。青いドレスの方が可愛いと思います。ご\nSystem: 申し訳ございませんが、これ以上大きなドレスはございません。これがこの店で一番大きなドレスです。",
+      "ground_truth_annotations": [
+        {
+          "entity": "blue dress",
+          "axis": "liking",
+          "sub_axis": "aesthetic/sensory",
+          "polarity": "positive",
+          "intensity": "mid",
+          "context": [
+            "Shop"
+          ],
+          "explicitness": "explicit"
+        }
+      ],
+      "extracted_preferences": {
+        "chain_of_thought": "Entity 'dress' is mentioned with positive sentiment. Axis is liking_aesthetic_sensory.",
+        "dialogue_id": 0,
+        "user_id": "user",
+        "preferences": [
+          {
+            "reasoning": "Entity 'colour' is mentioned with positive sentiment. Axis is liking_aesthetic_sensory.",
+            "combined_axis": "liking__aesthetic_sensory",
+            "entity": "colour",
+            "original_mention": "the colour very much",
+            "context_tags": [],
+            "polarity": "positive",
+            "intensity": "high"
+          },
+          {
+            "reasoning": "Entity 'dress' is mentioned with positive sentiment. Axis is liking_aesthetic_sensory.",
+            "combined_axis": "liking__aesthetic_sensory",
+            "entity": "dress",
+            "original_mention": "It's a lovely dress",
+            "context_tags": [],
+            "polarity": "positive",
+            "intensity": "high"
+          },
+          {
+            "reasoning": "Entity 'colour' is mentioned with negative sentiment. Axis is liking_aesthetic_sensory.",
+            "combined_axis": "liking__aesthetic_sensory",
+            "entity": "colour",
+            "original_mention": "I don't like the colour either",
+            "context_tags": [],
+            "polarity": "negative",
+            "intensity": "high"
+          },
+          {
+            "reasoning": "Entity 'dress' is mentioned with positive sentiment. Axis is liking_aesthetic_sensory.",
+            "combined_axis": "liking__aesthetic_sensory",
+            "entity": "dress",
+            "original_mention": "I think the blue dress is prettier",
+            "context_tags": [],
+            "polarity": "positive",
+            "intensity": "high"
+          },
+          {
+            "reasoning": "Entity 'size' is mentioned with negative sentiment. Axis is need__personal.",
+            "combined_axis": "need__personal",
+            "entity": "size",
+            "original_mention": "It's too small for me",
+            "context_tags": [],
+            "polarity": "negative",
+            "intensity": "high"
+          }
+        ]
+      }
+    },
+    {
+      "dialogue_id": 14,
+      "original_dialogue": "System: What shall we do after the volleyball match ?\nUser: How about going to the Olympic souvenir store to have a look ? I remember there is one in the gym .\nSystem: That's a good idea . I was thinking of buying some gifts for my family .\nUser: Me , too . What did you have in mind ?\nSystem: I haven't decided yet , but I think the Olympic Mascots are a must .\nUser: I agree . They're very lovely , especially Huanhuan\nSystem: Is that the red one ? That is my favorite , too . Do you know how much they are ?\nUser: The five dolls are sold together as a set , and they're priced according to the size . The bigger they are the more expensive .\nSystem: Oh , I see . If I buy more than a set , can I get any discount ?\nUser: I don't think so . All the souvenirs of the Olympic Games are very hot right now .\nSystem: Any other ideas ?\nUser: There are lots of things , such as postcards , key chains , posters and various arts and crafts .\nSystem: It all sounds great . We can go there after the match . I can't wait to see what they have .",
+      "translated_dialogue": "System: バレーボールの試合の後、何をしましょうか？\nUser: オリンピックのお土産屋に行ってみるのはどうでしょう？体育館の中にあったと思います。\nUser: いいアイデアね。私も家族にいくつかお土産を買おうと思っていたの。\nSystem: 私もよ。何か考えているものはある？\nUser: まだ決めていませんが、オリンピックのマスコットは必須だと思います。\nSystem: 同感だわ。とても可愛らしいわよね、特に歓歓（ファンファン）は。\nUser: 赤いのですか？あれは私もお気に入りです。値段はいくらかご存知ですか？\nUser: 5体の人形がセットで売られていて、サイズによって値段が異なります。大きいほど高くなります。\nSystem: なるほど。複数セット買えば、割引はありますか？\nUser: ないと思います。オリンピックの記念品は今、とても人気ですから。\nSystem: 他に何かアイデアはありますか？\nUser: ポストカード、キーホルダー、ポスター、様々な工芸品など、たくさんのものがありますよ。\nSystem: どれも良さそうですね。試合の後に行きましょう。どんなものがあるか見るのが待ちきれません。",
+      "ground_truth_annotations": [
+        {
+          "entity": "souvenir store",
+          "axis": "wanting",
+          "sub_axis": "goal",
+          "polarity": "positive",
+          "intensity": "mid",
+          "context": [
+            "None"
+          ],
+          "explicitness": "explicit"
+        },
+        {
+          "entity": "Olympic Mascots",
+          "axis": "wanting",
+          "sub_axis": "goal",
+          "polarity": "positive",
+          "intensity": "mid",
+          "context": [
+            "Shop"
+          ],
+          "explicitness": "explicit"
+        },
+        {
+          "entity": "Olympic Mascots",
+          "axis": "liking",
+          "sub_axis": "aesthetic/sensory",
+          "polarity": "positive",
+          "intensity": "mid",
+          "context": [
+            "Shop"
+          ],
+          "explicitness": "explicit"
+        },
+        {
+          "entity": "Huanhuan",
+          "axis": "liking",
+          "sub_axis": "aesthetic/sensory",
+          "polarity": "positive",
+          "intensity": "mid",
+          "context": [
+            "Shop"
+          ],
+          "explicitness": "explicit"
+        }
+      ],
+      "extracted_preferences": {
+        "chain_of_thought": "Entity 'Olympic souvenir store' is mentioned with neutral sentiment. Axis is wanting-interest, as user suggests going to look at souvenirs. Intensity is mid.",
+        "dialogue_id": 0,
+        "user_id": "user",
+        "preferences": [
+          {
+            "reasoning": "Entity 'Olympic Mascots' is mentioned with positive sentiment. Axis is liking-identification, as user agrees they are lovely. Intensity is high.",
+            "combined_axis": "liking__identification",
+            "entity": "Olympic Mascots",
+            "original_mention": "Olympic Mascots",
+            "context_tags": [],
+            "polarity": "positive",
+            "intensity": "high"
+          },
+          {
+            "reasoning": "Entity 'Huanhuan' is mentioned with positive sentiment. Axis is liking-identification, as user specifically mentions Huanhuan. Intensity is high.",
+            "combined_axis": "liking__identification",
+            "entity": "Huanhuan",
+            "original_mention": "Huanhuan",
+            "context_tags": [],
+            "polarity": "positive",
+            "intensity": "high"
+          },
+          {
+            "reasoning": "Entity 'postcards' is mentioned with positive sentiment. Axis is wanting-interest, as user suggests looking at postcards. Intensity is mid.",
+            "combined_axis": "wanting__interest",
+            "entity": "postcards",
+            "original_mention": "postcards",
+            "context_tags": [],
+            "polarity": "positive",
+            "intensity": "high"
+          },
+          {
+            "reasoning": "Entity 'key chains' is mentioned with positive sentiment. Axis is wanting-interest, as user suggests looking at key chains. Intensity is mid.",
+            "combined_axis": "wanting__interest",
+            "entity": "key chains",
+            "original_mention": "key chains",
+            "context_tags": [],
+            "polarity": "positive",
+            "intensity": "high"
+          },
+          {
+            "reasoning": "Entity 'posters' is mentioned with positive sentiment. Axis is wanting-interest, as user suggests looking at posters. Intensity is mid.",
+            "combined_axis": "wanting__interest",
+            "entity": "posters",
+            "original_mention": "posters",
+            "context_tags": [],
+            "polarity": "positive",
+            "intensity": "high"
+          },
+          {
+            "reasoning": "Entity 'arts and crafts' is mentioned with positive sentiment. Axis is wanting-interest, as user suggests looking at arts and crafts. Intensity is mid.",
+            "combined_axis": "wanting__interest",
+            "entity": "arts and crafts",
+            "original_mention": "arts and crafts",
+            "context_tags": [],
+            "polarity": "positive",
+            "intensity": "high"
+          }
+        ]
+      }
+    },
+    {
+      "dialogue_id": 15,
+      "original_dialogue": "System: Good evening , ma'am . Table for one ?\nUser: Yes , please .\nSystem: Will this table be all right ?\nUser: Actually , I'd like a booth by the window if that's possible .\nSystem: Certainly . How about this one ?\nUser: This will be fine , thanks .\nSystem: ( Handing her a menu ) Your waiter will be here in a minute to take your order .\nUser: Thank you .",
+      "translated_dialogue": "System: こんばんは、奥様。お一人様ですか？\nUser: はい、お願いします。\nSystem: こちらのテーブルでよろしいでしょうか？\nUser: 実は、もし可能でしたら窓際のボックス席がいいのですが。\nSystem: かしこまりました。こちらはいかがでしょうか？\nUser: こちらで結構です、ありがとう。\nSystem: （メニューを渡しながら）ご注文を伺いに、すぐに係の者が参ります。\nUser: ありがとう。",
+      "ground_truth_annotations": [
+        {
+          "entity": "booth by the window",
+          "axis": "wanting",
+          "sub_axis": "goal",
+          "polarity": "positive",
+          "intensity": "mid",
+          "context": [
+            "None"
+          ],
+          "explicitness": "explicit"
+        }
+      ],
+      "extracted_preferences": {
+        "chain_of_thought": "Entity 'booth by the window' is mentioned with positive sentiment",
+        "dialogue_id": 0,
+        "user_id": "user",
+        "preferences": [
+          {
+            "reasoning": "Entity 'booth by the window' is mentioned with positive sentiment",
+            "combined_axis": "liking__aesthetic_sensory",
+            "entity": "booth by the window",
+            "original_mention": "booth by the window",
+            "context_tags": [
+              "social-solo"
+            ],
+            "polarity": "positive",
+            "intensity": "high"
+          }
+        ]
+      }
+    },
+    {
+      "dialogue_id": 16,
+      "original_dialogue": "System: Lucy , where are you going ?\nUser: I want to go to the supermarket .\nSystem: Wait a few minutes and I'll go there with you .\nUser: Let's get a shopping cart .\nSystem: Good idea\nUser: What are you going to buy ?\nSystem: Let's check out the fruit section first .\nUser: OK . I'd like some oranges . But they don't look quite ripe yet .\nSystem: Look , nice fresh cherries ! They are ripe and soft . I'll take some .\nUser: I'll take some , too .\nSystem: Let's go to the snacks section . I want some chocolate and sweets .\nUser: OK . I'll go and buy some cakes .\nSystem: Do you want to buy something else ?\nUser: No . Let's go over to the check-out stand .",
+      "translated_dialogue": "System: ルーシー、どこへ行くの？\nUser: スーパーに行きたいの。\nSystem: 数分待って、一緒に行くよ。\nUser: ショッピングカートを取りましょう。\nSystem: いい考えだ\nUser: 何を買う予定？\nSystem: まずはフルーツ売り場を見てみよう。\nUser: わかった。オレンジが欲しいな。でもまだ全然熟れてなさそうね。\nSystem: 見て、新鮮なサクランボよ！熟していて柔らかい。いくつか買うわ。\nUser: 私もいくつか買うわ。\nSystem: スナック菓子売り場に行きましょう。チョコレートとお菓子が欲しいの。\nUser: わかった。私はケーキを買いに行くわ。\nSystem: 他に何か買いたいものはある？\nUser: ないわ。レジに行きましょう。",
+      "ground_truth_annotations": [
+        {
+          "entity": "orange",
+          "axis": "wanting",
+          "sub_axis": "goal",
+          "polarity": "positive",
+          "intensity": "mid",
+          "context": [
+            "Shop"
+          ],
+          "explicitness": "explicit"
+        },
+        {
+          "entity": "fresh and ripe and soft cherries",
+          "axis": "wanting",
+          "sub_axis": "goal",
+          "polarity": "positive",
+          "intensity": "mid",
+          "context": [
+            "Shop"
+          ],
+          "explicitness": "explicit"
+        },
+        {
+          "entity": "cake",
+          "axis": "wanting",
+          "sub_axis": "goal",
+          "polarity": "positive",
+          "intensity": "mid",
+          "context": [
+            "Shop"
+          ],
+          "explicitness": "explicit"
+        }
+      ],
+      "extracted_preferences": {
+        "chain_of_thought": "Entity 'supermarket' is mentioned with neutral sentiment. Axis is wanting-goal, as user expresses desire to go there.",
+        "dialogue_id": 0,
+        "user_id": "user",
+        "preferences": [
+          {
+            "reasoning": "Entity 'supermarket' is mentioned with neutral sentiment. Axis is wanting-goal, as user expresses desire to go there.",
+            "combined_axis": "wanting__goal",
+            "entity": "supermarket",
+            "original_mention": "supermarket",
+            "context_tags": [],
+            "polarity": "neutral",
+            "intensity": "high"
+          },
+          {
+            "reasoning": "Entity 'oranges' is mentioned with positive sentiment. Axis is liking-aesthetic/sensory, as user expresses preference for ripe oranges.",
+            "combined_axis": "liking__aesthetic_sensory",
+            "entity": "oranges",
+            "original_mention": "oranges",
+            "context_tags": [],
+            "polarity": "positive",
+            "intensity": "low"
+          },
+          {
+            "reasoning": "Entity 'cherries' is mentioned with positive sentiment. Axis is liking-aesthetic/sensory, as user expresses preference for ripe cherries.",
+            "combined_axis": "liking__aesthetic_sensory",
+            "entity": "cherries",
+            "original_mention": "cherries",
+            "context_tags": [],
+            "polarity": "positive",
+            "intensity": "low"
+          },
+          {
+            "reasoning": "Entity 'chocolate' is mentioned with positive sentiment. Axis is liking-aesthetic/sensory, as user expresses preference for chocolate.",
+            "combined_axis": "liking__aesthetic_sensory",
+            "entity": "chocolate",
+            "original_mention": "chocolate",
+            "context_tags": [],
+            "polarity": "positive",
+            "intensity": "low"
+          },
+          {
+            "reasoning": "Entity 'cakes' is mentioned with positive sentiment. Axis is liking-aesthetic/sensory, as user expresses preference for cakes.",
+            "combined_axis": "liking__aesthetic_sensory",
+            "entity": "cakes",
+            "original_mention": "cakes",
+            "context_tags": [],
+            "polarity": "positive",
+            "intensity": "low"
+          }
+        ]
+      }
+    },
+    {
+      "dialogue_id": 17,
+      "original_dialogue": "User: How nice these sunglasses are !\nUser: Yes , they are the latest designs . Would you like to try them on ?\nUser: I want to try on this pair .\nUser: The round shape pair ?\nUser: That's right .\nUser: I think it suits you well .\nUser: I agree , how much ?\nUser: 120 yuan .\nUser: It's not expensive . OK . I'll take them .",
+      "translated_dialogue": "User: このサングラス、なんて素敵なんだ！\nUser: ええ、最新のデザインです。試着してみませんか？\nUser: このペアを試着したいです。\nUser: 丸い形のペアですか？\nUser: その通りです。\nUser: とてもお似合いだと思います。\nUser: 同感です、おいくらですか？\nUser: 120元です。\nUser: 高くありませんね。よし。これをいただきます。",
+      "ground_truth_annotations": [
+        {
+          "entity": "latest design sunglasses",
+          "axis": "liking",
+          "sub_axis": "aesthetic/sensory",
+          "polarity": "positive",
+          "intensity": "high",
+          "context": [
+            "None"
+          ],
+          "explicitness": "explicit"
+        },
+        {
+          "entity": "latest design and round shape sunglass",
+          "axis": "wanting",
+          "sub_axis": "goal",
+          "polarity": "positive",
+          "intensity": "mid",
+          "context": [
+            "None"
+          ],
+          "explicitness": "explicit"
+        },
+        {
+          "entity": "latest design and round shape sunglass",
+          "axis": "need",
+          "sub_axis": "functional",
+          "polarity": "positive",
+          "intensity": "mid",
+          "context": [
+            "None"
+          ],
+          "explicitness": "explicit"
+        }
+      ],
+      "extracted_preferences": {
+        "chain_of_thought": "Entity 'sunglasses' is mentioned with positive sentiment. Axis: liking__aesthetic/sensory.",
+        "dialogue_id": 0,
+        "user_id": "user",
+        "preferences": [
+          {
+            "reasoning": "Entity 'sunglasses' is mentioned with positive sentiment",
+            "combined_axis": "liking__aesthetic_sensory",
+            "entity": "sunglasses",
+            "original_mention": "these sunglasses are",
+            "context_tags": [],
+            "polarity": "positive",
+            "intensity": "high"
+          },
+          {
+            "reasoning": "Entity 'round shape pair' is mentioned with positive sentiment",
+            "combined_axis": "liking__aesthetic_sensory",
+            "entity": "round shape pair",
+            "original_mention": "the round shape pair",
+            "context_tags": [],
+            "polarity": "positive",
+            "intensity": "high"
+          },
+          {
+            "reasoning": "Entity 'sunglasses' is mentioned with positive sentiment",
+            "combined_axis": "liking__aesthetic_sensory",
+            "entity": "sunglasses",
+            "original_mention": "these sunglasses are",
+            "context_tags": [],
+            "polarity": "positive",
+            "intensity": "high"
+          }
+        ]
+      }
+    },
+    {
+      "dialogue_id": 19,
+      "original_dialogue": "System: Diana , do you like the perfume I gave you ?\nUser: It ’ s good . But to tell you the truth , I don ’ t wear perfume .\nSystem: I ’ m sorry . I didn ’ t know that .\nUser: That ’ s all right . Thank you all the same .",
+      "translated_dialogue": "System: ダイアナ、私がプレゼントした香水、気に入った？\nUser: 良いわよ。でも正直に言うと、私、香水はつけないの。\nSystem: ごめんなさい。知らなかったわ。\nUser: 大丈夫よ。それでもありがとう。",
+      "ground_truth_annotations": [
+        {
+          "entity": "perfume Diana gave",
+          "axis": "liking",
+          "sub_axis": "aesthetic/sensory",
+          "polarity": "positive",
+          "intensity": "mid",
+          "context": [
+            "None"
+          ],
+          "explicitness": "explicit"
+        }
+      ],
+      "extracted_preferences": {
+        "chain_of_thought": "Entity 'perfume' is mentioned with neutral sentiment. The user does not explicitly express a preference for or against perfume, but rather states they do not wear it.",
+        "dialogue_id": 0,
+        "user_id": "user",
+        "preferences": [
+          {
+            "reasoning": "Entity 'perfume' is mentioned with neutral sentiment",
+            "combined_axis": "liking__aesthetic_sensory",
+            "entity": "perfume",
+            "original_mention": "perfume",
+            "context_tags": [],
+            "polarity": "neutral",
+            "intensity": "low"
+          }
+        ]
+      }
+    },
+    {
+      "dialogue_id": 20,
+      "original_dialogue": "System: What kind of books do you like ?\nUser: I like reading novels about early America .\nSystem: Really ? Me too .\nUser: Which one do you like best ?\nSystem: I prefer the novels by Hemingway , such as The Old Man and the Sea . I like the simple words in his novels .\nUser: Yup . Though the words he used are simple , but the spirit he has conveyed is great .\nSystem: Absolutely !",
+      "translated_dialogue": "System: どんな種類の本が好き？\nUser: 私は初期アメリカについての小説を読むのが好きよ。\nSystem: 本当？私もよ。\nUser: どれが一番好き？\nSystem: 私はヘミングウェイの小説、例えば『老人と海』が好きだわ。彼の小説のシンプルな言葉遣いが好きなの。\nUser: ええ。彼が使う言葉はシンプルだけど、彼が伝えている精神は素晴らしいわ。\nSystem: 全くその通りだわ！",
+      "ground_truth_annotations": [
+        {
+          "entity": "novels about early America",
+          "axis": "liking",
+          "sub_axis": "stimulation",
+          "polarity": "positive",
+          "intensity": "mid",
+          "context": [
+            "None"
+          ],
+          "explicitness": "explicit"
+        },
+        {
+          "entity": "Hemingway",
+          "axis": "liking",
+          "sub_axis": "",
+          "polarity": "positive",
+          "intensity": "mid",
+          "context": [
+            "None"
+          ],
+          "explicitness": "explicit"
+        },
+        {
+          "entity": "spirit Hemingway convey",
+          "axis": "liking",
+          "sub_axis": "",
+          "polarity": "positive",
+          "intensity": "high",
+          "context": [
+            "None"
+          ],
+          "explicitness": "explicit"
+        }
+      ],
+      "extracted_preferences": {
+        "chain_of_thought": "Entity 'novels about early America' is mentioned with positive sentiment. Axis is liking_aesthetic/sensory.",
+        "dialogue_id": 0,
+        "user_id": "user",
+        "preferences": [
+          {
+            "reasoning": "Entity 'novels about early America' is mentioned with positive sentiment",
+            "combined_axis": "liking__aesthetic_sensory",
+            "entity": "novels about early America",
+            "original_mention": "novels about early America",
+            "context_tags": [],
+            "polarity": "positive",
+            "intensity": "high"
+          }
+        ]
+      }
+    },
+    {
+      "dialogue_id": 21,
+      "original_dialogue": "System: How have you been doing ?\nUser: I can ’ t sleep or eat . I have a really bad pain in my tooth !\nSystem: How long have you had this toothache ?\nUser: It bothers me off and on , but it ’ s gotten much worse these past few weeks .\nSystem: Is there anything that you ’ Ve done to your tooth that might have caused the pain ?\nUser: My girlfriend told me that I grind my teeth a lot when I sleep . Maybe that is the problem .\nSystem: When you brush your teeth , what do you use ?\nUser: I use a soft bristle toothbrush .\nSystem: Does it bother you when you have to chew a lot ?\nUser: Absolutely . That set it off big time !",
+      "translated_dialogue": "System: 調子はどうですか？\nUser: 眠れないし、食べられません。歯が本当にひどく痛むんです！\nSystem: この歯痛はどれくらい前からですか？\nUser: 時々痛むのですが、ここ数週間でずっとひどくなりました。\nSystem: 歯に何かして、それが痛みの原因になったかもしれないことはありますか？\nUser: ガールフレンドが、寝ている間によく歯ぎしりをしていると言っていました。たぶんそれが問題かもしれません。\nSystem: 歯を磨くとき、何を使っていますか？\nUser: 柔らかい毛の歯ブラシを使っています。\nSystem: たくさん噛まなければならないときに、痛みはありますか？\nUser: まさに。それで一気に痛み出すんです！",
+      "ground_truth_annotations": [],
+      "extracted_preferences": {
+        "chain_of_thought": "Entity 'toothache' is mentioned with negative sentiment. Axis is need__personal, as the user is experiencing discomfort and pain.",
+        "dialogue_id": 0,
+        "user_id": "user",
+        "preferences": [
+          {
+            "reasoning": "Entity 'toothache' is mentioned with negative sentiment",
+            "combined_axis": "need__personal",
+            "entity": "toothache",
+            "original_mention": "really bad pain in my tooth!",
+            "context_tags": [],
+            "polarity": "negative",
+            "intensity": "high"
+          },
+          {
+            "reasoning": "Entity 'grinding teeth' is mentioned with negative sentiment",
+            "combined_axis": "need__personal",
+            "entity": "grinding teeth",
+            "original_mention": "I grind my teeth a lot when I sleep.",
+            "context_tags": [],
+            "polarity": "negative",
+            "intensity": "high"
+          },
+          {
+            "reasoning": "Entity 'chewing' is mentioned with negative sentiment",
+            "combined_axis": "need__personal",
+            "entity": "chewing",
+            "original_mention": "Does it bother you when you have to chew a lot?",
+            "context_tags": [],
+            "polarity": "negative",
+            "intensity": "high"
+          }
+        ]
+      }
+    },
+    {
+      "dialogue_id": 22,
+      "original_dialogue": "System: Gosh ! The water faucet is dripping badly again .\nUser: You are going to have a huge bill .\nSystem: I know . I ’ Ve got to get it fixed ASAP .\nUser: Don't you wanna get it fixed now ?\nSystem: I wish I could , but I ’ Ve got to go now . I have an appointment in 20 minutes .\nUser: Well , if you need anything , just let me know .\nSystem: Oh , by the way , could you give me a ride ? My car is still in the garage .\nUser: You sure have bad luck these days .",
+      "translated_dialogue": "System: ああ、もう！また水道の蛇口がひどくポタポタ漏れてる。\nUser: すごい請求書が来ることになるわよ。\nSystem: わかってる。一刻も早く修理してもらわないと。\nUser: 今すぐ直してもらいたくないの？\nSystem: できればそうしたいけど、もう行かなきゃ。20分後に約束があるんだ。\nUser: まあ、何か必要なことがあれば、知らせてちょうだい。\nSystem: ああ、そういえば、車で送ってくれない？僕の車はまだ修理工場なんだ。\nUser: 本当に最近運が悪いのね。",
+      "ground_truth_annotations": [],
+      "extracted_preferences": {
+        "chain_of_thought": "Entity 'water faucet' is mentioned with negative sentiment. Axis is need__functional because it's related to utility and cost.",
+        "dialogue_id": 0,
+        "user_id": "user",
+        "preferences": [
+          {
+            "reasoning": "Entity 'water faucet' is mentioned with negative sentiment. Axis is need__functional because it's related to utility and cost.",
+            "combined_axis": "need__functional",
+            "entity": "water faucet",
+            "original_mention": "water faucet",
+            "context_tags": [],
+            "polarity": "negative",
+            "intensity": "high"
+          }
+        ]
+      }
+    },
+    {
+      "dialogue_id": 23,
+      "original_dialogue": "System: Waiter , please bring me some toast .\nUser: Sure . What kind of toast do you like ?\nSystem: Pardon ?\nUser: We have white toast , whole wheat toast and rye toast .\nSystem: I see , bring me the whole wheat toast .\nUser: Anything to drink ?\nSystem: Milk , please .",
+      "translated_dialogue": "System: ウエイター、トーストを持ってきてください。\nUser: かしこまりました。どのようなトーストがよろしいですか？\nSystem: え？\nUser: ホワイトトースト、全粒粉トースト、ライ麦トーストがございます。\nSystem: なるほど、全粒粉トーストを持ってきてください。\nUser: お飲み物はいかがですか？\nSystem: ミルクをお願いします。",
+      "ground_truth_annotations": [
+        {
+          "entity": "whole wheat toast",
+          "axis": "wanting",
+          "sub_axis": "goal",
+          "polarity": "positive",
+          "intensity": "mid",
+          "context": [
+            "None"
+          ],
+          "explicitness": "explicit"
+        },
+        {
+          "entity": "milk",
+          "axis": "wanting",
+          "sub_axis": "goal",
+          "polarity": "positive",
+          "intensity": "mid",
+          "context": [
+            "None"
+          ],
+          "explicitness": "explicit"
+        },
+        {
+          "entity": "toast",
+          "axis": "wanting",
+          "sub_axis": "goal",
+          "polarity": "positive",
+          "intensity": "mid",
+          "context": [
+            "None"
+          ],
+          "explicitness": "explicit"
+        }
+      ],
+      "extracted_preferences": {
+        "chain_of_thought": "Entity 'whole wheat toast' is mentioned with positive sentiment",
+        "dialogue_id": 0,
+        "user_id": "user",
+        "preferences": [
+          {
+            "reasoning": "Entity 'whole wheat toast' is mentioned with positive sentiment",
+            "combined_axis": "liking__aesthetic_sensory",
+            "entity": "whole wheat toast",
+            "original_mention": "whole wheat toast",
+            "context_tags": [],
+            "polarity": "positive",
+            "intensity": "high"
+          }
+        ]
+      }
+    },
+    {
+      "dialogue_id": 24,
+      "original_dialogue": "System: I'll try one of these on . ( The customer tries one of the shoes on . ) It's too big . It slides up and down my heel when I walk around .\nUser: Well , let's try a size ten . ( He gets another pair and the customer tries a shoe on ) Looks like a perfect fit .\nSystem: Not really . It pinches my toes .\nUser: I'm sure they'll be fine once you break them in .\nSystem: I don't know ... well , I guess I'll take them , since you don't seem to have anything better .\nUser: Thank you , ma'am . It's been a pleasure doing business with you .",
+      "translated_dialogue": "System: これらを試着してみます。（客が靴を片方試着する。）大きすぎます。歩くと踵が上下に動きます。\nUser: では、サイズ10を試してみましょう。（彼が別のペアを持ってきて、客が靴を試着する）ぴったり合っているようです。\nSystem: そうでもありません。つま先がきついんです。\nUser: 履き慣らせばきっと大丈夫ですよ。\nSystem: どうでしょう…まあ、他に良さそうなものもないようですから、これにします。\nUser: ありがとうございます、奥様。お取引できて光栄でした。",
+      "ground_truth_annotations": [],
+      "extracted_preferences": {
+        "chain_of_thought": "Entity 'shoes' is mentioned with negative sentiment in the context of size and fit. The customer expresses dissatisfaction with both sizes tried, mentioning that one is too big and the other pinches their toes.",
+        "dialogue_id": 0,
+        "user_id": "system",
+        "preferences": [
+          {
+            "reasoning": "Entity 'shoes' is mentioned with negative sentiment in the context of size and fit",
+            "combined_axis": "liking__aesthetic_sensory",
+            "entity": "shoes",
+            "original_mention": "shoes",
+            "context_tags": [
+              "activity-working_studying"
+            ],
+            "polarity": "negative",
+            "intensity": "high"
+          }
+        ]
+      }
+    },
+    {
+      "dialogue_id": 25,
+      "original_dialogue": "System: Let's go to Burger Queen for lunch . They have good cheese burgers .\nUser: OK . I am hungry , too . I like their milkshake . They're very creamy and tasty .\nSystem: Look at the long line , there are always a lot of people waiting in lines just for the cheese burger . It must be very delicious .\nUser: Yup . But , this also means we have to wait to order our food .\nSystem: Come on . It is worth waiting . Their cheese burgers are really popular . Once you have it , you will love it .\nUser: Well , sounds very attractive . I just tried their vanilla milkshake last time , and it was really delicious .\nSystem: Yup , they have good French fries as well . Not very thick , but crispy enough . You should try them with some mayonnaise sauce . That is the Belgium style . You will love it .\nUser: OK , I think I know what to order for my lunch now . But , eating too much fried food really makes me fat .\nSystem: Come on . You just have it once in a while , not every day . It will not harm you .\nUser: That's true . You can hear my tummy grumbling . I am really hungry !\nSystem: Be patient . Good food never comes fast .\nUser: Ok !",
+      "translated_dialogue": "System: お昼ごはんにバーガー・クイーンに行こう。あそこは美味しいチーズバーガーがあるよ。\nUser: OK。私もお腹が空いたわ。彼らのミルクシェイクが好きなの。とてもクリーミーで美味しいのよ。\nSystem: 長蛇の列を見て、チーズバーガーのためだけにいつもたくさんの人が並んでいるわ。とても美味しいに違いないね。\nUser: うん。でも、これは注文するのに待たなければならないということでもあるね。\nSystem: 大丈夫だよ。待つ価値はあるさ。彼らのチーズバーガーは本当に人気なんだ。一度食べたら、きっと好きになるよ。\nUser: ふむ、とても魅力的ね。前回バニラミルクシェイクだけ試したけど、本当に美味しかったわ。\nSystem: うん、フライドポテトも美味しいよ。あまり太くないけど、十分にクリスピーだ。マヨネーズソースと一緒に試してみるべきだよ。あれはベルギースタイルだ。気に入るよ。\nUser: OK、お昼に何を注文するか分かった気がするわ。でも、揚げ物を食べ過ぎると本当に太るのよね。\nSystem: 大丈夫だよ。たまに食べるだけで、毎日じゃないだろ。害はないよ。\nUser: それはそうね。お腹がグーグー鳴っているのが聞こえるわ。本当にお腹が空いた！\nSystem: 我慢して。美味しい食べ物はすぐには来ないよ。\nUser: わかった！",
+      "ground_truth_annotations": [
+        {
+          "entity": "Burger Queen",
+          "axis": "wanting",
+          "sub_axis": "goal",
+          "polarity": "positive",
+          "intensity": "mid",
+          "context": [
+            "Hungry/Thirsty",
+            "Noon"
+          ],
+          "explicitness": "explicit"
+        },
+        {
+          "entity": "vanilla milkshake",
+          "axis": "liking",
+          "sub_axis": "aesthetic/sensory",
+          "polarity": "positive",
+          "intensity": "high",
+          "context": [
+            "None"
+          ],
+          "explicitness": "explicit"
+        }
+      ],
+      "extracted_preferences": {
+        "chain_of_thought": "Entity identification: Burger Queen, cheese burgers, milkshake, French fries\nAxis and polarity classification:\n- Burger Queen: liking__aesthetic/sensory (positive)\n- Cheese burgers: wanting__goal (positive)\n- Milkshake: liking__aesthetic/sensory (positive)\n- French fries: liking__aesthetic/sensory (positive)\nDetail completion:\n- Intensity: high\n- Context tags: lunch, group\nExplicitness verification: All preferences are explicitly mentioned in the dialogue.\nExtraction:",
+        "dialogue_id": 0,
+        "user_id": "user",
+        "preferences": [
+          {
+            "reasoning": "Entity 'Burger Queen' is mentioned with positive sentiment",
+            "combined_axis": "liking__aesthetic_sensory",
+            "entity": "Burger Queen",
+            "original_mention": "Burger Queen",
+            "context_tags": [
+              "location-restaurant_bar"
+            ],
+            "polarity": "positive",
+            "intensity": "high"
+          },
+          {
+            "reasoning": "Entity 'cheese burgers' is mentioned with positive sentiment",
+            "combined_axis": "wanting__goal",
+            "entity": "cheese burgers",
+            "original_mention": "cheese burgers",
+            "context_tags": [
+              "location-restaurant_bar"
+            ],
+            "polarity": "positive",
+            "intensity": "high"
+          },
+          {
+            "reasoning": "Entity 'milkshake' is mentioned with positive sentiment",
+            "combined_axis": "liking__aesthetic_sensory",
+            "entity": "milkshake",
+            "original_mention": "milkshake",
+            "context_tags": [
+              "location-restaurant_bar"
+            ],
+            "polarity": "positive",
+            "intensity": "high"
+          },
+          {
+            "reasoning": "Entity 'French fries' is mentioned with positive sentiment",
+            "combined_axis": "liking__aesthetic_sensory",
+            "entity": "French fries",
+            "original_mention": "French fries",
+            "context_tags": [
+              "location-restaurant_bar"
+            ],
+            "polarity": "positive",
+            "intensity": "high"
+          }
+        ]
+      }
+    },
+    {
+      "dialogue_id": 26,
+      "original_dialogue": "System: Excuse me . Is there any body here ?\nUser: Yes .\nSystem: I've finished up all my water . I would kill for a sip of water .\nUser: Sure , come on in .\nSystem: Thank you very much . Are you here alone ?\nUser: My father and sister are out to photographing . What about you ?\nSystem: I'm a back-packer from America .\nUser: What is a back-packer ?\nSystem: It means a hiker who loves traveling around the world .\nUser: Cool . You must have been to a lot of places .\nSystem: Yes , actually almost half of all the countries over the world . I love traveling places .\nUser: So cool . I want to be a back-packer when I grow up .\nSystem: You can do it . But do work hard on your English to make it easier .\nUser: I'll try my best .",
+      "translated_dialogue": "System: すみません。どなたかいらっしゃいますか？\nUser: はい。\nSystem: 水を全部飲み干してしまいました。一口でも水が飲めたら死ぬほど嬉しいのですが。\nUser: もちろん、どうぞ中へ。\nSystem: どうもありがとうございます。お一人ですか？\nUser: 父と妹は写真撮影に出かけています。あなたは？\nSystem: 私はアメリカから来たバックパッカーです。\nUser: バックパッカーとは何ですか？\nSystem: 世界中を旅するのが好きなハイカーのことです。\nUser: かっこいい。たくさんの場所に行ったに違いありませんね。\nSystem: ええ、実際、世界のほぼ半分の国に行きました。旅をするのが大好きなんです。\nUser: すごくかっこいいです。大人になったらバックパッカーになりたいです。\nSystem: なれますよ。でも、もっと簡単にするために英語を一生懸命勉強してくださいね。\nUser: ベストを尽くします。",
+      "ground_truth_annotations": [
+        {
+          "entity": "back-packer",
+          "axis": "liking",
+          "sub_axis": "identification",
+          "polarity": "positive",
+          "intensity": "high",
+          "context": [
+            "None"
+          ],
+          "explicitness": "explicit"
+        },
+        {
+          "entity": "back-packer",
+          "axis": "wanting",
+          "sub_axis": "goal",
+          "polarity": "positive",
+          "intensity": "mid",
+          "context": [
+            "None"
+          ],
+          "explicitness": "explicit"
+        }
+      ],
+      "extracted_preferences": {
+        "chain_of_thought": "Entity 'water' is mentioned with positive sentiment, and the user's response indicates they are willing to provide water. This suggests a preference for providing water or being in an environment where water is readily available.",
+        "dialogue_id": 0,
+        "user_id": "user",
+        "preferences": [
+          {
+            "reasoning": "Entity 'water' is mentioned with positive sentiment",
+            "combined_axis": "liking__aesthetic_sensory",
+            "entity": "water",
+            "original_mention": "water",
+            "context_tags": [],
+            "polarity": "positive",
+            "intensity": "high"
+          }
+        ]
+      }
+    },
+    {
+      "dialogue_id": 27,
+      "original_dialogue": "System: I really think all Americans look alike .\nUser: You ’ re crazy ! You haven ’ t been here long enough .\nSystem: But they do .\nUser: What makes you say that ?\nSystem: They wear the same clothes , they ’ re all blond , they all drive cars , they all own Parker fountain pens ; they all drink Coca Cola , and they all chew gum .\nUser: I disagree with you . They don ’ t all wear the same clothes ; they ’ re definitely not all blond ; they don ’ t all own Parker fountain pens ; they don ’ t all drink Coca Cola , and they don ’ t all chew gum . I do think they all drive cars though ! But that doesn ’ t have anything to do with how they look !\nSystem: Maybe I am just homesick . I know you ’ re right . I just miss China , that ’ s all .",
+      "translated_dialogue": "System: 本当にアメリカ人はみんな同じように見えると思う。\nUser: おかしいわよ！あなたはまだここに長くいないわ。\nSystem: でも、そう見えるんだ。\nUser: なぜそう言うの？\nSystem: みんな同じ服を着ていて、みんなブロンドで、みんな車を運転していて、みんなパーカーの万年筆を持っていて、みんなコカ・コーラを飲んでいて、みんなガムを噛んでいるんだ。\nUser: 私はあなたに反対よ。みんなが同じ服を着ているわけではないわ。絶対にみんながブロンドではないし。みんながパーカーの万年筆を持っているわけでもないし。みんながコカ・コーラを飲むわけでもないし、みんながガムを噛むわけでもないわ。でも、みんなが車を運転しているのは確かだと思う！でも、それは彼らの見た目とは何の関係もないわ！\nSystem: たぶん、ただホームシックなんだろう。あなたの言う通りだとわかってる。ただ中国が恋しいだけなんだ。",
+      "ground_truth_annotations": [],
+      "extracted_preferences": {
+        "chain_of_thought": "Entity 'all Americans' is mentioned with negative sentiment. Axis is liking__identification, as the user is evaluating their appearance.",
+        "dialogue_id": 0,
+        "user_id": "user",
+        "preferences": [
+          {
+            "reasoning": "Entity 'Parker fountain pens' is mentioned with negative sentiment",
+            "combined_axis": "liking__aesthetic_sensory",
+            "entity": "Parker fountain pens",
+            "original_mention": "Parker fountain pens",
+            "context_tags": [],
+            "polarity": "negative",
+            "intensity": "high"
+          },
+          {
+            "reasoning": "Entity 'Coca Cola' is mentioned with negative sentiment",
+            "combined_axis": "liking__aesthetic_sensory",
+            "entity": "Coca Cola",
+            "original_mention": "Coca Cola",
+            "context_tags": [],
+            "polarity": "negative",
+            "intensity": "high"
+          },
+          {
+            "reasoning": "Entity 'gum' is mentioned with negative sentiment",
+            "combined_axis": "liking__aesthetic_sensory",
+            "entity": "gum",
+            "original_mention": "gum",
+            "context_tags": [],
+            "polarity": "negative",
+            "intensity": "high"
+          },
+          {
+            "reasoning": "Entity 'cars' is mentioned with neutral sentiment, but as a characteristic of Americans.",
+            "combined_axis": "liking__identification",
+            "entity": "cars",
+            "original_mention": "cars",
+            "context_tags": [],
+            "polarity": "neutral",
+            "intensity": "low"
+          }
+        ]
+      }
+    },
+    {
+      "dialogue_id": 28,
+      "original_dialogue": "System: I want to check in now . Here is my ticket .\nUser: Don't you have any luggage to check in ?\nSystem: No , sir .\nUser: Do you have a seat preference ?\nSystem: I'd like an aisle seat . I feel terrible near the window .\nUser: Here is your boarding pass . Have a nice day .",
+      "translated_dialogue": "System: 今すぐチェックインしたいのですが。こちらが私のチケットです。\nUser: 預ける荷物はございませんか？\nSystem: いいえ、ありません。\nUser: 座席の希望はございますか？\nSystem: 通路側の席をお願いします。窓際だと気分が悪くなるんです。\nUser: こちらが搭乗券です。良い一日を。",
+      "ground_truth_annotations": [
+        {
+          "entity": "aisle seat",
+          "axis": "need",
+          "sub_axis": "personal",
+          "polarity": "positive",
+          "intensity": "mid",
+          "context": [
+            "None"
+          ],
+          "explicitness": "explicit"
+        },
+        {
+          "entity": "window seat",
+          "axis": "need",
+          "sub_axis": "personal",
+          "polarity": "negative",
+          "intensity": "mid",
+          "context": [
+            "None"
+          ],
+          "explicitness": "explicit"
+        }
+      ],
+      "extracted_preferences": {
+        "chain_of_thought": "Entity 'aisle seat' is mentioned with positive sentiment. The user explicitly expresses their preference for an aisle seat.",
+        "dialogue_id": 0,
+        "user_id": "user",
+        "preferences": [
+          {
+            "reasoning": "Entity 'aisle seat' is mentioned with positive sentiment",
+            "combined_axis": "liking__aesthetic_sensory",
+            "entity": "aisle seat",
+            "original_mention": "aisle seat",
+            "context_tags": [],
+            "polarity": "positive",
+            "intensity": "high"
+          }
+        ]
+      }
+    },
+    {
+      "dialogue_id": 29,
+      "original_dialogue": "System: Hey , May . How about getting together for a movie tonight ?\nUser: Sure . What's playing ?\nSystem: Well , Let me check the newspaper . What about The Terminal ?\nUser: Wow , it stars Catherine Zeta-Jones , my favorite actress .\nSystem: Well , birds of a feather flock together . I like her too . She was in a lot of dramas .\nUser: She is so beautiful and elegant . And she is famous for her fine acting .\nSystem: What's more , she doesn't have scandals . And she likes to take part in the charitable activities .\nUser: Who is the director ?\nSystem: Steven Spielberg . Another superstar .\nUser: Yes , a legend , also . I still remember , his movies , Jurassic Park and Schindler's List got him nine Oscar awards in 1994 .\nSystem: Can you introduce the story of The Terminal briefly ?\nUser: It tells a romantic and humorous love story .\nSystem: This is really exciting movie . Lets go to this one .",
+      "translated_dialogue": "System: ねえ、メイ。今夜一緒に映画を見に行くのはどう？\nUser: いいわ。何を上映しているの？\nSystem: ええと、新聞をチェックさせて。『ターミナル』はどう？\nUser: わあ、私の大好きな女優、キャサリン・ゼタ＝ジョーンズが出演しているわ。\nSystem: まあ、類は友を呼ぶね。僕も彼女が好きだよ。たくさんのドラマに出ていたね。\nUser: 彼女はとても美しくてエレガントね。そして、素晴らしい演技で有名だわ。\nSystem: さらに、スキャンダルがないんだ。それに、慈善活動に参加するのが好きなんだ。\nUser: 監督は誰？\nSystem: スティーブン・スピルバーグだ。もう一人のスーパースターだね。\nUser: ええ、彼もまた伝説ね。彼の映画、『ジュラシック・パーク』と『シンドラーのリスト』で、1994年に9つのオスカー賞を獲得したのを覚えているわ。\nSystem: 『ターミナル』の物語を簡単に紹介してくれる？\nUser: ロマンチックでユーモラスなラブストーリーを語っているよ。\nSystem: これは本当にわくわくする映画だね。これを見に行こう。",
+      "ground_truth_annotations": [
+        {
+          "entity": "Catherine Zeta-Jones",
+          "axis": "liking",
+          "sub_axis": "",
+          "polarity": "positive",
+          "intensity": "high",
+          "context": [
+            "None"
+          ],
+          "explicitness": "explicit"
+        },
+        {
+          "entity": "Catherine Zeta-Jones",
+          "axis": "liking",
+          "sub_axis": "aesthetic/sensory",
+          "polarity": "positive",
+          "intensity": "mid",
+          "context": [
+            "None"
+          ],
+          "explicitness": "explicit"
+        },
+        {
+          "entity": "movie",
+          "axis": "wanting",
+          "sub_axis": "goal",
+          "polarity": "positive",
+          "intensity": "mid",
+          "context": [
+            "group"
+          ],
+          "explicitness": "explicit"
+        }
+      ],
+      "extracted_preferences": {
+        "chain_of_thought": "Entity 'The Terminal' is mentioned with positive sentiment",
+        "dialogue_id": 0,
+        "user_id": "user",
+        "preferences": [
+          {
+            "reasoning": "Entity 'Catherine Zeta-Jones' is mentioned with positive sentiment",
+            "combined_axis": "liking__aesthetic_sensory",
+            "entity": "Catherine Zeta-Jones",
+            "original_mention": "my favorite actress",
+            "context_tags": [],
+            "polarity": "positive",
+            "intensity": "high"
+          },
+          {
+            "reasoning": "Entity 'The Terminal' is mentioned with positive sentiment",
+            "combined_axis": "liking__identification",
+            "entity": "The Terminal",
+            "original_mention": "What about The Terminal?",
+            "context_tags": [],
+            "polarity": "positive",
+            "intensity": "high"
+          },
+          {
+            "reasoning": "Entity 'Steven Spielberg' is mentioned with positive sentiment",
+            "combined_axis": "liking__identification",
+            "entity": "Steven Spielberg",
+            "original_mention": "Another superstar",
+            "context_tags": [],
+            "polarity": "positive",
+            "intensity": "high"
+          },
+          {
+            "reasoning": "Entity 'The Terminal' is mentioned with positive sentiment",
+            "combined_axis": "liking__identification",
+            "entity": "The Terminal",
+            "original_mention": "This is really exciting movie . Lets go to this one.",
+            "context_tags": [],
+            "polarity": "positive",
+            "intensity": "high"
+          }
+        ]
+      }
+    },
+    {
+      "dialogue_id": 30,
+      "original_dialogue": "System: Thanks for the pizza . It was delicious .\nUser: It's okay .\nSystem: Next time , it's on me .\nUser: Don't be silly .\nSystem: I'm serious .\nUser: Alright . Next time , we can try some other flavors .\nSystem: Certainly . The vegetarian pizza looks pretty good . It must be very delicious .\nUser: Definitely . I really like Italian food .",
+      "translated_dialogue": "System: ピザありがとう。美味しかったよ。\nUser: 大丈夫だよ。\nSystem: 次回は僕が奢るよ。\nUser: バカ言わないで。\nSystem: 本気だよ。\nUser: わかった。次は他の味を試してみようか。\nSystem: もちろん。ベジタリアンピザがとても美味しそうだ。きっとすごく美味しいに違いない。\nUser: 間違いないね。イタリア料理が本当に好きなんだ。",
+      "ground_truth_annotations": [
+        {
+          "entity": "vegetarian pizza",
+          "axis": "wanting",
+          "sub_axis": "goal",
+          "polarity": "positive",
+          "intensity": "high",
+          "context": [
+            "None"
+          ],
+          "explicitness": "explicit"
+        },
+        {
+          "entity": "Italian food",
+          "axis": "wanting",
+          "sub_axis": "goal",
+          "polarity": "positive",
+          "intensity": "high",
+          "context": [
+            "None"
+          ],
+          "explicitness": "explicit"
+        }
+      ],
+      "extracted_preferences": {
+        "chain_of_thought": "Entity 'pizza' is mentioned with positive sentiment in the dialogue. Axis is liking_aesthetic_sensory as it's related to taste and enjoyment.",
+        "dialogue_id": 0,
+        "user_id": "user",
+        "preferences": [
+          {
+            "reasoning": "Entity 'pizza' is mentioned with positive sentiment",
+            "combined_axis": "liking__aesthetic_sensory",
+            "entity": "pizza",
+            "original_mention": "pizza",
+            "context_tags": [],
+            "polarity": "positive",
+            "intensity": "high"
+          }
+        ]
+      }
+    },
+    {
+      "dialogue_id": 31,
+      "original_dialogue": "System: Are you doing anything tonight ?\nUser: No , nothing . Why ?\nSystem: Do you like western music ?\nUser: Yes , I do , very much .\nSystem: There ’ s a concert tonight . Would you like to go and listen to it ?\nUser: Oh , yes . I ’ d love to .",
+      "translated_dialogue": "System: 今夜何か予定ある？\nUser: いいえ、何も。どうして？\nSystem: 西洋音楽は好き？\nUser: ええ、とても好きよ。\nSystem: 今夜コンサートがあるんだ。一緒に行って聴かない？\nUser: ああ、ええ。ぜひ行きたいわ。",
+      "ground_truth_annotations": [
+        {
+          "entity": "western music",
+          "axis": "liking",
+          "sub_axis": "",
+          "polarity": "positive",
+          "intensity": "high",
+          "context": [
+            "None"
+          ],
+          "explicitness": "explicit"
+        },
+        {
+          "entity": "western music concert",
+          "axis": "wanting",
+          "sub_axis": "goal",
+          "polarity": "positive",
+          "intensity": "high",
+          "context": [
+            "Night"
+          ],
+          "explicitness": "explicit"
+        }
+      ],
+      "extracted_preferences": {
+        "chain_of_thought": "Entity 'western music' is mentioned with positive sentiment. The user explicitly states they like western music, which indicates a preference for this type of music.",
+        "dialogue_id": 0,
+        "user_id": "user",
+        "preferences": [
+          {
+            "reasoning": "Entity 'western music' is mentioned with positive sentiment",
+            "combined_axis": "liking__aesthetic_sensory",
+            "entity": "western music",
+            "original_mention": "western music",
+            "context_tags": [],
+            "polarity": "positive",
+            "intensity": "high"
+          }
+        ]
+      }
+    },
+    {
+      "dialogue_id": 32,
+      "original_dialogue": "System: May I take your order ?\nUser: What's the specialty of the house ?\nSystem: The baked fish in tomato sauce is pretty good .\nUser: I like fish . Please bring me an order of that .\nSystem: Do you want some dessert ?\nUser: Apple pie , please .\nSystem: Single or double ?\nUser: Make it two .",
+      "translated_dialogue": "System: ご注文をお伺いしてもよろしいでしょうか？\nUser: こちらのお店の名物は何ですか？\nSystem: 焼き魚のトマトソース添えはかなり美味しいですよ。\nUser: 魚が好きです。それを一皿お願いします。\nSystem: デザートはいかがですか？\nUser: アップルパイをお願いします。\nSystem: シングルですか、ダブルですか？\nUser: 二つにしてください。",
+      "ground_truth_annotations": [
+        {
+          "entity": "fish",
+          "axis": "liking",
+          "sub_axis": "aesthetic/sensory",
+          "polarity": "positive",
+          "intensity": "mid",
+          "context": [
+            "None"
+          ],
+          "explicitness": "explicit"
+        },
+        {
+          "entity": "apple pie",
+          "axis": "wanting",
+          "sub_axis": "goal",
+          "polarity": "positive",
+          "intensity": "mid",
+          "context": [
+            "None"
+          ],
+          "explicitness": "explicit"
+        },
+        {
+          "entity": "The baked fish in tomato sauce",
+          "axis": "wanting",
+          "sub_axis": "goal",
+          "polarity": "positive",
+          "intensity": "mid",
+          "context": [
+            "None"
+          ],
+          "explicitness": "explicit"
+        }
+      ],
+      "extracted_preferences": {
+        "chain_of_thought": "Entity 'baked fish in tomato sauce' is mentioned with positive sentiment. The user asks for the specialty of the house and then orders it, indicating a preference.",
+        "dialogue_id": 0,
+        "user_id": "user",
+        "preferences": [
+          {
+            "reasoning": "Entity 'baked fish in tomato sauce' is mentioned with positive sentiment",
+            "combined_axis": "liking__aesthetic_sensory",
+            "entity": "baked fish in tomato sauce",
+            "original_mention": "The baked fish in tomato sauce is pretty good.",
+            "context_tags": [],
+            "polarity": "positive",
+            "intensity": "high"
+          },
+          {
+            "reasoning": "Entity 'apple pie' is mentioned with positive sentiment",
+            "combined_axis": "liking__aesthetic_sensory",
+            "entity": "apple pie",
+            "original_mention": "Apple pie, please.",
+            "context_tags": [],
+            "polarity": "positive",
+            "intensity": "high"
+          }
+        ]
+      }
+    },
+    {
+      "dialogue_id": 33,
+      "original_dialogue": "System: Don't you think it's nice out ?\nUser: Yes , I think so too .\nSystem: I think that it's going to rain .\nUser: I hope that it does rain .\nSystem: You like the rain ?\nUser: The sky looks so clean after it rains . I love it .\nSystem: I understand . Rain does make it smell cleaner .\nUser: I love most how it is at night after it rains .\nSystem: How come ?\nUser: You can see the stars so much more clearly after it rains .\nSystem: I would love for it to rain today .\nUser: I would too .",
+      "translated_dialogue": "System: 外はいい天気だと思わない？\nUser: ええ、私もそう思うわ。\nSystem: 雨が降りそうだね。\nUser: 雨が降るといいな。\nSystem: 雨が好きなの？\nUser: 雨が降った後の空がとてもきれいなのよ。大好きだわ。\nSystem: わかるよ。雨が降ると空気もきれいになる匂いがするね。\nUser: 一番好きなのは、雨が降った後の夜の様子なの。\nSystem: どうして？\nUser: 雨が降った後だと、星がずっとはっきり見えるからよ。\nSystem: 今日雨が降ってくれたらいいのに。\nUser: 私もよ。",
+      "ground_truth_annotations": [
+        {
+          "entity": "clean sky",
+          "axis": "liking",
+          "sub_axis": "aesthetic/sensory",
+          "polarity": "positive",
+          "intensity": "high",
+          "context": [
+            "None"
+          ],
+          "explicitness": "explicit"
+        },
+        {
+          "entity": "clear stars",
+          "axis": "liking",
+          "sub_axis": "aesthetic/sensory",
+          "polarity": "positive",
+          "intensity": "high",
+          "context": [
+            "Night"
+          ],
+          "explicitness": "explicit"
+        }
+      ],
+      "extracted_preferences": {
+        "chain_of_thought": "Entity 'rain' is mentioned with positive sentiment. Axis is liking__aesthetic/sensory.",
+        "dialogue_id": 0,
+        "user_id": "user",
+        "preferences": [
+          {
+            "reasoning": "Entity 'rain' is mentioned with positive sentiment",
+            "combined_axis": "liking__aesthetic_sensory",
+            "entity": "rain",
+            "original_mention": "it does rain",
+            "context_tags": [],
+            "polarity": "positive",
+            "intensity": "high"
+          },
+          {
+            "reasoning": "Entity 'night' is mentioned with positive sentiment. Axis is liking__aesthetic/sensory.",
+            "combined_axis": "liking__aesthetic_sensory",
+            "entity": "night",
+            "original_mention": "at night after it rains",
+            "context_tags": [],
+            "polarity": "positive",
+            "intensity": "high"
+          },
+          {
+            "reasoning": "Entity 'stars' is mentioned with positive sentiment. Axis is liking__aesthetic/sensory.",
+            "combined_axis": "liking__aesthetic_sensory",
+            "entity": "stars",
+            "original_mention": "You can see the stars so much more clearly after it rains",
+            "context_tags": [],
+            "polarity": "positive",
+            "intensity": "high"
+          }
+        ]
+      }
+    },
+    {
+      "dialogue_id": 34,
+      "original_dialogue": "System: What can I do for you ?\nUser: I wish to buy a diamond ring .\nSystem: How many carats diamond do you want ?\nUser: Two carats .\nSystem: Is this one suit for you ?\nUser: No , it seems too old-fashioned .\nSystem: What about this ?\nUser: Let me try it on , it's too small for me , haven't you got any larger ones ?\nSystem: Yes , try this one please .\nUser: This fits me well , how much is it ?\nSystem: 3,500 yuan .\nUser: It's reasonable . Here you are .",
+      "translated_dialogue": "System: 何かお手伝いできることはありますか？\nUser: ダイヤモンドの指輪を買いたいのですが。\nSystem: 何カラットのダイヤモンドをご希望ですか？\nUser: 2カラットです。\nSystem: こちらはいかがでしょうか？\nUser: いいえ、古風すぎます。\nSystem: こちらはどうでしょう？\nUser: 試着させてください、私には小さすぎます、もっと大きいものはありませんか？\nSystem: はい、こちらをお試しください。\nUser: これはぴったりです、おいくらですか？\nSystem: 3,500元です。\nUser: 妥当ですね。どうぞ。",
+      "ground_truth_annotations": [
+        {
+          "entity": "two carats diamond ring",
+          "axis": "wanting",
+          "sub_axis": "goal",
+          "polarity": "positive",
+          "intensity": "mid",
+          "context": [
+            "None"
+          ],
+          "explicitness": "explicit"
+        }
+      ],
+      "extracted_preferences": {
+        "chain_of_thought": "Entity 'diamond ring' is mentioned with positive sentiment. Axis is wanting-goal because the user wants to acquire a diamond ring.",
+        "dialogue_id": 0,
+        "user_id": "user",
+        "preferences": [
+          {
+            "reasoning": "Entity 'diamond ring' is mentioned with positive sentiment",
+            "combined_axis": "wanting__goal",
+            "entity": "diamond ring",
+            "original_mention": "buy a diamond ring",
+            "context_tags": [],
+            "polarity": "positive",
+            "intensity": "high"
+          },
+          {
+            "reasoning": "Entity 'two carats' is mentioned with neutral sentiment. Axis is wanting-goal because the user wants to acquire a specific type of diamond.",
+            "combined_axis": "wanting__goal",
+            "entity": "two carats",
+            "original_mention": "Two carats",
+            "context_tags": [],
+            "polarity": "neutral",
+            "intensity": "high"
+          },
+          {
+            "reasoning": "Entity 'diamond ring' is mentioned with negative sentiment. Axis is liking-identification because the user does not like the old-fashioned style.",
+            "combined_axis": "liking__identification",
+            "entity": "diamond ring",
+            "original_mention": "it seems too old-fashioned",
+            "context_tags": [],
+            "polarity": "negative",
+            "intensity": "high"
+          },
+          {
+            "reasoning": "Entity 'larger ones' is mentioned with positive sentiment. Axis is wanting-goal because the user wants to acquire a diamond ring that fits them.",
+            "combined_axis": "wanting__goal",
+            "entity": "larger ones",
+            "original_mention": "haven't you got any larger ones?",
+            "context_tags": [],
+            "polarity": "positive",
+            "intensity": "high"
+          },
+          {
+            "reasoning": "Entity 'diamond ring' is mentioned with positive sentiment. Axis is liking-aesthetic/sensory because the user likes the diamond ring that fits them.",
+            "combined_axis": "liking__aesthetic_sensory",
+            "entity": "diamond ring",
+            "original_mention": "This fits me well",
+            "context_tags": [],
+            "polarity": "positive",
+            "intensity": "high"
+          },
+          {
+            "reasoning": "Entity '3,500 yuan' is mentioned with neutral sentiment. Axis is need-functional because the user is considering the price.",
+            "combined_axis": "need__functional",
+            "entity": "3,500 yuan",
+            "original_mention": "3,500 yuan",
+            "context_tags": [],
+            "polarity": "neutral",
+            "intensity": "high"
+          },
+          {
+            "reasoning": "Entity 'diamond ring' is mentioned with positive sentiment. Axis is liking-identification because the user likes the diamond ring.",
+            "combined_axis": "liking__identification",
+            "entity": "diamond ring",
+            "original_mention": "It's reasonable",
+            "context_tags": [],
+            "polarity": "positive",
+            "intensity": "high"
+          }
+        ]
+      }
+    },
+    {
+      "dialogue_id": 35,
+      "original_dialogue": "System: What do you plan to do on Sunday morning ?\nUser: Nothing special .\nSystem: How about going to English corner with me ?\nUser: Oh , I'd rather not .\nSystem: Why not ?\nUser: You know , I am poor at English , especially spoken English .\nSystem: That's why you should go there , If you don't dare to speak English owing to the fact that you are afraid of making mistakes , you simply will never learn English .",
+      "translated_dialogue": "System: 日曜日の午前中に何をする予定？\nUser: 特にないわ。\nSystem: 私と一緒にイングリッシュ・コーナーに行くのはどう？\nUser: ああ、遠慮したいわ。\nSystem: なぜ？\nUser: 知っての通り、私は英語が苦手なの、特に英会話が。\nSystem: だからこそそこに行くべきなのよ。間違いを恐れるあまり英語を話す勇気を持たないなら、あなたは決して英語を習得できないわ。",
+      "ground_truth_annotations": [
+        {
+          "entity": "English corner",
+          "axis": "wanting",
+          "sub_axis": "goal",
+          "polarity": "negative",
+          "intensity": "mid",
+          "context": [
+            "None"
+          ],
+          "explicitness": "explicit"
+        }
+      ],
+      "extracted_preferences": {
+        "chain_of_thought": "Entity 'English corner' is mentioned with negative sentiment. The user explicitly states they would rather not go, and later explains their reason for not wanting to attend due to their poor spoken English skills.",
+        "dialogue_id": 0,
+        "user_id": "user",
+        "preferences": [
+          {
+            "reasoning": "Entity 'English corner' is mentioned with negative sentiment",
+            "combined_axis": "wanting__goal",
+            "entity": "English corner",
+            "original_mention": "English corner",
+            "context_tags": [],
+            "polarity": "negative",
+            "intensity": "high"
+          }
+        ]
+      }
+    },
+    {
+      "dialogue_id": 36,
+      "original_dialogue": "System: Robin , what are you going to do tomorrow ?\nUser: Bob and I plan to play hockey in the morning .\nSystem: And later ?\nUser: Well , in the afternoon , after a long nap , we ’ ll go yachting with Nora .\nSystem: It seems that you will have a nice day tomorrow .\nUser: How about you ? What are you going to do tomorrow ?\nSystem: I have a lot of work in the office and a lot of chores in the house.How I envy you , Robin !",
+      "translated_dialogue": "System: ロビン、明日何する？\nUser: ボブと僕は午前中にホッケーをする予定だ。\nSystem: 午後は？\nUser: ええと、午後は長い昼寝をした後、ノラとヨットに行くんだ。\nSystem: 明日、楽しい一日になりそうね。\nUser: 君は？明日は何をするつもり？\nSystem: 事務所で仕事がたくさんあるし、家でもやることが山積みよ。ロビン、本当に羨ましいわ！",
+      "ground_truth_annotations": [
+        {
+          "entity": "hockey",
+          "axis": "wanting",
+          "sub_axis": "goal",
+          "polarity": "positive",
+          "intensity": "mid",
+          "context": [
+            "Morning",
+            "group"
+          ],
+          "explicitness": "explicit"
+        },
+        {
+          "entity": "yachting",
+          "axis": "wanting",
+          "sub_axis": "goal",
+          "polarity": "positive",
+          "intensity": "mid",
+          "context": [
+            "group",
+            "Afternoon"
+          ],
+          "explicitness": "explicit"
+        }
+      ],
+      "extracted_preferences": {
+        "chain_of_thought": "Entity 'hockey' is mentioned with positive sentiment, as it's part of the user's plan for the next day. The axis is wanting-goal, as the user has an intention to play hockey.",
+        "dialogue_id": 0,
+        "user_id": "user",
+        "preferences": [
+          {
+            "reasoning": "Entity 'hockey' is mentioned with positive sentiment",
+            "combined_axis": "wanting__goal",
+            "entity": "hockey",
+            "original_mention": "play hockey in the morning",
+            "context_tags": [],
+            "polarity": "positive",
+            "intensity": "high"
+          }
+        ]
+      }
+    },
+    {
+      "dialogue_id": 37,
+      "original_dialogue": "User: Now that it ’ s the new year , I ’ Ve decided to turn over a new leaf .\nSystem: Yeah ? You finally decided to wipe the slate clean ?\nUser: You got it ! I have a new job , I ’ m living in a new city , with new friends ! This is my opportunity to make some small changes in the way I live my life .\nSystem: So what are you going to do ? Take up an art class or something ?\nUser: Well , first of all , I ’ Ve decided to stop smoking . It ’ s not that I ’ m pinching pennies or anything , it ’ s just that I ’ Ve been smoking since I was sixteen , and I think it ’ s time to stop .\nSystem: I ’ m with you on that one . Anything else you ’ re planning on doing ?\nUser: One last thing , I ’ Ve decided to come out of the closet .\nSystem: It ’ s about time !",
+      "translated_dialogue": "User: 新年を迎えたので、心機一転決心したんだ。\nSystem: そう？ついに一からやり直すことにしたのか？\nUser: その通り！新しい仕事に就いて、新しい街で、新しい友達と暮らしてるんだ！これは生活スタイルを少しずつ変えるチャンスなんだ。\nSystem: じゃあ何をするつもり？アート教室とか通うの？\nUser: まず第一に、禁煙を決めたんだ。金に困ってるわけじゃないけど、16歳から吸い続けてきたし、そろそろやめる時だと思うんだ。\nSystem: それは賛成だ。他に何か計画してることある？\nUser: 最後に一つ、カミングアウトすることを決めたんだ。\nSystem: やっとかよ！",
+      "ground_truth_annotations": [
+        {
+          "entity": "smoking",
+          "axis": "wanting",
+          "sub_axis": "goal",
+          "polarity": "negative",
+          "intensity": "high",
+          "context": [
+            "None"
+          ],
+          "explicitness": "explicit"
+        },
+        {
+          "entity": "coming out of the closet",
+          "axis": "wanting",
+          "sub_axis": "goal",
+          "polarity": "positive",
+          "intensity": "high",
+          "context": [
+            "None"
+          ],
+          "explicitness": "explicit"
+        }
+      ],
+      "extracted_preferences": {
+        "chain_of_thought": "Entity 'smoking' is mentioned with negative sentiment, and user explicitly states they want to stop it. This indicates a preference for not smoking.",
+        "dialogue_id": 0,
+        "user_id": "user",
+        "preferences": [
+          {
+            "reasoning": "Entity 'smoking' is mentioned with negative sentiment",
+            "combined_axis": "liking__identification",
+            "entity": "smoking",
+            "original_mention": "stop smoking",
+            "context_tags": [],
+            "polarity": "negative",
+            "intensity": "high"
+          }
+        ]
+      }
+    },
+    {
+      "dialogue_id": 38,
+      "original_dialogue": "System: You talked like the Terminator for two months ? Wow , I think you liked that movie even more than I liked ' Titanic . ' Why did you like ' Terminator ' so much ?\nUser: Well , ' Terminator ' is a really great action movie , and I like action movies because they're exciting .\nSystem: Isn't ' Terminator ' really violent ? I usually don't like gory movies because they gross me out .\nUser: It is pretty violent , but since it's just robots fighting one another , it isn't very bloody and so it won't gross you out .\nSystem: Hmm ... I don't know . Even though it may not be gory , I think it would still totally freak me out .",
+      "translated_dialogue": "System: 2ヶ月もターミネーターみたいな話し方してたの？ わあ、君は『タイタニック』を好きな僕以上にあの映画が好きだったんだね。なんでそんなに『ターミネーター』が好きなんだ？\nUser: だって『ターミネーター』は本当に素晴らしいアクション映画だし、僕はアクション映画が好きなんだ。だってワクワクするからね。\nSystem: 『ターミネーター』ってすごく暴力的な映画じゃない？血みどろの映画は気持ち悪くて普段は見ないんだけど。\nUser: 確かに暴力的なけど、ロボット同士の戦いだから血まみれじゃないし、君が気持ち悪く感じることはないよ。\nSystem: うーん…どうかな。血まみれじゃなくても、やっぱり完全に怖がっちゃうと思う。",
+      "ground_truth_annotations": [
+        {
+          "entity": "Terminator",
+          "axis": "liking",
+          "sub_axis": "stimulation",
+          "polarity": "positive",
+          "intensity": "high",
+          "context": [
+            "None"
+          ],
+          "explicitness": "explicit"
+        },
+        {
+          "entity": "action movie",
+          "axis": "liking",
+          "sub_axis": "stimulation",
+          "polarity": "positive",
+          "intensity": "mid",
+          "context": [
+            "None"
+          ],
+          "explicitness": "explicit"
+        }
+      ],
+      "extracted_preferences": {
+        "chain_of_thought": "Entity 'Terminator' is mentioned with positive sentiment. Axis is liking__aesthetic/sensory, as the user likes action movies for their excitement.",
+        "dialogue_id": 0,
+        "user_id": "user",
+        "preferences": [
+          {
+            "reasoning": "Entity 'action movies' is mentioned with positive sentiment",
+            "combined_axis": "liking__aesthetic_sensory",
+            "entity": "action movies",
+            "original_mention": "I like action movies because they're exciting",
+            "context_tags": [],
+            "polarity": "positive",
+            "intensity": "high"
+          },
+          {
+            "reasoning": "Entity 'Terminator' is mentioned with positive sentiment",
+            "combined_axis": "liking__aesthetic_sensory",
+            "entity": "Terminator",
+            "original_mention": "'Terminator' is a really great action movie",
+            "context_tags": [],
+            "polarity": "positive",
+            "intensity": "high"
+          },
+          {
+            "reasoning": "Entity 'gory movies' is mentioned with negative sentiment",
+            "combined_axis": "liking__aesthetic_sensory",
+            "entity": "gory movies",
+            "original_mention": "I usually don't like gory movies because they gross me out",
+            "context_tags": [],
+            "polarity": "negative",
+            "intensity": "high"
+          }
+        ]
+      }
+    },
+    {
+      "dialogue_id": 39,
+      "original_dialogue": "User: I think this painting would look good in our living room . What do you think ?\nSystem: Sure . Let's buy it .",
+      "translated_dialogue": "User: この絵、リビングに飾ったら素敵だと思うんだけど、どうかな？\nSystem: うん、買おうよ。",
+      "ground_truth_annotations": [
+        {
+          "entity": "painting",
+          "axis": "liking",
+          "sub_axis": "aesthetic/sensory",
+          "polarity": "positive",
+          "intensity": "mid",
+          "context": [
+            "Home"
+          ],
+          "explicitness": "explicit"
+        }
+      ],
+      "extracted_preferences": {
+        "chain_of_thought": "Entity 'painting' is mentioned with positive sentiment. Axis is liking_aesthetic_sensory.",
+        "dialogue_id": 0,
+        "user_id": "user",
+        "preferences": [
+          {
+            "reasoning": "Entity 'painting' is mentioned with positive sentiment",
+            "combined_axis": "liking__aesthetic_sensory",
+            "entity": "painting",
+            "original_mention": "this painting",
+            "context_tags": [],
+            "polarity": "positive",
+            "intensity": "high"
+          }
+        ]
+      }
+    },
+    {
+      "dialogue_id": 40,
+      "original_dialogue": "System: Time flies !\nUser: You're telling me .",
+      "translated_dialogue": "System: 時が経つのは早いね！\nUser: 本当にそうだね。",
+      "ground_truth_annotations": [],
+      "extracted_preferences": {
+        "chain_of_thought": "Entity 'time' is mentioned with negative sentiment. The user agrees with the system's statement, indicating a shared experience.",
+        "dialogue_id": 0,
+        "user_id": "user",
+        "preferences": [
+          {
+            "reasoning": "Entity 'time' is mentioned with negative sentiment",
+            "combined_axis": "liking__stimulation",
+            "entity": "time",
+            "original_mention": "time",
+            "context_tags": [],
+            "polarity": "negative",
+            "intensity": "high"
+          }
+        ]
+      }
+    },
+    {
+      "dialogue_id": 41,
+      "original_dialogue": "System: Have you made up your mind about not going back to your hometown after graduation ? Where else would you go ?\nUser: I would try to land a job in Beijing . I just want to go to one of the big cities .\nSystem: why ?\nUser: many say more development opportunities can be found there .\nSystem: that's true . Beijing is the political , economic and cultural center of the entire country .\nUser: and there're higher salaries there .\nSystem: well , that's true , but living expenses are also higher in big cities .\nUser: I've considered that . I'll share an apartment with others to save the rent , and the cost of living won't be too much for only one person .\nSystem: one person ? How about your girlfriend ?\nUser: oh , we had to break up because she didn't want to float around in Beijing . She insisted on working in her hometown and having a stable life .\nSystem: sorry to hear that . It seems you have sacrificed a lot to work away from home .\nUser: sure have . I want to offer my parents a better life ; so , I'll have to work very hard .\nSystem: I admire you . Good luck !",
+      "translated_dialogue": "System: 卒業後は故郷に帰らないって決めたの？じゃあどこに行くつもり？\nUser: 北京で仕事を探そうと思う。とにかく大都市に行きたいんだ。\nSystem: どうして？\nUser: 発展の機会が多いってみんな言うからね。\nSystem: 確かにね。北京は全国的な政治・経済・文化の中心地だし。\nUser: それに給料も高いしね。\nSystem: まあ、それはそうだけど、大都市は生活費も高いよ。\nUser: それは考えたよ。家賃を節約するためにルームシェアするつもりだし、一人暮らしなら生活費もそれほどかからないはず。\nSystem: 一人？彼女はどうしたの？\nUser: ああ、別れたんだ。彼女が北京で浮き沈みする生活は嫌だって。故郷で働いて安定した生活を送りたいって主張したんだ。\nSystem: それは残念だね。故郷を離れて働くために、君は多くのものを犠牲にしているようだな。\nUser: 確かにそうだ。両親にもっと良い生活を提供したい。だから、一生懸命働かなきゃいけないんだ。\nSystem: 尊敬するよ。頑張ってね！",
+      "ground_truth_annotations": [
+        {
+          "entity": "big city",
+          "axis": "wanting",
+          "sub_axis": "goal",
+          "polarity": "positive",
+          "intensity": "mid",
+          "context": [
+            "None"
+          ],
+          "explicitness": "explicit"
+        },
+        {
+          "entity": "saving rent",
+          "axis": "need",
+          "sub_axis": "functional",
+          "polarity": "positive",
+          "intensity": "mid",
+          "context": [
+            "None"
+          ],
+          "explicitness": "explicit"
+        },
+        {
+          "entity": "offering parents a better life",
+          "axis": "wanting",
+          "sub_axis": "goal",
+          "polarity": "positive",
+          "intensity": "mid",
+          "context": [
+            "None"
+          ],
+          "explicitness": "explicit"
+        }
+      ],
+      "extracted_preferences": {
+        "chain_of_thought": "Entity 'Beijing' is mentioned with positive sentiment. Axis is wanting-goal, as the user wants to go there for job opportunities and higher salaries. Intensity is high due to the use of words like 'just want', 'many say', and 'I'll have to work very hard'. Context tags include 'big cities', which implies a desire for urban living.",
+        "dialogue_id": 0,
+        "user_id": "user",
+        "preferences": [
+          {
+            "reasoning": "Entity 'Beijing' is mentioned with positive sentiment. Axis is wanting-goal, as the user wants to go there for job opportunities and higher salaries.",
+            "combined_axis": "wanting__goal",
+            "entity": "Beijing",
+            "original_mention": "Beijing",
+            "context_tags": [
+              "condition-busy"
+            ],
+            "polarity": "positive",
+            "intensity": "high"
+          }
+        ]
+      }
+    },
+    {
+      "dialogue_id": 42,
+      "original_dialogue": "System: The weather is terrible .\nUser: Yes . It was sunny and warm yesterday but the wind is really blowing hard now .\nSystem: I'm wearing my heavy jacket .\nUser: I'm going to put on more clothes , too .\nSystem: Will it snow today ?\nUser: I don't know . Do you like snowing ?\nSystem: Yes , when it snows , every where is white . It's very beautiful .\nUser: You can read the newspaper . Maybe it will tell you whether it will snow or not .\nSystem: Good idea .",
+      "translated_dialogue": "System: 天気がひどいな。\nUser: そうだね。昨日は晴れて暖かかったのに、今は風がすごく強いよ。\nSystem: 厚手のジャケットを着てるんだ。\nUser: 僕ももっと着込むつもりだ。\nSystem: 今日は雪降るかな？\nUser: わからない。雪は好き？\nSystem: うん、雪が降ると、どこも真っ白になるんだ。すごくきれいだよ。\nUser: 新聞を読めばいいよ。降るかどうか書いてあるかもしれない。\nSystem: いい考えだ。",
+      "ground_truth_annotations": [
+        {
+          "entity": "snow",
+          "axis": "liking",
+          "sub_axis": "aesthetic/sensory",
+          "polarity": "positive",
+          "intensity": "high",
+          "context": [
+            "None"
+          ],
+          "explicitness": "explicit"
+        }
+      ],
+      "extracted_preferences": {
+        "chain_of_thought": "Entity 'snow' is mentioned with positive sentiment",
+        "dialogue_id": 0,
+        "user_id": "user",
+        "preferences": [
+          {
+            "reasoning": "Entity 'snow' is mentioned with positive sentiment",
+            "combined_axis": "liking__aesthetic_sensory",
+            "entity": "snow",
+            "original_mention": "snowing",
+            "context_tags": [],
+            "polarity": "positive",
+            "intensity": "high"
+          }
+        ]
+      }
+    },
+    {
+      "dialogue_id": 43,
+      "original_dialogue": "System: It ’ s time to get up .\nUser: I just went to bed .\nSystem: You shouldn ’ t stay up so late watching TV . I told you we had to get an early start .\nUser: I know , but that movie was just too good to leave . I guess I ’ ll just have to pay the price anti-sleepy .\nSystem: Do you want to eat breakfast here ?\nUser: No . why don ’ t we describe and buy at the coffee shop next door ?\nSystem: Ok by me .",
+      "translated_dialogue": "System: そろそろ起きる時間だよ。\nUser: 寝たばかりなのに。\nSystem: テレビ見て夜更かししちゃダメだよ。早く起きなきゃって言ったでしょ。\nUser: わかってるけど、あの映画が面白すぎてやめられなかったんだ。眠気との戦いを覚悟するしかないね。\nSystem: 朝食はここで食べる？\nUser: いや、隣のカフェで買って食べない？\nSystem: いいよ。",
+      "ground_truth_annotations": [
+        {
+          "entity": "movie",
+          "axis": "liking",
+          "sub_axis": "aesthetic/sensory",
+          "polarity": "positive",
+          "intensity": "high",
+          "context": [
+            "None"
+          ],
+          "explicitness": "explicit"
+        },
+        {
+          "entity": "coffee shop",
+          "axis": "wanting",
+          "sub_axis": "goal",
+          "polarity": "positive",
+          "intensity": "mid",
+          "context": [
+            "Morning",
+            "group"
+          ],
+          "explicitness": "explicit"
+        }
+      ],
+      "extracted_preferences": {
+        "chain_of_thought": "Entity 'movie' is mentioned with positive sentiment. Axis is wanting-goal, as it's a future-oriented preference.",
+        "dialogue_id": 0,
+        "user_id": "user",
+        "preferences": [
+          {
+            "reasoning": "Entity 'movie' is mentioned with positive sentiment",
+            "combined_axis": "wanting__goal",
+            "entity": "movie",
+            "original_mention": "the movie was just too good to leave",
+            "context_tags": [],
+            "polarity": "positive",
+            "intensity": "high"
+          }
+        ]
+      }
+    },
+    {
+      "dialogue_id": 44,
+      "original_dialogue": "System: What is your major ?\nUser: My major is Business Administration , I am especially interested in Marketing .\nSystem: Which university are you attending ?\nUser: I attended Suzhou University .\nSystem: Have you received any degrees ?\nUser: Yes . I received my Bachelor degree in Business Administration .\nSystem: What course did you like best ?\nUser: Project Management . I was very interested in this course when I was a student . And I think it's very useful for my present work .\nSystem: Do you feel that you have received a good general training ?\nUser: Yes , I have studied in an English training program and a computer training program since I graduated from university . I am currently studying Finance at a training school .\nSystem: English and computer skills are comparatively important to this post , especially in the starting period . Wharfs your ability in these two fields ?\nUser: I passed college English Test Band - 4 , with good skill in listening , speaking , reading and writing . I haven't got any certificate of computer skills , because I don ’ t think certificates are necessary if what's needed is merely operating a computer . I think , to know how to use a computer is more important . And I'm quite familiar with Microsoft Office",
+      "translated_dialogue": "System: 専攻は何ですか？\nUser: 経営学です。特にマーケティングに興味があります。\nSystem: どこの大学に通っていますか？\nUser: 蘇州大学に通っていました。\nSystem: 学位は取得しましたか？\nUser: はい。経営学の学士号を取得しました。\nSystem: どの授業が一番好きでしたか？\nUser: プロジェクトマネジメントです。学生時代はこの授業に非常に興味を持ちました。現在の仕事にも非常に役立っていると思います。\nSystem: 総合的なトレーニングは十分に受けたと感じますか？\nUser: はい。大学卒業後は英語研修プログラムとコンピューター研修プログラムを修了しました。現在は専門学校でファイナンスを学んでいます。\nSystem: この職種では、特に初期段階において英語力とコンピュータースキルが比較的重要です。この2分野の能力はどの程度ですか？\nUser: 大学英語検定4級に合格しており、リスニング・スピーキング・リーディング・ライティングのスキルは良好です。コンピュータースキルの証明書は取得していません。単に操作するだけなら証明書は必要ないと考えているためです。コンピューターの使い方を理解していることがより重要だと考えています。また、Microsoft Officeにはかなり精通しています。",
+      "ground_truth_annotations": [
+        {
+          "entity": "Marketing",
+          "axis": "wanting",
+          "sub_axis": "interest",
+          "polarity": "positive",
+          "intensity": "high",
+          "context": [
+            "None"
+          ],
+          "explicitness": "explicit"
+        },
+        {
+          "entity": "Project Management",
+          "axis": "liking",
+          "sub_axis": "stimulation",
+          "polarity": "positive",
+          "intensity": "high",
+          "context": [
+            "None"
+          ],
+          "explicitness": "explicit"
+        },
+        {
+          "entity": "Project Management",
+          "axis": "wanting",
+          "sub_axis": "interest",
+          "polarity": "positive",
+          "intensity": "high",
+          "context": [
+            "None"
+          ],
+          "explicitness": "explicit"
+        },
+        {
+          "entity": "Project Management",
+          "axis": "need",
+          "sub_axis": "functional",
+          "polarity": "positive",
+          "intensity": "high",
+          "context": [
+            "Working/studying"
+          ],
+          "explicitness": "explicit"
+        },
+        {
+          "entity": "certificate of computer skills",
+          "axis": "need",
+          "sub_axis": "functional",
+          "polarity": "negative",
+          "intensity": "mid",
+          "context": [
+            "None"
+          ],
+          "explicitness": "explicit"
+        }
+      ],
+      "extracted_preferences": {
+        "chain_of_thought": "Entity identification: 'Business Administration', 'Marketing', 'Suzhou University', 'Bachelor degree in Business Administration', 'Project Management', 'English training program', 'computer training program', 'Finance', 'English and computer skills' are identified as entities. Axis and polarity classification: 'Business Administration' is classified under 'liking__aesthetic/sensory' with a positive polarity, 'Marketing' is classified under 'wanting__goal' with a positive polarity, 'Suzhou University' is classified under 'need__functional' with a neutral polarity, 'Bachelor degree in Business Administration' is classified under 'liking__identification' with a positive polarity, 'Project Management' is classified under 'liking__aesthetic/sensory' with a positive polarity, 'English training program' and 'computer training program' are classified under 'need__functional' with a neutral polarity, 'Finance' is classified under 'wanting__goal' with a positive polarity, 'English and computer skills' is classified under 'liking__aesthetic/sensory' with a positive polarity. Intensity: All entities have an intensity of 'high'. Context tags: None are applicable. Explicitness verification: All preferences are explicitly mentioned in the dialogue.",
+        "dialogue_id": 0,
+        "user_id": "user",
+        "preferences": [
+          {
+            "reasoning": "Entity 'Business Administration' is mentioned with positive sentiment",
+            "combined_axis": "liking__aesthetic_sensory",
+            "entity": "Business Administration",
+            "original_mention": "Business Administration",
+            "context_tags": [],
+            "polarity": "positive",
+            "intensity": "high"
+          },
+          {
+            "reasoning": "Entity 'Marketing' is mentioned with positive sentiment",
+            "combined_axis": "wanting__goal",
+            "entity": "Marketing",
+            "original_mention": "Marketing",
+            "context_tags": [],
+            "polarity": "positive",
+            "intensity": "high"
+          },
+          {
+            "reasoning": "Entity 'Suzhou University' is mentioned with neutral sentiment",
+            "combined_axis": "need__functional",
+            "entity": "Suzhou University",
+            "original_mention": "Suzhou University",
+            "context_tags": [],
+            "polarity": "neutral",
+            "intensity": "high"
+          },
+          {
+            "reasoning": "Entity 'Bachelor degree in Business Administration' is mentioned with positive sentiment",
+            "combined_axis": "liking__identification",
+            "entity": "Bachelor degree in Business Administration",
+            "original_mention": "Bachelor degree in Business Administration",
+            "context_tags": [],
+            "polarity": "positive",
+            "intensity": "high"
+          },
+          {
+            "reasoning": "Entity 'Project Management' is mentioned with positive sentiment",
+            "combined_axis": "liking__aesthetic_sensory",
+            "entity": "Project Management",
+            "original_mention": "Project Management",
+            "context_tags": [],
+            "polarity": "positive",
+            "intensity": "high"
+          },
+          {
+            "reasoning": "Entity 'English training program' is mentioned with neutral sentiment",
+            "combined_axis": "need__functional",
+            "entity": "English training program",
+            "original_mention": "English training program",
+            "context_tags": [],
+            "polarity": "neutral",
+            "intensity": "high"
+          },
+          {
+            "reasoning": "Entity 'computer training program' is mentioned with neutral sentiment",
+            "combined_axis": "need__functional",
+            "entity": "computer training program",
+            "original_mention": "computer training program",
+            "context_tags": [],
+            "polarity": "neutral",
+            "intensity": "high"
+          },
+          {
+            "reasoning": "Entity 'Finance' is mentioned with positive sentiment",
+            "combined_axis": "wanting__goal",
+            "entity": "Finance",
+            "original_mention": "Finance",
+            "context_tags": [],
+            "polarity": "positive",
+            "intensity": "high"
+          },
+          {
+            "reasoning": "Entity 'English and computer skills' is mentioned with positive sentiment",
+            "combined_axis": "liking__aesthetic_sensory",
+            "entity": "English and computer skills",
+            "original_mention": "English and computer skills",
+            "context_tags": [],
+            "polarity": "positive",
+            "intensity": "high"
+          }
+        ]
+      }
+    },
+    {
+      "dialogue_id": 45,
+      "original_dialogue": "System: Are there any scenic spots nearby ?\nUser: You can go to ZhongShan Park .\nSystem: Have you ever been there ?\nUser: Yes . The scenery there is so breathtaking\nSystem: Really ?\nUser: Yes , of course . It's really worth visiting .",
+      "translated_dialogue": "System: 近くに観光スポットはありますか？\nUser: 中山公園に行けますよ。\nSystem: 行ったことありますか？\nUser: はい。あそこの景色は息をのむほど美しいです\nSystem: 本当ですか？\nUser: ええ、もちろん。本当に訪れる価値がありますよ。",
+      "ground_truth_annotations": [
+        {
+          "entity": "ZhongShan Park",
+          "axis": "liking",
+          "sub_axis": "aesthetic/sensory",
+          "polarity": "positive",
+          "intensity": "high",
+          "context": [
+            "None"
+          ],
+          "explicitness": "explicit"
+        }
+      ],
+      "extracted_preferences": {
+        "chain_of_thought": "Entity 'ZhongShan Park' is mentioned with positive sentiment",
+        "dialogue_id": 0,
+        "user_id": "user",
+        "preferences": [
+          {
+            "reasoning": "Entity 'ZhongShan Park' is mentioned with positive sentiment",
+            "combined_axis": "liking__aesthetic_sensory",
+            "entity": "scenic spots",
+            "original_mention": "ZhongShan Park",
+            "context_tags": [],
+            "polarity": "positive",
+            "intensity": "high"
+          }
+        ]
+      }
+    },
+    {
+      "dialogue_id": 47,
+      "original_dialogue": "System: Can you study with the radio on ?\nUser: No , I listen to background music .\nSystem: What is the difference ?\nUser: The radio has too many comerials .\nSystem: That's true , but then you have to buy a record player .",
+      "translated_dialogue": "System: ラジオを流しながら勉強できる？\nUser: いや、僕はBGMを聴いてるんだ。\nSystem: 何が違うんだ？\nUser: ラジオはCMが多すぎるんだ。\nSystem: 確かにそうだな、でもそれならレコードプレーヤーを買わなきゃいけないぞ。",
+      "ground_truth_annotations": [
+        {
+          "entity": "background music",
+          "axis": "need",
+          "sub_axis": "functional",
+          "polarity": "positive",
+          "intensity": "mid",
+          "context": [
+            "Working/studying"
+          ],
+          "explicitness": "explicit"
+        },
+        {
+          "entity": "radio",
+          "axis": "need",
+          "sub_axis": "functional",
+          "polarity": "negative",
+          "intensity": "mid",
+          "context": [
+            "Working/studying"
+          ],
+          "explicitness": "explicit"
+        }
+      ],
+      "extracted_preferences": {
+        "chain_of_thought": "Entity 'background music' is mentioned with positive sentiment. Entity 'radio' is mentioned with negative sentiment.",
+        "dialogue_id": 0,
+        "user_id": "user",
+        "preferences": [
+          {
+            "reasoning": "Entity 'background music' is mentioned with positive sentiment",
+            "combined_axis": "liking__aesthetic_sensory",
+            "entity": "background music",
+            "original_mention": "background music",
+            "context_tags": [],
+            "polarity": "positive",
+            "intensity": "high"
+          },
+          {
+            "reasoning": "Entity 'radio' is mentioned with negative sentiment",
+            "combined_axis": "liking__aesthetic_sensory",
+            "entity": "radio",
+            "original_mention": "radio",
+            "context_tags": [],
+            "polarity": "negative",
+            "intensity": "high"
+          }
+        ]
+      }
+    },
+    {
+      "dialogue_id": 48,
+      "original_dialogue": "System: Do you like cooking ?\nUser: Yes . I like cooking very much . I got this hobby when I was 12 years sold .\nSystem: Why do you like it ?\nUser: I have no idea . I like cooking by myself . I like to taste delicious food .\nSystem: That's wonderful !\nUser: And I love trying new recipes , which I usually test with my friends . You can come , too .\nSystem: Really ? I hope I can have a chance to taste it . Don't forget to tell me .\nUser: Certainly .",
+      "translated_dialogue": "System: 料理は好き？\nUser: うん。すごく好きだよ。12歳の時にこの趣味を始めたんだ。\nSystem: どうして好きなの？\nUser: 理由はわからないけど、自分で料理するのが好き。美味しいものを味わうのが好きなんだ。\nSystem: それは素晴らしいね！\nUser: それに新しいレシピを試すのも大好きで、大抵は友達と一緒に試作するんだ。君も来ていいよ。\nSystem: 本当？ぜひ味見させてほしいな。忘れないで教えてね。\nUser: もちろん。",
+      "ground_truth_annotations": [
+        {
+          "entity": "cooking",
+          "axis": "liking",
+          "sub_axis": "",
+          "polarity": "positive",
+          "intensity": "high",
+          "context": [
+            "None"
+          ],
+          "explicitness": "explicit"
+        },
+        {
+          "entity": "cooking",
+          "axis": "liking",
+          "sub_axis": "aesthetic/sensory",
+          "polarity": "positive",
+          "intensity": "high",
+          "context": [
+            "solo"
+          ],
+          "explicitness": "explicit"
+        },
+        {
+          "entity": "trying new recipes",
+          "axis": "liking",
+          "sub_axis": "",
+          "polarity": "positive",
+          "intensity": "high",
+          "context": [
+            "group"
+          ],
+          "explicitness": "explicit"
+        }
+      ],
+      "extracted_preferences": {
+        "chain_of_thought": "Entity 'cooking' is mentioned with positive sentiment. User explicitly states they like cooking and enjoy trying new recipes.",
+        "dialogue_id": 0,
+        "user_id": "user",
+        "preferences": [
+          {
+            "reasoning": "Entity 'cooking' is mentioned with positive sentiment",
+            "combined_axis": "liking__aesthetic_sensory",
+            "entity": "cooking",
+            "original_mention": "cooking",
+            "context_tags": [],
+            "polarity": "positive",
+            "intensity": "high"
+          },
+          {
+            "reasoning": "Entity 'new recipes' is mentioned with positive sentiment",
+            "combined_axis": "liking__aesthetic_sensory",
+            "entity": "new recipes",
+            "original_mention": "new recipes",
+            "context_tags": [],
+            "polarity": "positive",
+            "intensity": "high"
+          },
+          {
+            "reasoning": "Entity 'tasting delicious food' is mentioned with positive sentiment",
+            "combined_axis": "liking__aesthetic_sensory",
+            "entity": "tasting delicious food",
+            "original_mention": "taste delicious food",
+            "context_tags": [],
+            "polarity": "positive",
+            "intensity": "high"
+          },
+          {
+            "reasoning": "Entity 'trying new recipes' is mentioned with positive sentiment",
+            "combined_axis": "wanting__goal",
+            "entity": "trying new recipes",
+            "original_mention": "try new recipes",
+            "context_tags": [
+              "social-group"
+            ],
+            "polarity": "positive",
+            "intensity": "high"
+          }
+        ]
+      }
+    },
+    {
+      "dialogue_id": 49,
+      "original_dialogue": "System: Do you want black or white coffee ?\nUser: White , please\nSystem: Look ! there's a Folk concert tomorrow evening . Do you Want to go ?\nUser: I don't like Folk music very much .\nSystem: What kind of music do you like ?\nUser: I like classical music . Do you ?\nSystem: Not very much . Classical music sends me to sleep\nUser: I don't believe you .\nSystem: It ’ s true .\nUser: You are funny !\nSystem: So are you ! How about another coffee ?",
+      "translated_dialogue": "System: ブラックコーヒーとホワイトコーヒー、どちらがいい？\nUser: ホワイトでお願いします\nSystem: 見て！明日の夜にフォークコンサートがあるよ。行かない？\nUser: あまりフォーク音楽は好きじゃないんだ。\nSystem: どんな音楽が好きなの？\nUser: クラシック音楽が好きだよ。君は？\nSystem: あまり好きじゃないんだ。クラシック音楽は眠くなるんだ\nUser: 嘘でしょ。\nSystem: 本当だよ。\nUser: あなたって面白い！\nSystem: 君だって！もう一杯コーヒー飲む？",
+      "ground_truth_annotations": [
+        {
+          "entity": "white coffee",
+          "axis": "wanting",
+          "sub_axis": "goal",
+          "polarity": "positive",
+          "intensity": "mid",
+          "context": [
+            "None"
+          ],
+          "explicitness": "explicit"
+        },
+        {
+          "entity": "Folk music",
+          "axis": "liking",
+          "sub_axis": "",
+          "polarity": "negative",
+          "intensity": "low",
+          "context": [
+            "None"
+          ],
+          "explicitness": "explicit"
+        },
+        {
+          "entity": "classical music",
+          "axis": "liking",
+          "sub_axis": "",
+          "polarity": "positive",
+          "intensity": "mid",
+          "context": [
+            "None"
+          ],
+          "explicitness": "explicit"
+        }
+      ],
+      "extracted_preferences": {
+        "chain_of_thought": "Entity 'black' is mentioned as an option, but the user explicitly chooses 'white'. Therefore, we can infer a preference for white coffee.",
+        "dialogue_id": 0,
+        "user_id": "user",
+        "preferences": [
+          {
+            "reasoning": "Entity 'Folk music' is mentioned with negative sentiment",
+            "combined_axis": "liking__identification",
+            "entity": "Folk music",
+            "original_mention": "Folk concert tomorrow evening",
+            "context_tags": [],
+            "polarity": "negative",
+            "intensity": "high"
+          },
+          {
+            "reasoning": "Entity 'classical music' is mentioned with positive sentiment",
+            "combined_axis": "liking__identification",
+            "entity": "classical music",
+            "original_mention": "I like classical music",
+            "context_tags": [],
+            "polarity": "positive",
+            "intensity": "high"
+          }
+        ]
+      }
+    }
+  ]
+}

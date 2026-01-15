@@ -27,7 +27,7 @@ from evaluation import (
 # === ユーザー設定 ===
 # 評価したい実験結果のパスをここに貼り付けてください
 # =====================================================================
-EXPERIMENT_RESULTS_PATH = "/home/y-aida/Programs/preference-kg/preference_kg/results/experiments/gemma3:27b/experiment_results_20260115_174401_delReasoning.json"
+EXPERIMENT_RESULTS_PATH = "/home/y-aida/Programs/preference-kg/preference_kg/results/experiments/gpt-4o/experiment_results_20260112_194507.json"
 # =====================================================================
 
 # --- 以下は自動生成（編集不要） ---
