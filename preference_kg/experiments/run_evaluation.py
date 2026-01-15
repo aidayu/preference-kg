@@ -26,7 +26,7 @@ from evaluation import (
 # === ユーザー設定 ===
 # 評価したい実験結果のパスをここに貼り付けてください
 # =====================================================================
-EXPERIMENT_RESULTS_PATH = "/home/y-aida/Programs/preference-kg/preference_kg/results/experiments/localLLM/experiment_results_gemma3_27B_CoT4step.json"
+EXPERIMENT_RESULTS_PATH = "/home/y-aida/Programs/preference-kg/preference_kg/results/experiments/llama3_8B/experiment_results_llama3_8B_CoT4step.json"
 # =====================================================================
 
 # --- 以下は自動生成（編集不要） ---

@@ -14,7 +14,7 @@ import pandas as pd
 # === ユーザー設定 ===
 # グラフ化したい評価結果CSVのパスをここに貼り付けてください
 # =====================================================================
-EVALUATION_CSV_PATH = "/home/y-aida/Programs/preference-kg/preference_kg/results/evaluations/localLLM/20260114_173623/evaluation_20260114_173714_SemEMatch_3F1.csv"
+EVALUATION_CSV_PATH = "/home/y-aida/Programs/preference-kg/preference_kg/results/experiments/llama3_8B/experiment_results_llama3_8B_CoT4step.json"
 # =====================================================================
 
 
@@ -112,23 +112,27 @@ def create_f1_comparison_chart(data: dict, output_path: str, title: str = None):
     
     fig, ax = plt.subplots(figsize=(14, 6))
     
-    bars1 = ax.bar(x - width, [v * 100 for v in micro_f1], width, label='Micro-F1', color='#3498db')
-    bars2 = ax.bar(x, [v * 100 for v in macro_f1], width, label='Macro-F1', color='#2ecc71')
-    bars3 = ax.bar(x + width, [v * 100 for v in weighted_f1], width, label='Weighted-F1', color='#e74c3c')
+    # 学術論文向けのグレースケール/ハイコントラスト設定
+    colors = ['#e0e0e0', '#808080', '#202020']
     
-    ax.set_xlabel('Evaluation Metric', fontsize=12)
-    ax.set_ylabel('F1 Score (%)', fontsize=12)
+    bars1 = ax.bar(x - width, [v * 100 for v in micro_f1], width, label='Micro-F1', color=colors[0], edgecolor='black')
+    bars2 = ax.bar(x, [v * 100 for v in macro_f1], width, label='Macro-F1', color=colors[1], edgecolor='black')
+    bars3 = ax.bar(x + width, [v * 100 for v in weighted_f1], width, label='Weighted-F1', color=colors[2], edgecolor='black')
+    
+    ax.set_xlabel('Evaluation Metric', fontsize=14, fontfamily='serif')
+    ax.set_ylabel('F1 Score (%)', fontsize=14, fontfamily='serif')
     
     model = data["info"].get("model", "Unknown")
     if title is None:
         title = f'{model} Preference Extraction Evaluation'
-    ax.set_title(title, fontsize=14, fontweight='bold')
+    ax.set_title(title, fontsize=16, fontfamily='serif')
     
     ax.set_xticks(x)
-    ax.set_xticklabels(labels, fontsize=10)
-    ax.legend(loc='upper right', fontsize=10)
+    ax.set_xticklabels(labels, fontsize=12, fontfamily='serif', rotation=45, ha='right')
+    ax.legend(loc='lower right', fontsize=12, frameon=True, edgecolor='black', fancybox=False)
     ax.set_ylim(0, 100)
-    ax.grid(axis='y', alpha=0.3)
+    ax.grid(axis='y', linestyle='--', alpha=0.5, color='gray')
+    ax.set_axisbelow(True)
     
     # 値を表示
     for bars in [bars1, bars2, bars3]:
@@ -137,10 +141,10 @@ def create_f1_comparison_chart(data: dict, output_path: str, title: str = None):
             if height > 0:
                 ax.annotate(f'{height:.1f}',
                             xy=(bar.get_x() + bar.get_width() / 2, height),
-                            ha='center', va='bottom', fontsize=7)
+                            ha='center', va='bottom', fontsize=8, fontfamily='serif')
     
     plt.tight_layout()
-    plt.savefig(output_path, dpi=150)
+    plt.savefig(output_path, dpi=300)
     print(f"Chart saved to: {output_path}")
     plt.close()
 
@@ -173,18 +177,23 @@ def create_precision_recall_chart(data: dict, output_path: str):
     
     fig, ax = plt.subplots(figsize=(14, 6))
     
-    bars1 = ax.bar(x - width, [v * 100 for v in precision], width, label='Precision', color='#9b59b6')
-    bars2 = ax.bar(x, [v * 100 for v in recall], width, label='Recall', color='#f39c12')
-    bars3 = ax.bar(x + width, [v * 100 for v in f1], width, label='F1', color='#1abc9c')
+    # 学術論文向けのグレースケール/ハイコントラスト設定
+    colors = ['#ffffff', '#808080', '#000000']
+    hatches = ['///', '', '']
     
-    ax.set_xlabel('Evaluation Metric', fontsize=12)
-    ax.set_ylabel('Score (%)', fontsize=12)
-    ax.set_title('Micro-Average: Precision / Recall / F1', fontsize=14, fontweight='bold')
+    bars1 = ax.bar(x - width, [v * 100 for v in precision], width, label='Precision', color=colors[0], edgecolor='black', hatch=hatches[0])
+    bars2 = ax.bar(x, [v * 100 for v in recall], width, label='Recall', color=colors[1], edgecolor='black', hatch=hatches[1])
+    bars3 = ax.bar(x + width, [v * 100 for v in f1], width, label='F1', color=colors[2], edgecolor='black', hatch=hatches[2])
+    
+    ax.set_xlabel('Evaluation Metric', fontsize=14, fontfamily='serif')
+    ax.set_ylabel('Score (%)', fontsize=14, fontfamily='serif')
+    ax.set_title('Micro-Average: Precision / Recall / F1', fontsize=16, fontfamily='serif')
     ax.set_xticks(x)
-    ax.set_xticklabels(labels, fontsize=10)
-    ax.legend(loc='upper right', fontsize=10)
+    ax.set_xticklabels(labels, fontsize=12, fontfamily='serif', rotation=45, ha='right')
+    ax.legend(loc='lower right', fontsize=12, frameon=True, edgecolor='black', fancybox=False)
     ax.set_ylim(0, 100)
-    ax.grid(axis='y', alpha=0.3)
+    ax.grid(axis='y', linestyle='--', alpha=0.5, color='gray')
+    ax.set_axisbelow(True)
     
     for bars in [bars1, bars2, bars3]:
         for bar in bars:
@@ -192,10 +201,10 @@ def create_precision_recall_chart(data: dict, output_path: str):
             if height > 0:
                 ax.annotate(f'{height:.1f}',
                             xy=(bar.get_x() + bar.get_width() / 2, height),
-                            ha='center', va='bottom', fontsize=7)
+                            ha='center', va='bottom', fontsize=8, fontfamily='serif')
     
     plt.tight_layout()
-    plt.savefig(output_path, dpi=150)
+    plt.savefig(output_path, dpi=300)
     print(f"Chart saved to: {output_path}")
     plt.close()
 
