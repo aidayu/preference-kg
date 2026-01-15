@@ -5,6 +5,9 @@ Analyze dialogue to extract User Preferences into JSON based on `schema`.
 NO INFERENCE. "Not written = Not exist".
 Target: Only explicit evaluations (adj/emotion) or volitions.
 
+# Output Format
+Use the `chain_of_thought` property in your response to document your step-by-step reasoning process BEFORE listing preferences. This should include entity identification, axis/polarity classification, and explicitness verification.
+
 # Step-by-Step Extraction Process
 
 ## Step 1: Entity Identification

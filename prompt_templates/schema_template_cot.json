@@ -19,10 +19,6 @@
         "items": {
           "type": "object",
           "properties": {
-            "reasoning": {
-              "type": "string",
-              "description": "Quote exact phrase + explain why explicit + justify axis/polarity/intensity"
-            },
             "combined_axis": {
               "type": "string",
               "description": "The specific evaluation axis combining the main axis and sub-axis.",
@@ -103,7 +99,6 @@
             }
           },
           "required": [
-            "reasoning",
             "combined_axis",
             "entity",
             "original_mention",
@@ -124,4 +119,3 @@
     "additionalProperties": false
   }
 }
-
